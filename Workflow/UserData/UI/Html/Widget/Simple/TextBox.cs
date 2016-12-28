@@ -1,6 +1,6 @@
-﻿using NeuroSystem.Workflow.UI.Html.Widget.Data;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Widget.Data;
 
-namespace NeuroSystem.Workflow.UI.Html.Widget.Simple
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Simple
 {
     public class TextBox : DataWidget
     {

@@ -4,7 +4,7 @@ using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.Core.Process;
 using NeuroSystem.Workflow.Engine;
 using NeuroSystem.Workflow.Engine.DAL;
-using NeuroSystem.Workflow.UI.Consola;
+using NeuroSystem.Workflow.UserData.UI.Consola;
 using UnitTestWorkflow.Processes;
 
 namespace UnitTestWorkflow

@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UI.Html.Widget.Panels
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels
 {
     public class PanelDescription : WidgetBase
     {

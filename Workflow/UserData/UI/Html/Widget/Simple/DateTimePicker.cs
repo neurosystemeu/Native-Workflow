@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UI.Html.Widget.Simple
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Simple
 {
     class DateTimePicker
     {

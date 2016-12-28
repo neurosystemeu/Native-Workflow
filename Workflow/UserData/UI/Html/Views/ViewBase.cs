@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UI.Html.Views
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Views
 {
     public class ViewBase
     {

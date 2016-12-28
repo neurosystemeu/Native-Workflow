@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData;
-
-namespace NeuroSystem.Workflow.UI.Consola
+﻿namespace NeuroSystem.Workflow.UserData.UI.Consola
 {
     public class ConsoleWrite : UserDataBase
     {

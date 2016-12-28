@@ -1,5 +1,5 @@
 ﻿using NeuroSystem.VirtualMachine.Core.Attributes;
-using NeuroSystem.Workflow.UI.Consola;
+using NeuroSystem.Workflow.UserData.UI.Consola;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Console
 {
