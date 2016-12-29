@@ -3,10 +3,13 @@
     public class WidgetBase
     {
         public string Name { get; set; }
-        public string Label { get; set; }
+        public object Label { get; set; }
+        public string Tooltip { get; set; }
 
-        public string Width { get; set; }
-        public string Height { get; set; }
-        public string CssClass { get; set; }
+        public object Width { get; set; }
+        public object Height { get; set; }
+        public object CssClass { get; set; }
+
+        public object DataContext { get; set; }
     }
 }

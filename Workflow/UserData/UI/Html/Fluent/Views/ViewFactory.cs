@@ -4,37 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Widget;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
 {
-    //Opisuje widok
-    public class ViewFactory : WidgetFactory
-    {
-
-    }
-
-    public class ViewFactory<T> : ViewFactory
+    public class ViewFactory<T> : WidgetFactory<T>
     {
         public ViewFactory()
         {
-            Panele = new List<WidgetFactory>();
+            Panele = new List<WidgetBase>();
         }
 
-        public List<WidgetFactory> Panele { get; set; }
+        public List<WidgetBase> Panele { get; set; }
 
-        public ViewFactory<T> Panels(Action<PanelFactory<T>> panel)
+        public ViewFactory<T> AddPanel(Action<PanelFactory<T>> panel)
         {
-            PanelFactory<T> gridColumnFactory = new PanelFactory<T>(this);
-            panel(gridColumnFactory);
-            Panele.Add(gridColumnFactory);
+            var panelFactory = new PanelFactory<T>();
+            panel(panelFactory);
+            Panele.Add(panelFactory.Panel);
             return this;
         }
 
-        public ViewFactory<T> DataForms(Action<DataFormFactory<T>> panel)
+        public ViewFactory<T> AddDataForm(Action<DataFormFactory<T>> panel)
         {
-            DataFormFactory<T> gridColumnFactory = new DataFormFactory<T>();
-            panel(gridColumnFactory);
-            Panele.Add(gridColumnFactory);
+            var formFactory = new DataFormFactory<T>();
+            panel(formFactory);
+            Panele.Add(formFactory.Panel);
             return this;
         }
     }

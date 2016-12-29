@@ -10,31 +10,44 @@ namespace UnitTestWorkflow.UI.Fluent
         public int Age { get; set; }
     }
 
+    public class Test2Object
+    {
+        public string Nazwisko { get; set; }
+        public string Imie { get; set; }
+    }
+
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()
         {
-            var view = new ViewFactory<TestObject>();
-            view.DataForms(forms =>
-            {
-                forms.Pole(pp => pp.Age);
+            var mv = new TestObject();
+            var mv2 = new Test2Object();
 
-                forms.DodajDataForm(p =>
+            var view = new ViewFactory<TestObject>();
+            view.DataContext(mv);
+            view.AddPanel(panel =>
+            {
+                panel.AddDataForm(p =>
                 {
-                    p.Pole(pp => pp.Name);
-                    p.Pole(pp => pp.Age);
+                    p.AddField(pp => pp.Name);
+                    p.AddField(pp => pp.Age);
                     p.Width("50%").Height("50px");
+                    p.AddComboBox()
                 });
-                forms.DodajDataForm(p =>
+                panel.AddDataForm(p =>
                 {
-                    p.Pole(pp => pp.Age).Height("400px").Width("50%");
+                    p.AddField(pp => pp.Age).Height("400px").Width("50%").WidthBinding("Szerokosc");
+                    p.AddGridView(grid =>
+                    {
+                        grid.Column(k => k.Name);
+                        grid.Column(k => k.Age).Width("100%");
+                    });
                 });
-                forms.GridView(k =>
+                panel.AddDataForm(mv2, p =>
                 {
-                    k.Column(p => p.Name);
-                    k.Column(p => p.Age);
+                    p.AddField(f => f.Imie);
                 });
             });
         }

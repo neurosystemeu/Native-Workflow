@@ -10,29 +10,13 @@ using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
 {
-    public class PanelFactory : WidgetFactory
-    {
-    }
-
-    public class PanelFactory<T> : PanelFactory
+    public class PanelFactory<T> : WidgetFactory<T>
     {
         public Panel Panel { get; set; }
 
         public PanelFactory()
         {
             Panel = new Panel();
-        }
-
-        public PanelFactory<T> Height(string height)
-        {
-            Panel.Height = height;
-            return this;
-        }
-
-        public PanelFactory<T> Width(string width)
-        {
-            Panel.Width = width;
-            return this;
         }
 
         public PanelFactory<T> Float(EnumPanelFloat f)
@@ -47,31 +31,33 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
             return this;
         }
 
-        public PanelFactory<T> CssClass(string f)
-        {
-            Panel.CssClass = f;
-            return this;
-        }
 
-
-        public PanelFactory<T> DodajPanel(Action<PanelFactory<T>> panel)
+        public PanelFactory<T> AddPanel(Action<PanelFactory<T>> panel)
         {
             var panelFactory = new PanelFactory<T>();
             Panel.Elementy.Add(panelFactory.Panel);
 
             panel(panelFactory);
-            
             return this;
         }
 
-        public PanelFactory<T> DodajDataForm(Action<DataFormFactory<T>> panel)
+        public DataFormFactory<T> AddDataForm(Action<DataFormFactory<T>> panel)
         {
-            var gridColumnFactory = new DataFormFactory<T>();
-            Elementy.Add(gridColumnFactory);
+            var formFactory = new DataFormFactory<T>();
+            Panel.Elementy.Add(formFactory.Panel);
 
-            panel(gridColumnFactory);
+            panel(formFactory);
+            return formFactory;
+        }
 
-            return this;
+        public PanelFactory<T2> AddDataForm<T2>(T2 dataContext, Action<DataFormFactory<T2>> panel)
+        {
+            var formFactory = new DataFormFactory<T2>();
+            formFactory.DataContext(dataContext);
+            Panel.Elementy.Add(formFactory.Panel);
+
+            panel(formFactory);
+            return formFactory;
         }
 
     }

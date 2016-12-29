@@ -19,6 +19,8 @@
 
         public string DataValueField { get; set; } //ValueField dla elementu kolekcji
 
+        public string DataIdField { get; set; } //IdField dla elementu kolekcji
+
         public string DataTextField { get; set; } //TextField dla elementu kolekcji
 
     }

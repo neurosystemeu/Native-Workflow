@@ -9,6 +9,16 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ViewModel
 {
     public class Binding
     {
+        public Binding()
+        {
+            
+        }
+
+        public Binding(string path)
+        {
+            Path = path;
+        }
+
         public string Path { get; set; }
     }
 }

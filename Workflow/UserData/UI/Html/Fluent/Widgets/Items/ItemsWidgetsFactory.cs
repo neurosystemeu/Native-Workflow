@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets
 {
-    public class ItemsWidgetsFactory<T> : WidgetFactory
+    public class ItemsWidgetsFactory<T> : WidgetFactory<T>
     {
     }
 }
