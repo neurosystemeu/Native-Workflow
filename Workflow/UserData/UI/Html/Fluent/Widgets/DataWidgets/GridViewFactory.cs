@@ -10,7 +10,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Items
 {
     public class GridViewFactory<T> : ItemsWidgetsFactory<T>
     {
-        public GridView GridView { get; set; }
+        public GridView GridView => Widget as GridView;
 
         
         public GridViewColumnFactory<T> Column<TD>(Expression<Func<T, TD>> nazwaPola)

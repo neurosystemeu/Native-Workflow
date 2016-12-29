@@ -13,23 +13,24 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
         public ViewFactory()
         {
             Panele = new List<WidgetBase>();
+            Widget = new WidgetBase();
         }
 
         public List<WidgetBase> Panele { get; set; }
 
         public ViewFactory<T> AddPanel(Action<PanelFactory<T>> panel)
         {
-            var panelFactory = new PanelFactory<T>();
-            panel(panelFactory);
-            Panele.Add(panelFactory.Panel);
+            var factory = new PanelFactory<T>();
+            panel(factory);
+            Panele.Add(factory.Panel);
             return this;
         }
 
         public ViewFactory<T> AddDataForm(Action<DataFormFactory<T>> panel)
         {
-            var formFactory = new DataFormFactory<T>();
-            panel(formFactory);
-            Panele.Add(formFactory.Panel);
+            var factory = new DataFormFactory<T>();
+            panel(factory);
+            Panele.Add(factory.Panel);
             return this;
         }
     }

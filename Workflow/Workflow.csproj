@@ -55,17 +55,20 @@
     <Compile Include="UserData\UI\Consola\ConsoleWrite.cs" />
     <Compile Include="UserData\UI\Html\DataSources\DataSourceBase.cs" />
     <Compile Include="UserData\UI\Html\DataSources\ObjectDataSource.cs" />
-    <Compile Include="UserData\UI\Html\Fluent\Panels\DataFormFactory.cs" />
-    <Compile Include="UserData\UI\Html\Fluent\Panels\PanelFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\DataSources\DataSourceFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Views\DataFormFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\DataForms\ComboBoxFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\Panels\DataFormFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\Panels\PanelFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Views\ViewFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\WidgetFactory.cs" />
-    <Compile Include="UserData\UI\Html\Fluent\Widgets\Items\GridViewColumnFactory.cs" />
-    <Compile Include="UserData\UI\Html\Fluent\Widgets\Items\GridViewFactory.cs" />
-    <Compile Include="UserData\UI\Html\Fluent\Widgets\Items\ItemsWidgetsFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\GridViewColumnFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\GridViewFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\ItemsWidgetsFactory.cs" />
     <Compile Include="UserData\UI\Html\ViewModel\Binding.cs" />
     <Compile Include="UserData\UI\Html\Views\ViewBase.cs" />
-    <Compile Include="UserData\UI\Html\Widgets\DataForm\CheckBox.cs" />
-    <Compile Include="UserData\UI\Html\Widgets\DataForm\NumericBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataForms\CheckBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataForms\NumericBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataWidgets\DataWidget.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataWidgets\ItemsWidget.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\ComboBox.cs" />
@@ -77,9 +80,9 @@
     <Compile Include="UserData\UI\Html\Widgets\Panels\EnumPanelFloat.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panels\EnumPanelOrientation.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panels\Panel.cs" />
-    <Compile Include="UserData\UI\Html\Widgets\DataForm\DateTimePicker.cs" />
-    <Compile Include="UserData\UI\Html\Widgets\DataForm\Label.cs" />
-    <Compile Include="UserData\UI\Html\Widgets\DataForm\TextBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataForms\DateTimePicker.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataForms\Label.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataForms\TextBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UserDataBase.cs" />
   </ItemGroup>
@@ -89,9 +92,7 @@
       <Name>VirtualMachine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserData\UI\Html\Fluent\DataForm\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

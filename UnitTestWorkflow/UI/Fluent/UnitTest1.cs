@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace UnitTestWorkflow.UI.Fluent
 {
@@ -8,6 +10,7 @@ namespace UnitTestWorkflow.UI.Fluent
     {
         public string Name { get; set; }
         public int Age { get; set; }
+        public Guid ProjektId { get; set; }
     }
 
     public class Test2Object
@@ -34,7 +37,9 @@ namespace UnitTestWorkflow.UI.Fluent
                     p.AddField(pp => pp.Name);
                     p.AddField(pp => pp.Age);
                     p.Width("50%").Height("50px");
-                    p.AddComboBox()
+                    p.AddComboBox(pp=> pp.ProjektId)
+                    .DataTextField("Name")
+                    .DataSource(new ObjectDataSource());
                 });
                 panel.AddDataForm(p =>
                 {

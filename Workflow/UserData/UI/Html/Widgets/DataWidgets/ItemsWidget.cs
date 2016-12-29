@@ -1,7 +1,19 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Data
+﻿using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
+
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Data
 {
     public class ItemsWidget : WidgetBase
     {
+        /// <summary>
+        /// Bindowanie do źródła danych - kolekcji
+        /// </summary>
+        public object ItemsSource { get; set; } //binding do kolekcji
+
+        /// <summary>
+        /// Zródło danych - jeśli jest ustawiony i ItemsSource i DataSource to DataSource jest wykorzystywany
+        /// </summary>
+        public DataSourceBase DataSource { get; set; }
+
         /// <summary>
         /// Bindowanie do Obiektu zaznaczonego
         /// </summary>
@@ -11,11 +23,6 @@
         /// Bindowanie do wartości tekstowej 
         /// </summary>
         public object SelectedValue { get; set; }
-
-        /// <summary>
-        /// Bindowanie do źródła danych - kolekcji
-        /// </summary>
-        public object ItemsSource { get; set; } //binding do kolekcji
 
         public string DataValueField { get; set; } //ValueField dla elementu kolekcji
 

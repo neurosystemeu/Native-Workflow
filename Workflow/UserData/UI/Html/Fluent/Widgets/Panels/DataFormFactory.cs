@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.Core.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Items;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Widget;
@@ -20,7 +21,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
     {
         public DataFormFactory()
         {
-            Panel = new DataForm();
+            Widget = new DataForm();
         }
 
         public DataForm DataForm => ((DataForm)Panel);
@@ -84,22 +85,33 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
             return this;
         }
 
-        public PanelFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola)
+        public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
-            var nazwa = member.Name;
+            var name = member.Name;
 
-            Panel.Elementy.Add(new WidgetBase() { Label = nazwa });
-            return this;
+            var factory = new ComboBoxFactory<T>() { Widget = new ComboBox() };
+            factory.Widget.Name = name;
+            factory.ComboBox.SelectedValue = new Binding(name);
+            Panel.Elementy.Add(factory.ComboBox);
+            return factory;
+        }
+
+        public ComboBoxFactory<T> AddComboBox(string name)
+        {
+            var factory = new ComboBoxFactory<T>() {Widget = new ComboBox()};
+            factory.Widget.Name = name;
+            Panel.Elementy.Add(factory.ComboBox);
+            return factory;
         }
 
         public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel)
         {
-            var gridView = new GridViewFactory<T>();
-            Panel.Elementy.Add(gridView.GridView);
+            var factory = new GridViewFactory<T>();
+            Panel.Elementy.Add(factory.GridView);
 
-            panel(gridView);
-            return gridView;
+            panel(factory);
+            return factory;
         }
 
         #endregion
