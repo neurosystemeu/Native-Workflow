@@ -6,6 +6,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
 {
@@ -19,11 +20,18 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
         private PanelFactory<T> panelFactory;
 
         public List<WidgetFactory> Elementy { get; set; }
+        public Panel Panel { get; set; }
+
+        public PanelFactory()
+        {
+            Panel = new Panel();
+        }
 
         public PanelFactory(ViewFactory<T> viewFactory)
         {
             this.viewFactory = viewFactory;
             Elementy = new List<WidgetFactory>();
+            Panel = new Panel();
         }
 
         public PanelFactory(PanelFactory<T> panelFactory)
@@ -32,25 +40,56 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
             Elementy = new List<WidgetFactory>();
         }
 
-        
-
-        public PanelFactory<T> Pole<TD>(Expression<Func<T, TD>> nazwaPola)
+        public PanelFactory<T> Height(string height)
         {
-            var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
-            var nazwa = member.Name;
-            
-            Elementy.Add(new WidgetFactory() {Label = nazwa});
+            Panel.Height = height;
             return this;
         }
 
-        public PanelFactory<T> DodajPanel(Action<PanelFactory<T>> panels)
+        public PanelFactory<T> Width(string width)
+        {
+            Panel.Width = width;
+            return this;
+        }
+
+        public PanelFactory<T> Float(EnumPanelFloat f)
+        {
+            Panel.Float = f;
+            return this;
+        }
+
+        public PanelFactory<T> Clear(EnumPanelClear f)
+        {
+            Panel.Clear = f;
+            return this;
+        }
+
+        public PanelFactory<T> CssClass(string f)
+        {
+            Panel.CssClass = f;
+            return this;
+        }
+
+
+        public PanelFactory<T> DodajPanel(Action<PanelFactory<T>> panel)
         {
             PanelFactory<T> gridColumnFactory = new PanelFactory<T>(this);
             Elementy.Add(gridColumnFactory);
 
-            panels(gridColumnFactory);
+            panel(gridColumnFactory);
             
             return this;
         }
+
+        public PanelFactory<T> DodajDataForm(Action<DataFormFactory<T>> panel)
+        {
+            DataFormFactory<T> gridColumnFactory = new DataFormFactory<T>();
+            Elementy.Add(gridColumnFactory);
+
+            panel(gridColumnFactory);
+
+            return this;
+        }
+
     }
 }

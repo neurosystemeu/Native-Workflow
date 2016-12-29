@@ -5,17 +5,17 @@
         /// <summary>
         /// Bindowanie do Obiektu zaznaczonego
         /// </summary>
-        public object SelectedItemBinding { get; set; }
+        public object SelectedItem { get; set; }
 
         /// <summary>
         /// Bindowanie do wartości tekstowej 
         /// </summary>
-        public object SelectedValueBinding { get; set; }
+        public object SelectedValue { get; set; }
 
         /// <summary>
         /// Bindowanie do źródła danych - kolekcji
         /// </summary>
-        public object ItemsSourceBinding { get; set; } //binding do kolekcji
+        public object ItemsSource { get; set; } //binding do kolekcji
 
         public string DataValueField { get; set; } //ValueField dla elementu kolekcji
 

@@ -29,5 +29,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
             Panele.Add(gridColumnFactory);
             return this;
         }
+
+        public ViewFactory<T> DataForms(Action<DataFormFactory<T>> panel)
+        {
+            DataFormFactory<T> gridColumnFactory = new DataFormFactory<T>();
+            panel(gridColumnFactory);
+            Panele.Add(gridColumnFactory);
+            return this;
+        }
     }
 }

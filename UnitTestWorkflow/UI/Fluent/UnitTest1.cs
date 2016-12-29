@@ -17,18 +17,24 @@ namespace UnitTestWorkflow.UI.Fluent
         public void TestMethod1()
         {
             var view = new ViewFactory<TestObject>();
-            view.Panels(panels =>
+            view.DataForms(forms =>
             {
-                panels.Pole(pp => pp.Age);
+                forms.Pole(pp => pp.Age);
 
-                panels.DodajPanel(p =>
+                forms.DodajDataForm(p =>
                 {
                     p.Pole(pp => pp.Name);
                     p.Pole(pp => pp.Age);
+                    p.Width("50%").Height("50px");
                 });
-                panels.DodajPanel(p =>
+                forms.DodajDataForm(p =>
                 {
-                    p.Pole(pp => pp.Age);
+                    p.Pole(pp => pp.Age).Height("400px").Width("50%");
+                });
+                forms.GridView(k =>
+                {
+                    k.Column(p => p.Name);
+                    k.Column(p => p.Age);
                 });
             });
         }

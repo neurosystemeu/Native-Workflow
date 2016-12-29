@@ -5,6 +5,6 @@
         /// <summary>
         /// może być wartość lub string bindujący {Binding MW.JakisObiekt.JakiesPole}
         /// </summary>
-        public object ValueBinding { get; set; }
+        public object Value { get; set; }
     }
 }
