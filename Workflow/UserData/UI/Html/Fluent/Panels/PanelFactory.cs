@@ -16,28 +16,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
 
     public class PanelFactory<T> : PanelFactory
     {
-        private ViewFactory<T> viewFactory;
-        private PanelFactory<T> panelFactory;
-
-        public List<WidgetFactory> Elementy { get; set; }
         public Panel Panel { get; set; }
 
         public PanelFactory()
         {
             Panel = new Panel();
-        }
-
-        public PanelFactory(ViewFactory<T> viewFactory)
-        {
-            this.viewFactory = viewFactory;
-            Elementy = new List<WidgetFactory>();
-            Panel = new Panel();
-        }
-
-        public PanelFactory(PanelFactory<T> panelFactory)
-        {
-            this.panelFactory = panelFactory;
-            Elementy = new List<WidgetFactory>();
         }
 
         public PanelFactory<T> Height(string height)
@@ -73,17 +56,17 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
 
         public PanelFactory<T> DodajPanel(Action<PanelFactory<T>> panel)
         {
-            PanelFactory<T> gridColumnFactory = new PanelFactory<T>(this);
-            Elementy.Add(gridColumnFactory);
+            var panelFactory = new PanelFactory<T>();
+            Panel.Elementy.Add(panelFactory.Panel);
 
-            panel(gridColumnFactory);
+            panel(panelFactory);
             
             return this;
         }
 
         public PanelFactory<T> DodajDataForm(Action<DataFormFactory<T>> panel)
         {
-            DataFormFactory<T> gridColumnFactory = new DataFormFactory<T>();
+            var gridColumnFactory = new DataFormFactory<T>();
             Elementy.Add(gridColumnFactory);
 
             panel(gridColumnFactory);

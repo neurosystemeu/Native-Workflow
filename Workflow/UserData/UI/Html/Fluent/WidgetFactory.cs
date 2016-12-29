@@ -10,4 +10,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
     {
         public string Label { get; set; }
     }
+
+    public class WidgetFactory<T> : WidgetFactory
+    {
+        
+    }
 }
