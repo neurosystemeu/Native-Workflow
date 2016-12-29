@@ -52,17 +52,21 @@
     <Compile Include="UserData\Actions\Timeout.cs" />
     <Compile Include="UserData\UI\Consola\ConsoleRead.cs" />
     <Compile Include="UserData\UI\Consola\ConsoleWrite.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\FactoryBase.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Panels\PanelFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\ViewFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\WidgetFactory.cs" />
     <Compile Include="UserData\UI\Html\Views\ViewBase.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Data\DataWidget.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Data\ItemsWidget.cs" />
-    <Compile Include="UserData\UI\Html\Widget\ItemsWidget\ComboBox.cs" />
-    <Compile Include="UserData\UI\Html\Widget\ItemsWidget\GridView.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Panels\EnumPanelOrientation.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Panels\PanelDescription.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Simple\DateTimePicker.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Simple\Label.cs" />
-    <Compile Include="UserData\UI\Html\Widget\Simple\TextBox.cs" />
-    <Compile Include="UserData\UI\Html\Widget\WidgetBase.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataWidgets\DataWidget.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataWidgets\ItemsWidget.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\ComboBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridView.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Panels\EnumPanelOrientation.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Panels\Panel.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Simple\DateTimePicker.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Simple\Label.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Simple\TextBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UserDataBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +75,7 @@
       <Name>VirtualMachine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
