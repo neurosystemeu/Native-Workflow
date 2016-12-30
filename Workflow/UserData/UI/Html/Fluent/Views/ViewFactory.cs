@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
 {
@@ -12,25 +15,29 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
     {
         public ViewFactory()
         {
-            Panele = new List<WidgetBase>();
-            Widget = new WidgetBase();
+            Widget = new Panel();
         }
 
-        public List<WidgetBase> Panele { get; set; }
+        private Panel panel => Widget as Panel;
 
-        public ViewFactory<T> AddPanel(Action<PanelFactory<T>> panel)
+        public ViewBase GetView()
+        {
+            return new ViewBase() {Panel = panel };
+        }
+
+        public ViewFactory<T> AddPanel(Action<PanelFactory<T>> _panel)
         {
             var factory = new PanelFactory<T>();
-            panel(factory);
-            Panele.Add(factory.Panel);
+            _panel(factory);
+            panel.Elementy.Add(factory.Panel);
             return this;
         }
 
-        public ViewFactory<T> AddDataForm(Action<DataFormFactory<T>> panel)
+        public ViewFactory<T> AddDataForm(Action<DataFormFactory<T>> _panel)
         {
             var factory = new DataFormFactory<T>();
-            panel(factory);
-            Panele.Add(factory.Panel);
+            _panel(factory);
+            panel.Elementy.Add(factory.Panel);
             return this;
         }
     }

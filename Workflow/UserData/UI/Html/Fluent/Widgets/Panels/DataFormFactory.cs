@@ -47,7 +47,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
                     Name = name,
                     Label = name,
                     Value = new Binding(name),
-                    Tooltip = tooltip
+                    ToolTip = tooltip
                 };
             }
             else if (member.PropertyType == typeof(bool))
@@ -57,7 +57,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
                     Name = name,
                     Label = name,
                     Value = new Binding(name),
-                    Tooltip = tooltip
+                    ToolTip = tooltip
                 };
             } else if (member.PropertyType.IsEnum)
             {
@@ -76,7 +76,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
                     Name = name,
                     Label = name,
                     Value = new Binding(name),
-                    Tooltip = tooltip
+                    ToolTip = tooltip
                 };
             }
             

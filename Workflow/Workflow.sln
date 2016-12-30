@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMachine", "..\..\Vir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestVirtualMachine", "..\..\Virtual-Machine\VirtualMachine\UnitTestVirtualMachine\UnitTestVirtualMachine.csproj", "{07E2D43C-3007-41B0-A189-2360C257D8AE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{13284C12-E346-4565-8C18-F8E4C1792A2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlUIWidgets", "..\UI\HtmlUIWidgets\HtmlUIWidgets.csproj", "{34B3DADC-D8B2-46DC-BA29-E80971D318F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlUIWeb", "..\UI\HtmlUIWeb\HtmlUIWeb.csproj", "{536E0156-8839-49E6-BFAE-2D5DD3A23896}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +41,14 @@ Global
 		{07E2D43C-3007-41B0-A189-2360C257D8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E2D43C-3007-41B0-A189-2360C257D8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E2D43C-3007-41B0-A189-2360C257D8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B3DADC-D8B2-46DC-BA29-E80971D318F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B3DADC-D8B2-46DC-BA29-E80971D318F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B3DADC-D8B2-46DC-BA29-E80971D318F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B3DADC-D8B2-46DC-BA29-E80971D318F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536E0156-8839-49E6-BFAE-2D5DD3A23896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536E0156-8839-49E6-BFAE-2D5DD3A23896}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536E0156-8839-49E6-BFAE-2D5DD3A23896}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536E0156-8839-49E6-BFAE-2D5DD3A23896}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{31E3551D-66C6-44D9-9950-E3DAECA00DCA} = {D2CAFB9D-D8EF-4BCF-9E9A-08D915EDAFDC}
 		{07E2D43C-3007-41B0-A189-2360C257D8AE} = {D2CAFB9D-D8EF-4BCF-9E9A-08D915EDAFDC}
+		{34B3DADC-D8B2-46DC-BA29-E80971D318F7} = {13284C12-E346-4565-8C18-F8E4C1792A2D}
+		{536E0156-8839-49E6-BFAE-2D5DD3A23896} = {13284C12-E346-4565-8C18-F8E4C1792A2D}
 	EndGlobalSection
 EndGlobal

@@ -53,7 +53,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
 
         public WidgetFactory<T> Tooltip(string tooltip)
         {
-            Widget.Tooltip = tooltip;
+            Widget.ToolTip = tooltip;
             return this;
         }
 

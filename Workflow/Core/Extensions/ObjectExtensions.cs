@@ -6,78 +6,79 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ExpressionEvaluator;
 
 namespace NeuroSystem.Workflow.Core.Extensions
 {
     public static class ObjectExtensions
     {
-        ///// <summary>
-        ///// Pobiera wartosc obiektu dla scieżki propercji path
-        ///// np. obiekt= Pracownik, path=Kontrahent.Nazwa -> zwraca nazwe kontrahenta danego pracownika
-        ///// </summary>
-        ///// <param name="obj"></param>
-        ///// <param name="path"></param>
-        ///// <returns></returns>
-        //public static Object GetPropValue(this Object obj, String path)
-        //{
-        //    var registry = new TypeRegistry();
-        //    registry.RegisterSymbol("obiekt", obj);  // registers the symbol 'm' with instance myClass
+        /// <summary>
+        /// Pobiera wartosc obiektu dla scieżki propercji path
+        /// np. obiekt= Pracownik, path=Kontrahent.Nazwa -> zwraca nazwe kontrahenta danego pracownika
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Object GetPropValue(this Object obj, String path)
+        {
+            var registry = new TypeRegistry();
+            registry.RegisterSymbol("obiekt", obj);  // registers the symbol 'm' with instance myClass
 
-        //    string sciezka = "";
-        //    if (path.StartsWith("["))
-        //    {
-        //        sciezka = "obiekt" + path;
-        //    }
-        //    else
-        //    {
-        //        sciezka = "obiekt." + path;
-        //    }
+            string sciezka = "";
+            if (path.StartsWith("["))
+            {
+                sciezka = "obiekt" + path;
+            }
+            else
+            {
+                sciezka = "obiekt." + path;
+            }
 
-        //    var expression = new CompiledExpression(sciezka) { TypeRegistry = registry };
-        //    var result = expression.Eval();
-        //    return result;
+            var expression = new CompiledExpression(sciezka) { TypeRegistry = registry };
+            var result = expression.Eval();
+            return result;
 
-        //}
+        }
 
-        //public static T GetPropValue<T>(this Object obj, String path)
-        //{
-        //    Object retval = GetPropValue(obj, path);
-        //    if (retval == null) { return default(T); }
+        public static T GetPropValue<T>(this Object obj, String path)
+        {
+            Object retval = GetPropValue(obj, path);
+            if (retval == null) { return default(T); }
 
-        //    // throws InvalidCastException if types are incompatible
-        //    return (T)retval;
-        //}
+            // throws InvalidCastException if types are incompatible
+            return (T)retval;
+        }
 
-        //public static void SetPropValue(this Object obiekt, String path, object wartosc)
-        //{
-        //    var elementySciezki = path.Split('.');
+        public static void SetPropValue(this Object obiekt, String path, object wartosc)
+        {
+            var elementySciezki = path.Split('.');
 
-        //    if (elementySciezki.Count() == 1)
-        //    {
-        //        //mamy samą nazwę, więc ustawiamy wartosc dla obiektu o nazwie path
-        //        ustawWartosc(obiekt, path, wartosc);
-        //    }
-        //    else
-        //    {
-        //        //mamy więcej elementow sciezki
-        //        var elementyBezOstatniego = elementySciezki.Take(elementySciezki.Count() - 1);
-        //        var sciezkaDoObiektuPrzedostatniego = string.Join(".", elementyBezOstatniego);
+            if (elementySciezki.Count() == 1)
+            {
+                //mamy samą nazwę, więc ustawiamy wartosc dla obiektu o nazwie path
+                ustawWartosc(obiekt, path, wartosc);
+            }
+            else
+            {
+                //mamy więcej elementow sciezki
+                var elementyBezOstatniego = elementySciezki.Take(elementySciezki.Count() - 1);
+                var sciezkaDoObiektuPrzedostatniego = string.Join(".", elementyBezOstatniego);
 
-        //        obiekt = GetPropValue(obiekt, sciezkaDoObiektuPrzedostatniego);
-        //        //foreach (String part in elementyBezOstatniego)
-        //        //{
-        //        //    if (obiekt == null) { return; } //obiekt jest null
+                obiekt = GetPropValue(obiekt, sciezkaDoObiektuPrzedostatniego);
+                //foreach (String part in elementyBezOstatniego)
+                //{
+                //    if (obiekt == null) { return; } //obiekt jest null
 
-        //        //    Type type = obiekt.GetType();
-        //        //    PropertyInfo info = type.GetProperty(part);
-        //        //    if (info == null) { return; } //niema takiej propercji
+                //    Type type = obiekt.GetType();
+                //    PropertyInfo info = type.GetProperty(part);
+                //    if (info == null) { return; } //niema takiej propercji
 
-        //        //    obiekt = info.GetValue(obiekt, null);
-        //        //}
+                //    obiekt = info.GetValue(obiekt, null);
+                //}
 
-        //        ustawWartosc(obiekt, elementySciezki.Last(), wartosc);
-        //    }
-        //}
+                ustawWartosc(obiekt, elementySciezki.Last(), wartosc);
+            }
+        }
 
         private static void ustawWartosc(object obiekt, string nazwaPropercji, object wartosc)
         {

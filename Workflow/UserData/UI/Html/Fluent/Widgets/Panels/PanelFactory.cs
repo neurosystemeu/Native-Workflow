@@ -5,8 +5,10 @@ using System.Linq.Expressions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
 {
@@ -61,5 +63,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
             return factory;
         }
 
+        public ActionFactory<T> AddAction(string actionName)
+        {
+            var factory = new ActionFactory<T>();
+            factory.Action.Name = actionName;
+            factory.Action.Label = actionName;
+            Panel.Elementy.Add(factory.Action);
+            
+            return factory;
+        }
     }
 }
