@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Web.UI;
 using System.Web.UI.WebControls;
-using NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using Telerik.Web.UI;
-using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels.Panel;
-using System.Web.UI;
-using NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets.Actions;
-using NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets.DataForm;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.ItemsWidget;
+using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels.Panel;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
+using TextBox = NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms.TextBox;
 
-namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 {
     public class WidgetBuilder
     {
@@ -136,7 +130,7 @@ namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html
 
         public NsTextBox UtworzTextBox(WidgetBase widget)
         {
-            return NsTextBox.UtworzTextBox((NeuroSystem.Workflow.UserData.UI.Html.Widget.Simple.TextBox)widget);
+            return NsTextBox.UtworzTextBox((TextBox)widget);
         }
 
         public NsPanel UtworzPanel(Panel opisPola)

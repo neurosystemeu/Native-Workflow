@@ -1,6 +1,8 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.ItemsWidget
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets;
+
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
 {
-    public class ComboBox : Data.ItemsWidget
+    public class ComboBox : ItemsWidget
     {
     }
 }

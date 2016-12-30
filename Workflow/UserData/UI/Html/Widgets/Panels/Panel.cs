@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels
 {
     public class Panel : WidgetBase
     {

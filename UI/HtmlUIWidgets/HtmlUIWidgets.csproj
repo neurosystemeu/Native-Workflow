@@ -7,8 +7,8 @@
     <ProjectGuid>{34B3DADC-D8B2-46DC-BA29-E80971D318F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NeuroSystem.UI.HtmlUIWidgets</RootNamespace>
-    <AssemblyName>NeuroSystem.UI.HtmlUIWidgets</AssemblyName>
+    <RootNamespace>NeuroSystem.Workflow.UserData.UI.Html.ASP</RootNamespace>
+    <AssemblyName>NeuroSystem.Workflow.UserData.UI.Html.ASP</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,13 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspUI\Html\WidgetBuilder.cs" />
-    <Compile Include="AspUI\Html\Widgets\Actions\NsAction.cs">
+    <Compile Include="UI\Html\WidgetBuilder.cs" />
+    <Compile Include="UI\Html\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AspUI\Html\Widgets\NsPanel.cs" />
-    <Compile Include="AspUI\Html\Widgets\IBindingControl.cs" />
-    <Compile Include="AspUI\Html\Widgets\NsTextBox.cs">
+    <Compile Include="UI\Html\Widgets\NsPanel.cs" />
+    <Compile Include="UI\Html\Widgets\IBindingControl.cs" />
+    <Compile Include="UI\Html\Widgets\NsTextBox.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

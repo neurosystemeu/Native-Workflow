@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.Data;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.Simple;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets.DataForm
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 {
     public class NsTextBox : RadTextBox, IBindingControl
     {

@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels
 {
     public enum EnumPanelOrientation
     {

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace UnitTestWorkflow.UI.Fluent

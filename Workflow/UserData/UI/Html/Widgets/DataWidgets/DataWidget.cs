@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Data
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
 {
     public class DataWidget : WidgetBase
     {

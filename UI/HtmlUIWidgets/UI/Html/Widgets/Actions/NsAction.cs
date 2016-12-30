@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using Telerik.Web.UI;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
 
-namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets.Actions
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions
 {
     public class NsAction : RadButton, IBindingControl
     {

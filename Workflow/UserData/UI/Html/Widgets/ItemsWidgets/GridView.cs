@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.ItemsWidget
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
 {
-    public class GridView : Data.ItemsWidget
+    public class GridView : ItemsWidget
     {
         public GridView()
         {

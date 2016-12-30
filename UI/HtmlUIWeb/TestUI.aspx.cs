@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NeuroSystem.UI.HtmlUIWidgets.AspUI.Html;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 
 namespace HtmlUIWeb

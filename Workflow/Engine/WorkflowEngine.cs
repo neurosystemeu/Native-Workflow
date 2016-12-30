@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using NeuroSystem.VirtualMachine.Klasy;
+using NeuroSystem.VirtualMachine.Core;
 using NeuroSystem.Workflow.Core;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.Core.Process;

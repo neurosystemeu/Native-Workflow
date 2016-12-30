@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.DataForms;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Items;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.Data;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.ItemsWidget;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.Simple;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForm;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels
+namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
 {
     public class DataFormFactory<T> : PanelFactory<T>
     {

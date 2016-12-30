@@ -1,6 +1,6 @@
 ﻿using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widget.Data
+namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
 {
     public class ItemsWidget : WidgetBase
     {

@@ -1,4 +1,4 @@
-﻿using NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Views
 {

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 
-namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 {
     public class NsPanel : Panel, IBindingControl
     {
@@ -42,7 +38,7 @@ namespace NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets
             //Binding.UstawWartosc(OpisPanelu.WidocznoscBinding, this, Visible);
         }
 
-        internal static NsPanel UtworzPanel(Workflow.UserData.UI.Html.Widget.Panels.Panel panelWidget)
+        internal static NsPanel UtworzPanel(Workflow.UserData.UI.Html.Widgets.Panels.Panel panelWidget)
         {
             var panel = new NsPanel() { Widget = panelWidget };
             if (panelWidget.Width != null)

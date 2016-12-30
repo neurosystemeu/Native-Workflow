@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.ItemsWidget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Items
+namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
 {
     public class GridViewFactory<T> : ItemsWidgetsFactory<T>
     {

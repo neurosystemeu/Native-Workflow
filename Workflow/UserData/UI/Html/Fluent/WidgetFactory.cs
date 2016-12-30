@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
 {

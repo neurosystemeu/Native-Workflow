@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget;
-using NeuroSystem.Workflow.UserData.UI.Html.Widget.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
+namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
 {
     public class ViewFactory<T> : WidgetFactory<T>
     {
@@ -33,9 +27,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent
             return this;
         }
 
-        public ViewFactory<T> AddDataForm(Action<DataFormFactory<T>> _panel)
+        public ViewFactory<T> AddDataForm(Action<Widgets.Panels.DataFormFactory<T>> _panel)
         {
-            var factory = new DataFormFactory<T>();
+            var factory = new Widgets.Panels.DataFormFactory<T>();
             _panel(factory);
             panel.Elementy.Add(factory.Panel);
             return this;
