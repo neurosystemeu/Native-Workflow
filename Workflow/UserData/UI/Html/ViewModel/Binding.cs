@@ -47,21 +47,26 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ViewModel
             }
         }
 
-        public static void UstawWartosc(object binding, object dataContext, object wartosc)
+        public static void UstawWartosc<T>(ref T binding, object dataContext, T wartosc)
         {
             if (binding == null)
             {
                 return;
             }
 
-            var strBinding = binding as string;
-            if (strBinding != null && strBinding.Contains("{Binding"))
+            var strBinding = binding as Binding;
+            if (strBinding != null )
             {
                 //mamy bindowanie
                 var mw = dataContext;
-                var path = strBinding.Replace("{Binding ", "").Replace("Path=", "").Replace("}", "");
+                var path = strBinding.Path;
 
                 mw.SetPropValue(path, wartosc);
+            }
+            else
+            {
+                //mamy obiekt bez bindowania - ustawiam jego wartośc
+                binding = wartosc;
             }
         }
     }

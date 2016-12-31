@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestUI.aspx.cs" Inherits="HtmlUIWeb.TestUI" %>
-<%@ Register TagPrefix="ns" Namespace="NeuroSystem.UI.HtmlUIWidgets.AspUI.Html.Widgets" Assembly="NeuroSystem.UI.HtmlUIWidgets" %>
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI, Version=2016.2.607.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4" %>
+<%@ Register TagPrefix="ns" Namespace="NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets" Assembly="NeuroSystem.Workflow.UserData.UI.Html.ASP" %>
 
 <!DOCTYPE html>
 

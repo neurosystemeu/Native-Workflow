@@ -13,7 +13,7 @@ namespace UnitTestWorkflow
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void HelloWorldProcessTest()
         {
             var processId = Guid.NewGuid();
             var newProcess = new HelloWorldProcess() { Id = processId };
@@ -29,17 +29,16 @@ namespace UnitTestWorkflow
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void ConsoleProcessTest()
         {
             var processId = Guid.NewGuid();
-            var newProcess = new TestConsoleProcess() {Id = processId };
+            var newProcess = new ConsoleProcess() {Id = processId };
             
             var dal = new WorkflowEngineDAL();
             var engine = new WorkflowEngine(dal);
 
             //Running proces in engine
             engine.AddProcess(newProcess);
-
 
             engine.RunOneIteration(); //powinien wyśweitlić dane 'Enter name'
             Assert.AreEqual(engine.GetProcessStatus(processId), EnumProcessStatus.WaitingForUserData);
@@ -82,6 +81,28 @@ namespace UnitTestWorkflow
 
             process = engine.GetProcess(processId);
             Assert.AreEqual("Hello Tomek 30", process.ProcesOutput);
+        }
+
+
+        [TestMethod]
+        public void HtmlProcessTest()
+        {
+            var processId = Guid.NewGuid();
+            var newProcess = new HtmlProcess() {Id = processId};
+
+            var dal = new WorkflowEngineDAL();
+            var engine = new WorkflowEngine(dal);
+
+            //Running proces in engine
+            engine.AddProcess(newProcess);
+
+            engine.RunOneIteration(); //powinien wyśweitlić dane 'Enter name'
+            Assert.AreEqual(engine.GetProcessStatus(processId), EnumProcessStatus.WaitingForUserData);
+            engine.SetUserData(processId, null); //nic nie podaje - to było tylko wyświetlenie
+            var ser = dal.GetSerializedProcess(processId);
+            var rozmiar = ser.VirtualMachineXml.Length;
+            var vm = ser.GetVirtualMachine();
+            var process = vm.GetProcess();
         }
     }
 }

@@ -21,6 +21,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.DataSources
             throw new NotImplementedException();
         }
 
+        public virtual object GetData(long start, long cout, string sort, string filtr,
+            out long virtualItemsCout)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual object GetObjectById(string id)
         {
             throw new NotImplementedException();

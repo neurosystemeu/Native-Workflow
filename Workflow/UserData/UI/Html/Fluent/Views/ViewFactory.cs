@@ -5,7 +5,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
 {
-    public class ViewFactory<T> : WidgetFactory<T>
+    public class ViewFactory<T> : ViewFaktoryBase
     {
         public ViewFactory()
         {
@@ -14,7 +14,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
 
         private Panel panel => Widget as Panel;
 
-        public ViewBase GetView()
+        public override ViewBase GetView()
         {
             return new ViewBase() {Panel = panel };
         }

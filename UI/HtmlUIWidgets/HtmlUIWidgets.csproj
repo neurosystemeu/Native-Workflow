@@ -49,12 +49,24 @@
     <Compile Include="UI\Html\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Html\Widgets\NsPanel.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsAutoComplete.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsCheckBox.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsComboBox.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsDateTimePicker.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsEdytor.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsGrid.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsTreeComboBox.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsTreeView.cs" />
+    <Compile Include="UI\Html\Widgets\Panels\NsPanel.cs" />
     <Compile Include="UI\Html\Widgets\IBindingControl.cs" />
-    <Compile Include="UI\Html\Widgets\NsTextBox.cs">
+    <Compile Include="UI\Html\Widgets\DataForms\NsTextBox.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbon.cs" />
+    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonAction.cs" />
+    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonGrupa.cs" />
+    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonTab.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">

@@ -16,5 +16,10 @@
         {
             return Name;
         }
+
+        public static string GetReadableName(string name)
+        {
+            return name;
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
         }
 
         public List<GridViewColumn> Columns { get; set; }
+
+        
     }
 }

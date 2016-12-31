@@ -12,17 +12,20 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 
         public void WczytajDoKontrolkiZMW()
         {
-            var data = Widget as DataWidget;
-            if (data != null)
+            var dataWidget = Widget as DataWidget;
+            if (dataWidget != null)
             {
-                var val = Binding.PobierzWartosc(data.Value, Widget.DataContext);
+                var val = Binding.PobierzWartosc(dataWidget.Value, Widget.DataContext);
                 Text = val?.ToString();
             }
         }
 
         public void ZapiszDoMWZKontrolki()
         {
-            
+            var dataWidget = Widget as TextBox;
+            var binding = dataWidget.Value;
+            Binding.UstawWartosc(ref binding, dataWidget.DataContext, Text);
+            dataWidget.Value = binding; //w binding może być wartość - dane bez bindowania
         }
 
         internal static NsTextBox UtworzTextBox(TextBox widget)

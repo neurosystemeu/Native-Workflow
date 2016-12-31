@@ -52,8 +52,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Processes\TestConsoleProcess.cs" />
+    <Compile Include="Processes\ConsoleProcess.cs" />
     <Compile Include="Processes\HelloWorldProcess.cs" />
+    <Compile Include="Processes\HtmlProcess.cs" />
+    <Compile Include="TestObject\Person.cs" />
     <Compile Include="UI\Fluent\UnitTest1.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

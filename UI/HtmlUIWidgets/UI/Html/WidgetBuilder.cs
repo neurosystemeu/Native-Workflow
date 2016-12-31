@@ -2,8 +2,10 @@
 using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels.Panel;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
@@ -31,7 +33,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             if (widgetBase is Panel)
             {
                 var oPanel = widgetBase as Panel;
-                var panel = UtworzPanel(oPanel);
+                var panel = NsPanel.UtworzPanel(oPanel);
 
                 panelRodzic.Controls.Add(panel);
                 foreach (var element in oPanel.Elementy)
@@ -90,10 +92,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 
         protected Control GenerujKontrolke(WidgetBase widget, NsPanel panel)
         {
-            //if (widget is ComboBox)
-            //{
-            //    return UtworzComboBox((OpisCombobox)widget);
-            //}
+            if (widget is ComboBox)
+            {
+                return NsComboBox.UtworzComboBox((ComboBox)widget);
+            }
 
             //if (widget is OpisDataICzas)
             //{
@@ -125,18 +127,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             //    return UtworzEdytor((OpisEdytora)widget);
             //}
 
-            return UtworzTextBox(widget);
+            return NsTextBox.UtworzTextBox((TextBox) widget);
         }
 
-        public NsTextBox UtworzTextBox(WidgetBase widget)
-        {
-            return NsTextBox.UtworzTextBox((TextBox)widget);
-        }
-
-        public NsPanel UtworzPanel(Panel opisPola)
-        {
-            return NsPanel.UtworzPanel(opisPola);
-        }
+       
 
         #endregion
     }

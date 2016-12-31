@@ -8,7 +8,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Console
     /// Można wykonać w nim WriteLine i ReadLine, które wyśweitlają i pobierają dane z konsoli
     /// Host musi obsługiwać takie dane
     /// </summary>
-    public class ConsoleProcess : ProcessBase
+    public class ConsoleProcessBase : ProcessBase
     {
         /// <summary>
         /// Odpowiedzialny za wyświetlenie tekstu na konsole,
