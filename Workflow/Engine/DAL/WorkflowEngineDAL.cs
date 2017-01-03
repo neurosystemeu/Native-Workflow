@@ -11,12 +11,12 @@ namespace NeuroSystem.Workflow.Engine.DAL
     {
         public WorkflowEngineDAL()
         {
-            serializedProcesses = new Dictionary<Guid, SerializedProcess>();
+            serializedProcesses = new Dictionary<Guid, ProcessContainer>();
         }
 
-        private Dictionary<Guid, SerializedProcess> serializedProcesses;
+        private Dictionary<Guid, ProcessContainer> serializedProcesses;
 
-        public virtual List<SerializedProcess> GetSerializedProcessesToResume()
+        public virtual List<ProcessContainer> GetSerializedProcessesToResume()
         {
             var date = DateTime.Now;
             var list= this.serializedProcesses.Values.Where(p => p.Status == EnumProcessStatus.WaitingForExecution
@@ -25,7 +25,7 @@ namespace NeuroSystem.Workflow.Engine.DAL
             return list;
         }
 
-        public virtual List<SerializedProcess> GetSerizlizedProcessesAfterTimeout()
+        public virtual List<ProcessContainer> GetSerizlizedProcessesAfterTimeout()
         {
             var date = DateTime.Now;
             var list = serializedProcesses.Values.Where(p => p.Status == EnumProcessStatus.WaitingForUserData
@@ -34,22 +34,22 @@ namespace NeuroSystem.Workflow.Engine.DAL
             return list;
         }
 
-        public void Update(SerializedProcess process)
+        public virtual void Update(ProcessContainer process)
         {
             
         }
 
-        public void AddProcess(SerializedProcess process)
+        public virtual void AddProcess(ProcessContainer process)
         {
             serializedProcesses[process.Id]=process;
         }
 
-        public EnumProcessStatus GetProcessStatus(Guid processId)
+        public virtual EnumProcessStatus GetProcessStatus(Guid processId)
         {
             return serializedProcesses[processId].Status;
         }
 
-        public SerializedProcess GetSerializedProcess(Guid processId)
+        public virtual ProcessContainer GetSerializedProcess(Guid processId)
         {
             return serializedProcesses[processId];
         }

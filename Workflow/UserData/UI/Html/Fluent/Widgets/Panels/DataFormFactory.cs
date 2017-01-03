@@ -101,7 +101,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
 
         public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel)
         {
-            var factory = new GridViewFactory<T>();
+            var factory = new GridViewFactory<T>() {Widget = new GridView()};
             Panel.Elementy.Add(factory.GridView);
 
             panel(factory);

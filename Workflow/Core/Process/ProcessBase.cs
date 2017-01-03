@@ -17,6 +17,11 @@ namespace NeuroSystem.Workflow.Core.Process
         public Guid Id { get; set; }
 
         /// <summary>
+        /// Process Name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Input parameter for process
         /// </summary>
         public object ProcesInput { get; set; }

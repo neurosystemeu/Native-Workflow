@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
+using GridView = NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets.GridView;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 {
@@ -49,10 +51,81 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         }
 
-        internal static NsGrid UtworzGridView(GridView opisPola)
+        public static NsGrid UtworzGridView(GridView opisPola)
         {
-            var cb = new NsGrid() { Widget = opisPola, ToolTip = opisPola.ToolTip };
-            return cb;
+            var radGrid = new NsGrid() { Widget = opisPola, ToolTip = opisPola.ToolTip };
+            UstawParametryGrida(opisPola, radGrid);
+            UtworzKolumny(opisPola.Columns, radGrid);
+            radGrid.AutoGenerateColumns = false;
+            radGrid.MasterTableView.DataKeyNames = new string[] { "Id" };
+            return radGrid;
+        }
+
+        public static void UstawParametryGrida(GridView opisGrida, NsGrid radGrid)
+        {
+            radGrid.MasterTableView.CommandItemSettings.SaveChangesText = "Zapisz zmiany";
+            radGrid.MasterTableView.CommandItemSettings.CancelChangesText = "Anuluj";
+            radGrid.MasterTableView.CommandItemSettings.RefreshText = "Odśwież";
+            radGrid.MasterTableView.CommandItemSettings.ShowAddNewRecordButton = false;
+            radGrid.ShowHeader = true;
+            radGrid.Width = Unit.Percentage(99);
+            //radGrid.ClientSettings.AllowRowsDragDrop = opisPola.CzyDragDrop;
+            radGrid.PagerStyle.Mode = GridPagerMode.NextPrevAndNumeric;
+            radGrid.ShowStatusBar = true;
+            radGrid.ShowFooter = true;
+            radGrid.AllowMultiRowSelection = true;
+            radGrid.EnableLinqExpressions = false;
+
+            //Set options to enable Group-by
+            radGrid.GroupingEnabled = false;
+            radGrid.ShowGroupPanel = false;
+            radGrid.ClientSettings.AllowDragToGroup = false;
+            radGrid.ClientSettings.AllowColumnsReorder = false;
+            radGrid.ClientSettings.Selecting.AllowRowSelect = true;
+            radGrid.MasterTableView.EnableColumnsViewState = false;
+
+            radGrid.AllowPaging = opisGrida.AllowPaging;
+            radGrid.AllowCustomPaging = opisGrida.AllowPaging;
+
+            if (opisGrida.AllowEditing == true)
+            {
+                radGrid.AllowAutomaticUpdates = false;
+
+                //radGrid.
+                radGrid.MasterTableView.BatchEditingSettings.EditType = GridBatchEditingType.Cell;
+                radGrid.MasterTableView.BatchEditingSettings.OpenEditingEvent = GridBatchEditingEventType.DblClick;
+                radGrid.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.TopAndBottom;
+                radGrid.ClientSettings.AllowKeyboardNavigation = true;
+                radGrid.MasterTableView.EditMode = GridEditMode.Batch;
+                radGrid.AllowAutomaticUpdates = false;
+                radGrid.EnableHeaderContextMenu = true;
+                radGrid.EnableHeaderContextFilterMenu = true;
+            }
+
+        }
+
+        public static void UtworzKolumny(List<GridViewColumn> kolumny, NsGrid radGrid)
+        {
+            foreach (var opisKolumny in kolumny)
+            {
+                var boundColumn = new GridBoundColumn();
+                boundColumn.UniqueName = opisKolumny.Name;
+                boundColumn.DataField = opisKolumny.Name;
+                boundColumn.HeaderText = opisKolumny.GetReadableName();
+                boundColumn.HeaderTooltip = opisKolumny.ToolTip;
+                boundColumn.FilterControlWidth = new Unit("80px");
+                //boundColumn.ColumnEditorID = opisKolumny.ColumnEditorID;
+                if (opisKolumny.Width != null)
+                {
+                    boundColumn.HeaderStyle.Width = new Unit(opisKolumny.Width.ToString());
+                }
+                //if (opisKolumny.NazwaTypuPola == "Decimal")
+                //{
+                //    boundColumn.DataFormatString = "{0:#.##}";
+                //}
+
+                radGrid.MasterTableView.Columns.Add(boundColumn);
+            }
         }
     }
 }

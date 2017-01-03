@@ -30,7 +30,7 @@ namespace NeuroSystem.Workflow.Engine
 
         #region Zarządzające
 
-        public void AddProcess(ProcessBase process)
+        public ProcessContainer AddProcess(ProcessBase process)
         {
             process.Status = EnumProcessStatus.WaitingForExecution;
             var wm = new VirtualMachine.VirtualMachine();
@@ -38,13 +38,14 @@ namespace NeuroSystem.Workflow.Engine
             wm.Start(process, doExecuting: false);
             var xml = wm.Serialize();
 
-            var serializedProcess = new SerializedProcess();
+            var serializedProcess = new ProcessContainer();
             serializedProcess.Id = process.Id;
             serializedProcess.Status = process.Status;
             serializedProcess.ExecutionDate = process.ExecutionDate;
             serializedProcess.VirtualMachineXml = xml;
 
             dal.AddProcess(serializedProcess);
+            return serializedProcess;
         }
 
         public EnumProcessStatus GetProcessStatus(Guid processId)
@@ -135,7 +136,7 @@ namespace NeuroSystem.Workflow.Engine
             }
         }
 
-        private void procesPoTimeout(SerializedProcess serializedProcess)
+        private void procesPoTimeout(ProcessContainer serializedProcess)
         {
             var vm = serializedProcess.GetVirtualMachine();
             var process = vm.GetProcess();
@@ -147,7 +148,7 @@ namespace NeuroSystem.Workflow.Engine
             dal.Update(serializedProcess);
         }
 
-        private void procesDoUruchomienia(SerializedProcess serializedProcess)
+        private void procesDoUruchomienia(ProcessContainer serializedProcess)
         {
             var vm = serializedProcess.GetVirtualMachine();
             var process = vm.GetProcess();

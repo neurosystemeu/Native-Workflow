@@ -15,6 +15,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
             var nazwa = member.Name;
 
             var col = new GridViewColumnFactory<T>();
+            col.Column.Name = nazwa;
+            GridView.Columns.Add(col.Column);
             return col;
         }
     }

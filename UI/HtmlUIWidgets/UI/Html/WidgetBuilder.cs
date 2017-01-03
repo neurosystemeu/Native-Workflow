@@ -117,10 +117,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             //    return UtworzComboBox((OpisCombobox)widget);
             //}
 
-            //if (widget is OpisGrid)
-            //{
-            //    return UtworzGrid((OpisGrid)widget);
-            //}
+            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.GridView)
+            {
+                return NsGrid.UtworzGridView((UserData.UI.Html.Widgets.ItemsWidgets.GridView)widget);
+            }
 
             //if (widget is OpisEdytora)
             //{
