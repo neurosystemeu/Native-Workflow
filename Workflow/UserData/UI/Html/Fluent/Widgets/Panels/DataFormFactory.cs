@@ -108,6 +108,22 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             return factory;
         }
 
+        public TreeViewFactory<T> AddTreeView()
+        {
+            var factory = new TreeViewFactory<T>() { Widget = new TreeView() };
+            Panel.Elementy.Add(factory.TreeView);
+
+            return factory;
+        }
+
+        public TreeComboBoxFactory<T> AddTreeComboBox()
+        {
+            var factory = new TreeComboBoxFactory<T>() { Widget = new TreeComboBox() };
+            Panel.Elementy.Add(factory.Widget);
+            
+            return factory;
+        }
+
         #endregion
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
@@ -17,6 +18,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         public NsGrid()
         {
             this.NeedDataSource += NsGrid_NeedDataSource;
+            this.BatchEditCommand += NsGrid_BatchEditCommand;
         }
 
         public WidgetBase Widget { get; set; }
@@ -35,7 +37,26 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             Binding.UstawWartosc(ref binding, dataWidget.DataContext, SelectedValue);
             dataWidget.SelectedValue = binding; //w binding może być wartość - dane bez bindowania
         }
-        
+
+        private void NsGrid_BatchEditCommand(object sender, GridBatchEditingEventArgs e)
+        {
+            var dataWidget = Widget as GridView;
+            if (dataWidget != null && dataWidget.DataSource != null)
+            {
+                var ds = dataWidget.DataSource;
+                foreach (var item in e.Commands)
+                {
+                    if (item.Type == GridBatchEditingCommandType.Update)
+                    {
+                        var id = item.Item.GetDataKeyValue("Id");
+                        var obiekt = ds.GetObjectById(id.ToString());
+                        obiekt.UpdateValuesFromHashtable(item.NewValues);
+                        ds.Update(obiekt);
+                    }
+                }
+            }
+        }
+
 
         private void NsGrid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

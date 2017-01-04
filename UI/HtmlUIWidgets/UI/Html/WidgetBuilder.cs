@@ -5,6 +5,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels.Panel;
@@ -97,10 +98,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 return NsComboBox.UtworzComboBox((ComboBox)widget);
             }
 
-            //if (widget is OpisDataICzas)
-            //{
-            //    return UtworzDateTimePicker((OpisDataICzas)widget);
-            //}
+            if (widget is DateTimePicker)
+            {
+                return NsDateTimePicker.UtworzDate((DateTimePicker)widget);
+            }
 
             //if (widget is OpisCheckBox)
             //{
@@ -112,10 +113,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             //    return UtworzAutoCompleteBox((OpisAutoComplete)widget);
             //}
 
-            //if (widget is OpisCombobox)
-            //{
-            //    return UtworzComboBox((OpisCombobox)widget);
-            //}
+            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.TreeView)
+            {
+                return NsTreeView.UtworzTreeView((UserData.UI.Html.Widgets.ItemsWidgets.TreeView)widget);
+            }
+
+            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.TreeComboBox)
+            {
+                return NsTreeComboBox.UtworzComboBox((UserData.UI.Html.Widgets.ItemsWidgets.TreeComboBox)widget);
+            }
 
             if (widget is UserData.UI.Html.Widgets.ItemsWidgets.GridView)
             {

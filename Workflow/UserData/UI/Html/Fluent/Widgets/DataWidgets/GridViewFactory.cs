@@ -19,5 +19,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
             GridView.Columns.Add(col.Column);
             return col;
         }
+
+        public GridViewFactory<T> AllowEditing(bool AllowEditing)
+        {
+            GridView.AllowEditing = AllowEditing;
+            return this;
+        }
     }
 }

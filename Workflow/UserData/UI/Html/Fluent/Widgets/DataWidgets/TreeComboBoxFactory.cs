@@ -7,8 +7,8 @@ using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
 {
-    class TreeComboBoxFactory<T> : ItemsWidgetsFactory<T>
+    public class TreeComboBoxFactory<T> : ItemsWidgetsFactory<T>
     {
-        public TreeView TreeView => Widget as TreeView;
+        public TreeComboBox TreeComboBox => Widget as TreeComboBox;
     }
 }

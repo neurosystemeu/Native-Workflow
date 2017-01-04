@@ -91,6 +91,7 @@
     <Compile Include="UserData\UI\Html\Widgets\DataForms\Edytor.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataForms\NumericBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataWidgets\DataWidget.cs" />
+    <Compile Include="UserData\UI\Html\DataSources\HierarchicalDataSource.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataWidgets\ItemsWidget.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\AutoCompleteBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\ComboBox.cs" />

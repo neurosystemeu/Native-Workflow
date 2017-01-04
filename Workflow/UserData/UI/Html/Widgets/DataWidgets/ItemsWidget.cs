@@ -9,6 +9,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         public ItemsWidget()
         {
             AutoLoadDataSource = true;
+            DataTextField = "Nazwa";
+            DataValueField = "Id";
+            DataIdField = "Id";
+            DataFieldParentId = "RodzicId";
         }
 
         /// <summary>
@@ -34,6 +38,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         public string DataValueField { get; set; } //ValueField dla elementu kolekcji
 
         public string DataIdField { get; set; } //IdField dla elementu kolekcji
+
+        public string DataFieldParentId { get; set; }
 
         public string DataTextField { get; set; } //TextField dla elementu kolekcji
 
