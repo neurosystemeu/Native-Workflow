@@ -8,6 +8,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
         public GridView()
         {
             Columns =new List<GridViewColumn>();
+            AllowPaging = true;
         }
 
         public List<GridViewColumn> Columns { get; set; }

@@ -24,9 +24,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         public void WczytajDoKontrolkiZMW()
         {
-            var dataWidget = Widget as TreeComboBox;
-            var date = Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
-            SelectedValue = date?.ToString();
+            //var dataWidget = Widget as TreeComboBox;
+            //var date = Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
+            //SelectedValue = date?.ToString();
         }
 
         public void ZapiszDoMWZKontrolki()

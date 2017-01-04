@@ -100,6 +100,7 @@
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\ListBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\TreeComboBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\TreeView.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\IViewer.cs" />
     <Compile Include="UserData\UI\Html\Widgets\IWidgetControl.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panels\DataForm.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panels\EnumPanelClear.cs" />

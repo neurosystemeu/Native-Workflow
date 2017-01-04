@@ -19,7 +19,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
         }
 
         
-
         public virtual void WczytajDoKontrolkiZMW()
         {
             foreach (var control in Controls)
@@ -36,6 +35,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
         public virtual void ZapiszDoMWZKontrolki()
         {
             //Binding.UstawWartosc(OpisPanelu.WidocznoscBinding, this, Visible);
+            foreach (var control in Controls)
+            {
+                var bindingControl = control as IBindingControl;
+                if (bindingControl != null)
+                {
+                    bindingControl.ZapiszDoMWZKontrolki();
+                }
+            }
         }
 
         internal static NsPanel UtworzPanel(Workflow.UserData.UI.Html.Widgets.Panels.Panel panelWidget)

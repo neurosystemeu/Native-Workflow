@@ -16,18 +16,18 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 {
     public class WidgetBuilder
     {
-        public void GenerateView(NsPanel panel, ViewBase view)
+        public void GenerateView(NsPanel panel, ViewBase view, IViewer viewer)
         {
             panel.Widget = view.Panel;
-            GenerujElementy(view.Panel, panel);
+            GenerujElementy(view.Panel, panel, viewer);
         }
 
-        public void GenerujElementy(WidgetBase widgetBase, NsPanel panelRodzic)
+        protected void GenerujElementy(WidgetBase widgetBase, NsPanel panelRodzic, IViewer viewer)
         {
             if (widgetBase is Action)
             {
                 var akcja = widgetBase as Action;
-                var a = UtworzAkcja(akcja);
+                var a = UtworzAkcja(akcja, viewer);
                 panelRodzic.Controls.Add(a);
             }
             else
@@ -39,7 +39,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 panelRodzic.Controls.Add(panel);
                 foreach (var element in oPanel.Elementy)
                 {
-                    GenerujElementy(element, panel);
+                    GenerujElementy(element, panel, viewer);
                 }
             }
             //else if (pole is OpisTaby)
@@ -58,7 +58,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                     panelRodzic.Controls.Add(label);
                 }
 
-                var kontrolka = GenerujKontrolke(widgetBase, panelRodzic);
+                var kontrolka = GenerujKontrolke(widgetBase, panelRodzic, viewer);
 
                 var kont = kontrolka as WebControl;
                 if (kont != null)
@@ -78,10 +78,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             return new RadLabel() { Text = p };
         }
 
-        public NsAction UtworzAkcja(WidgetBase opisAkcji)
+        public NsAction UtworzAkcja(Action opisAkcji, IViewer viewer)
         {
+            opisAkcji.Viewer = viewer;
             var akcja = new NsAction() { Widget = opisAkcji, ToolTip = opisAkcji.ToolTip, Text = opisAkcji.GetReadableName() };
-
+            
             //if (opisAkcji.UrlIkony != null)
             //{
             //    var ui = new MenadzerUI();
@@ -91,7 +92,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             return akcja;
         }
 
-        protected Control GenerujKontrolke(WidgetBase widget, NsPanel panel)
+        protected Control GenerujKontrolke(WidgetBase widget, NsPanel panel, IViewer viewer)
         {
             if (widget is ComboBox)
             {

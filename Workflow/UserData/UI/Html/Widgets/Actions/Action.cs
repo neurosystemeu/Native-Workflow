@@ -13,5 +13,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions
         public string IconUrl { get; set; }
         public EnumActionSize Size { get; set; }
         public EnumActionPosition Position { get; set; }
+
+        public IViewer Viewer { get; set; }
     }
 }

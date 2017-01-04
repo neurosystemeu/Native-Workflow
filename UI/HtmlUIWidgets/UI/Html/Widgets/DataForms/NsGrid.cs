@@ -33,9 +33,23 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         public void ZapiszDoMWZKontrolki()
         {
             var dataWidget = Widget as GridView;
-            var binding = dataWidget.SelectedValue;
-            Binding.UstawWartosc(ref binding, dataWidget.DataContext, SelectedValue);
-            dataWidget.SelectedValue = binding; //w binding może być wartość - dane bez bindowania
+            var binding = dataWidget.SelectedValue as Binding;
+            if (binding != null)
+            {
+                object bind = binding;
+                Binding.UstawWartosc(ref bind, dataWidget.DataContext, SelectedValue);
+                dataWidget.SelectedValue = binding; //w binding może być wartość - dane bez bindowania
+            }
+            else
+            {
+                dataWidget.SelectedValue = this.SelectedValue;
+                var lista = new List<string>();
+                foreach (GridDataItem selectedItem in this.SelectedItems)
+                {
+                    lista.Add(selectedItem.GetDataKeyValue("Id")?.ToString());
+                }
+                dataWidget.SelectedIds = lista;
+            }
         }
 
         private void NsGrid_BatchEditCommand(object sender, GridBatchEditingEventArgs e)
@@ -69,6 +83,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
             DataSource = dataWidget.GetData(numerAktualnejStrony*rozmiarStrony, rozmiarStrony, sort, filter,
                 out iloscWszystkichDanych);
+            VirtualItemCount = (int)iloscWszystkichDanych;
 
         }
 

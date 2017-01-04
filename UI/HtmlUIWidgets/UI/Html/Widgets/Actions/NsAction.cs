@@ -15,7 +15,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions
 
         private void NsAction_Click(object sender, EventArgs e)
         {
-            
+            var action = Widget as Action;
+            if (action != null && action.Viewer != null)
+            {
+                action.Viewer.ActionExecuted(action.Name);
+            }
         }
 
         public WidgetBase Widget { get; set; }

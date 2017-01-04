@@ -9,6 +9,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 
 namespace HtmlUIWeb
 {
@@ -21,8 +22,13 @@ namespace HtmlUIWeb
         public string ProjektId { get; set; }
     }
 
-    public partial class TestUI : System.Web.UI.Page
+    public partial class TestUI : System.Web.UI.Page, IViewer
     {
+        public void ActionExecuted(string actionName)
+        {
+           
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             var p1 = new Pracownik();
@@ -64,7 +70,7 @@ namespace HtmlUIWeb
             });
 
             var builder = new WidgetBuilder();
-            builder.GenerateView(panel, view.GetView());
+            builder.GenerateView(panel, view.GetView(), this);
             panel.WczytajDoKontrolkiZMW();
 
         }

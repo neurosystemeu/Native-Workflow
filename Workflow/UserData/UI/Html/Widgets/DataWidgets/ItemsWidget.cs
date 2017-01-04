@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
+using System.Collections.Generic;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
 {
@@ -9,7 +10,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         public ItemsWidget()
         {
             AutoLoadDataSource = true;
-            DataTextField = "Nazwa";
             DataValueField = "Id";
             DataIdField = "Id";
             DataFieldParentId = "RodzicId";
@@ -34,6 +34,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         /// Bindowanie do wartości tekstowej 
         /// </summary>
         public object SelectedValue { get; set; }
+
+        /// <summary>
+        /// Zaznaczone id'ki z kontrolki
+        /// </summary>
+        public List<string> SelectedIds { get; set; }
 
         public string DataValueField { get; set; } //ValueField dla elementu kolekcji
 
