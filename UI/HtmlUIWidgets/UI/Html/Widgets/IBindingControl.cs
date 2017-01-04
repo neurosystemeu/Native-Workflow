@@ -4,7 +4,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 {
     public interface IBindingControl : IWidgetControl
     {
-        void WczytajDoKontrolkiZMW();
-        void ZapiszDoMWZKontrolki();
+        void LoadToControl();
+        void SaveFromControl();
     }
 }

@@ -123,11 +123,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Ribbon
             Tabs.Add(tab as RibbonBarTab);
         }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
         }
 

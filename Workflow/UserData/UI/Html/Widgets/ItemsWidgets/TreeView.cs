@@ -9,7 +9,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
 {
     public class TreeView : ItemsWidget
     {
-        
-
+        public bool AllowNodeEditing { get; set; }
+        public bool EnableDragAndDrop { get; set; }
     }
 }

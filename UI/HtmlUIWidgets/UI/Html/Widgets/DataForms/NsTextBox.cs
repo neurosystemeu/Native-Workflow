@@ -10,7 +10,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
     {
         public WidgetBase Widget { get; set; }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
             var dataWidget = Widget as DataWidget;
             if (dataWidget != null)
@@ -20,7 +20,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
             }
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
             var dataWidget = Widget as TextBox;
             var binding = dataWidget.Value;

@@ -71,7 +71,7 @@ namespace HtmlUIWeb
 
             var builder = new WidgetBuilder();
             builder.GenerateView(panel, view.GetView(), this);
-            panel.WczytajDoKontrolkiZMW();
+            panel.LoadToControl();
 
         }
 

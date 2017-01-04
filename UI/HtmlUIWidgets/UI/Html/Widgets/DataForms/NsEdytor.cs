@@ -15,7 +15,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
     {
         public WidgetBase Widget { get; set; }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
             var dataWidget = Widget as DataWidget;
             if (dataWidget != null)
@@ -25,7 +25,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             }
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
             var dataWidget = Widget as Edytor;
             var binding = dataWidget.Value;

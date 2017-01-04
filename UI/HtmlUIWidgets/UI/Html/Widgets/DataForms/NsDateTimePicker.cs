@@ -15,14 +15,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
     {
         public WidgetBase Widget { get; set; }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
             var dataWidget = Widget as DataWidget;
             var date = (DateTime?)Binding.PobierzWartosc(dataWidget.Value, dataWidget.DataContext);
             SelectedDate = date;
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
             var dataWidget = Widget as DateTimePicker;
             var binding = dataWidget.Value;

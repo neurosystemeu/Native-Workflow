@@ -15,11 +15,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            WczytajDoKontrolkiZMW();
+            LoadToControl();
         }
 
         
-        public virtual void WczytajDoKontrolkiZMW()
+        public virtual void LoadToControl()
         {
             foreach (var control in Controls)
             {
@@ -27,12 +27,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
                 if (bindingControl != null)
                 {
                     bindingControl.Widget.DataContext = Widget.DataContext;
-                    bindingControl.WczytajDoKontrolkiZMW();
+                    bindingControl.LoadToControl();
                 }
             }
         }
 
-        public virtual void ZapiszDoMWZKontrolki()
+        public virtual void SaveFromControl()
         {
             //Binding.UstawWartosc(OpisPanelu.WidocznoscBinding, this, Visible);
             foreach (var control in Controls)
@@ -40,7 +40,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
                 var bindingControl = control as IBindingControl;
                 if (bindingControl != null)
                 {
-                    bindingControl.ZapiszDoMWZKontrolki();
+                    bindingControl.SaveFromControl();
                 }
             }
         }

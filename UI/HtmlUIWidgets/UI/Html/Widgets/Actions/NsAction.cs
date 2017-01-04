@@ -24,13 +24,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions
 
         public WidgetBase Widget { get; set; }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
             var action = Widget as Action;
             Text = Binding.PobierzWartosc(action.Label, Widget.DataContext)?.ToString();
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
             
         }

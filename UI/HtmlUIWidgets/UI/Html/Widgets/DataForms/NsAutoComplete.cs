@@ -14,7 +14,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
     {
         public WidgetBase Widget { get; set; }
 
-        public void WczytajDoKontrolkiZMW()
+        public void LoadToControl()
         {
             var dataWidget = Widget as AutoCompleteBox;
             var ids = (string)Binding.PobierzWartosc(dataWidget.SelectedIds, dataWidget.DataContext);
@@ -43,7 +43,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         }
 
-        public void ZapiszDoMWZKontrolki()
+        public void SaveFromControl()
         {
             var ids = new List<string>();
             var nazwy = new List<string>();
