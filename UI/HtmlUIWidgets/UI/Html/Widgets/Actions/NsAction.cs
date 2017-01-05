@@ -32,7 +32,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions
 
         public void SaveFromControl()
         {
-            
+            var action = Widget as Action;
+            if (action != null && action.Viewer != null)
+            {
+                action.Viewer = null;
+            }
         }
     }
 }

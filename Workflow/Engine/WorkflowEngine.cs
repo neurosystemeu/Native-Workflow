@@ -82,6 +82,7 @@ namespace NeuroSystem.Workflow.Engine
         /// </summary>
         public void RunEngineAsync()
         {
+            this.state = EnumWorkfloEngineState.Started;
             var engineThread = new Thread(executionThread);
             engineThread.Start(this);
         }
@@ -99,8 +100,9 @@ namespace NeuroSystem.Workflow.Engine
                     workflowEngine.RunOneIteration();
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                Console.WriteLine( exception.Message);
             }
         }
 

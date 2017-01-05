@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.UserDataActions
 {
-    class HtmlRead
+    public class HtmlRead
     {
+        public Panel Panel { get; set; }
+        public string ActionName { get; set; }
     }
 }
