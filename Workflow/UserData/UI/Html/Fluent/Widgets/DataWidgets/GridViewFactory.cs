@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using System.Reflection;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
 {
@@ -13,9 +14,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             var nazwa = member.Name;
+            return Column(nazwa);
+        }
 
+        public GridViewColumnFactory<T> Column(string name)
+        {
+            //var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             var col = new GridViewColumnFactory<T>();
-            col.Column.Name = nazwa;
+            col.Column.Name = name;
             GridView.Columns.Add(col.Column);
             return col;
         }

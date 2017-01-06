@@ -93,16 +93,16 @@ namespace NeuroSystem.Workflow.Engine
         private static void executionThread(object engine)
         {
             var workflowEngine = engine as WorkflowEngine;
-            try
+            while (workflowEngine.state != EnumWorkfloEngineState.Stoped)
             {
-                while (workflowEngine.state != EnumWorkfloEngineState.Stoped)
+                try
                 {
                     workflowEngine.RunOneIteration();
                 }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine( exception.Message);
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
             }
         }
 

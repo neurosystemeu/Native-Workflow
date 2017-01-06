@@ -25,16 +25,16 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ViewModel
 
         public static object PobierzWartosc(object binding, object dataContext)
         {
-            if (binding == null || dataContext == null)
-            {
-                return null;
-            }
-
             var strBinding = binding as Binding;
 
             if (strBinding != null )
             {
                 //mamy bindowanie
+                if (dataContext == null)
+                {
+                    return null;
+                }
+                
                 var mw = dataContext;
                 var path = strBinding.Path;
                 var wartosc = mw.GetPropValue(path);

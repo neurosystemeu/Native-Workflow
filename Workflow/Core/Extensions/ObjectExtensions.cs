@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -348,11 +349,24 @@ namespace NeuroSystem.Workflow.Core.Extensions
 
         public static string GetPropertyDescription(this PropertyInfo pi)
         {
-            var art = pi.GetCustomAttributes(typeof(DescriptionAttribute));
             var str = new StringBuilder();
-            foreach (DescriptionAttribute a in art)
+
+            var description = pi.GetCustomAttributes(typeof(DescriptionAttribute));
+            if (description != null)
             {
-                str.Append(a.Description);
+                foreach (DescriptionAttribute a in description)
+                {
+                    str.Append(a.Description);
+                }
+            }
+
+            var display = pi.GetCustomAttributes(typeof(DisplayAttribute));
+            if (display != null)
+            {
+                foreach (DisplayAttribute a in display)
+                {
+                    str.Append(a.Description);
+                }
             }
 
             str.Append(" | ");

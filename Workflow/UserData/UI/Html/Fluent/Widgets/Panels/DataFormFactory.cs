@@ -25,6 +25,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
         public PanelFactory<T> AddField<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
+            return AddField(member, tooltip);
+        }
+
+        public PanelFactory<T> AddField(System.Reflection.PropertyInfo member, string tooltip = null)
+        {
             var name = member.Name;
 
             WidgetBase widget = null;
@@ -99,12 +104,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             return factory;
         }
 
-        public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel)
+        public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel = null)
         {
-            var factory = new GridViewFactory<T>() {Widget = new GridView()};
+            var factory = new GridViewFactory<T>() {Widget = new GridView() {Name = "grid"} };
             Panel.Elementy.Add(factory.GridView);
 
-            panel(factory);
+            if (panel != null)
+            {
+                panel(factory);
+            }
             return factory;
         }
 
