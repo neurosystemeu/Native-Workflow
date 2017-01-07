@@ -52,12 +52,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Processes\ConsoleProcess.cs" />
-    <Compile Include="Processes\HelloWorldProcess.cs" />
-    <Compile Include="Processes\HtmlProcess.cs" />
+    <Compile Include="Processes\Generic\UnitTestGenericProcess.cs" />
+    <Compile Include="Processes\UI\ConsoleProcess.cs" />
+    <Compile Include="Processes\UI\HelloWorldProcess.cs" />
+    <Compile Include="Processes\UI\HtmlProcess.cs" />
     <Compile Include="TestObject\Person.cs" />
     <Compile Include="UI\Fluent\UnitTest1.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Processes\UI\UnitTestProcesy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
