@@ -13,7 +13,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         {
             while (true)
             {
-                var widokListy = GridView<T>();
+                var widokListy = CreateGridView<T>();
                 widokListy.DataSource(GetDataSource());
                 widokListy.AddAction("Edytuj");
                 widokListy.AddAction("Zamknij");
@@ -30,7 +30,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
                     //Edycja
                     var obiekt = GetObjectById(zaznaczonyObiekt);
-                    var widokEdycji = DataFormView(obiekt);
+                    var widokEdycji = CreateDataFormView(obiekt);
                     widokEdycji.AddAction("Zapisz");
                     widokEdycji.AddAction("Anuluj");
 

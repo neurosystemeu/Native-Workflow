@@ -8,6 +8,9 @@ using NeuroSystem.VirtualMachine.Core.Attributes;
 
 namespace NeuroSystem.Workflow.Core.Process
 {
+    /// <summary>
+    /// Proces bazowy dla wirtualnej maszyny
+    /// </summary>
     public class ProcessBase
     {
         #region Properties
@@ -108,7 +111,7 @@ namespace NeuroSystem.Workflow.Core.Process
         {
             Status = EnumProcessStatus.Executed;
             ProcesOutput = wynik;
-            NeuroSystem.VirtualMachine.VirtualMachine.Hibernate();
+            NeuroSystem.VirtualMachine.VirtualMachine.EndProcess();
         }
 
         #endregion

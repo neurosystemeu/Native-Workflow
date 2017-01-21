@@ -164,7 +164,6 @@ namespace NeuroSystem.Workflow.Engine
             else if (vm.Status == VirtualMachineState.Executed)
             {
                 process.Status = EnumProcessStatus.Executed;
-                process.ProcesOutput = vm.Wynik;
             }
             else if (vm.Status == VirtualMachineState.Hibernated)
             {

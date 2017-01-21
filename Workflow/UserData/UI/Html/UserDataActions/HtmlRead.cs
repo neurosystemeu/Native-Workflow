@@ -10,6 +10,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.UserDataActions
     public class HtmlRead
     {
         public Panel Panel { get; set; }
+        public object DataContext => Panel?.DataContext;
         public string ActionName { get; set; }
     }
 }

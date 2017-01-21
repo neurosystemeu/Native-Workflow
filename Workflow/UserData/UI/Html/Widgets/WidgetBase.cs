@@ -12,6 +12,11 @@
 
         public object DataContext { get; set; }
 
+        public virtual void SetDataContext(object dataContext)
+        {
+            DataContext = dataContext;
+        }
+
         public string GetReadableName()
         {
             return Name;

@@ -69,5 +69,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ViewModel
                 binding = wartosc;
             }
         }
+
+        public override string ToString()
+        {
+            return Path;
+        }
     }
 }

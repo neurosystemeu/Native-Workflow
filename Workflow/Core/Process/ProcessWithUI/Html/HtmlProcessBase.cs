@@ -26,7 +26,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region Edit data form
 
-        public DataFormFactory<T> DataFormView<T>()
+        public DataFormFactory<T> CreateDataFormView<T>()
         {
             var view = new DataFormFactory<T>();
 
@@ -39,7 +39,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         /// <typeparam name="T"></typeparam>
         /// <param name="biznesObject"></param>
         /// <returns></returns>
-        public DataFormFactory<T> DataFormView<T>(T biznesObject)
+        public DataFormFactory<T> CreateDataFormView<T>(T biznesObject)
         {
             var view = new DataFormFactory<T>();
             view.DataContext(biznesObject);
@@ -60,6 +60,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
             visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
             var df = view.AddDataForm();
+            view.ActiveDataForm = df;
             foreach (var property in visibleProperty)
             {
                 df.AddField(property.PropertyInfo);
@@ -72,7 +73,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region List -> grid
 
-        public ListViewFactory<T> GridView<T>()
+        public ListViewFactory<T> CreateGridView<T>()
         {
             var view = new ListViewFactory<T>();
 

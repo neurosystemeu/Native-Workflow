@@ -44,6 +44,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         internal static NsComboBox UtworzComboBox(ComboBox opisPola)
         {
             var cb = new NsComboBox() { Widget = opisPola, ToolTip = opisPola.ToolTip };
+            cb.DataValueField = opisPola.DataValueField;
+            cb.DataTextField = opisPola.DataTextField;
+
             return cb;
         }
     }

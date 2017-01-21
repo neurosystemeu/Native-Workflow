@@ -129,6 +129,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 return NsGrid.UtworzGridView((UserData.UI.Html.Widgets.ItemsWidgets.GridView)widget);
             }
 
+            if (widget is UserData.UI.Html.Widgets.DataForms.CheckBox)
+            {
+                return NsCheckBox.UtworzCheckBox((UserData.UI.Html.Widgets.DataForms.CheckBox)widget);
+            }
+
             //if (widget is OpisEdytora)
             //{
             //    return UtworzEdytor((OpisEdytora)widget);

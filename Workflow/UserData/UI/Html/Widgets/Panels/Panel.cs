@@ -66,5 +66,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels
 
             return default(T);
         }
+
+        public override void SetDataContext(object dataContext)
+        {
+            foreach (var widgetBase in Elementy)
+            {
+                widgetBase.SetDataContext(dataContext);
+            }
+        }
     }
 }

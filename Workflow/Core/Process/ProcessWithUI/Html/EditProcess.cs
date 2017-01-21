@@ -12,7 +12,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public override object Start()
         {
             var obiekt = (T)ProcesInput;
-            var widokEdycji = DataFormView(obiekt);
+            var widokEdycji = CreateDataFormView(obiekt);
             widokEdycji.AddAction("Zapisz");
             widokEdycji.AddAction("Anuluj");
 

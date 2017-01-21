@@ -8,6 +8,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
 {
@@ -84,15 +85,22 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             return this;
         }
 
-        public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
+        public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null, DataSourceBase dataSource= null)
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             var name = member.Name;
+            var cb = new ComboBox();
 
-            var factory = new ComboBoxFactory<T>() { Widget = new ComboBox() };
+            var factory = new ComboBoxFactory<T>() { Widget = cb };
             factory.Widget.Name = name;
+            cb.DataValueField = "Id";
             factory.ComboBox.SelectedValue = new Binding(name);
             Panel.Elementy.Add(factory.ComboBox);
+
+            if (dataSource != null)
+            {
+                factory.DataSource(dataSource);
+            }
             return factory;
         }
 

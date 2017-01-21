@@ -13,7 +13,7 @@ namespace UnitTestWorkflow.Processes
     {
         public override object Start()
         {
-            var view = DataFormView<Person>();
+            var view = CreateDataFormView<Person>();
             view.DataForm(df =>
             {
                 df.AddField(p => p.Name);
