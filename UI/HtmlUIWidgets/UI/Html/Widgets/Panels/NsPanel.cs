@@ -15,7 +15,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            LoadToControl();
         }
 
         
