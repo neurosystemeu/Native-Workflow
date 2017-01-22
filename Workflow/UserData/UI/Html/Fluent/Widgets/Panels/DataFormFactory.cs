@@ -65,9 +65,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
                 {
                     Name = name,
                     Label = name,
-                    //TypPola = OpisTypu.UtworzOpisTypu(member.PropertyType),
-                    //SelectedItemBinding = "{Binding Pola[\"" + nazwa + "\"]}",
-                    //Opis = tooltip
+                    SelectedValue = new Binding(name),
+                    DataSource = new EnumDataSource(member.PropertyType)
                 };
             } else
             {
@@ -90,6 +89,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             var name = member.Name;
             var cb = new ComboBox();
+            cb.SetDefaultValues();
 
             var factory = new ComboBoxFactory<T>() { Widget = cb };
             factory.Widget.Name = name;
@@ -107,6 +107,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
         public ComboBoxFactory<T> AddComboBox(string name)
         {
             var factory = new ComboBoxFactory<T>() {Widget = new ComboBox()};
+            factory.ComboBox.SetDefaultValues();
             factory.Widget.Name = name;
             Panel.Elementy.Add(factory.ComboBox);
             return factory;
@@ -115,6 +116,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
         public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel = null)
         {
             var factory = new GridViewFactory<T>() {Widget = new GridView() {Name = "grid"} };
+            factory.GridView.SetDefaultValues();
             Panel.Elementy.Add(factory.GridView);
 
             if (panel != null)

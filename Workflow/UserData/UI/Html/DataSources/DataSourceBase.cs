@@ -27,7 +27,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.DataSources
             throw new NotImplementedException();
         }
 
-        public virtual object GetObjectById(string id)
+        public virtual object GetObjectById(string id, bool isDisconectedToDb = false)
         {
             throw new NotImplementedException();
         }
@@ -43,6 +43,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.DataSources
         }
 
         public virtual void DeleteById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual object CreateNewObject()
         {
             throw new NotImplementedException();
         }

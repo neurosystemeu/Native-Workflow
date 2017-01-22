@@ -10,6 +10,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         public ItemsWidget()
         {
             AutoLoadDataSource = true;
+        }
+
+        public void SetDefaultValues()
+        {
             DataValueField = "Id";
             DataIdField = "Id";
             DataFieldParentId = "RodzicId";

@@ -121,6 +121,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             radGrid.MasterTableView.EnableColumnsViewState = false;
 
             radGrid.AllowPaging = opisGrida.AllowPaging;
+            radGrid.PageSize = opisGrida.PageSize;
             radGrid.AllowCustomPaging = opisGrida.AllowPaging;
 
             if (opisGrida.AllowEditing == true)

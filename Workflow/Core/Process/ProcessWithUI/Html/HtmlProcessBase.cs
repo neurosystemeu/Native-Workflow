@@ -112,6 +112,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         {
             var show = new HtmlShow();
             show.View = view.GetView();
+            UserDataInput = null;
             UserDataOutput = show;
             Status = EnumProcessStatus.WaitingForUserData;
             Hibernate();
