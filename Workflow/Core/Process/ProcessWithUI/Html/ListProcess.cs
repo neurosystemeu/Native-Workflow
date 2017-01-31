@@ -13,7 +13,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
     {
         public override object Start()
         {
-            while (true)
+            //while (true)
             {
                 var widokListy = CreateGridView<T>(
                     "Lista obiektów typu '" + typeof(T).Name + "'", 
@@ -26,28 +26,31 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
                 var wynikListy = ShowView(widokListy);
                 var grid = wynikListy.Panel.GetWidgetByType<GridView>();
-                var zaznaczonyObiekt = grid.SelectedValue?.ToString();
-                if (zaznaczonyObiekt == null)
+
+                if (wynikListy.ActionName == "Dodaj nowy")
                 {
-                    continue;
+                    AddNewObject();
                 }
 
-                if (wynikListy.ActionName == "Edytuj")
+                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                if (zaznaczonyObiekt == null)
+                {
+                    //continue;
+                } else if (wynikListy.ActionName == "Edytuj")
                 {
                     Edit(zaznaczonyObiekt);
                 } else if (wynikListy.ActionName == "Usuń")
                 {
                     Delete(zaznaczonyObiekt);
                 }
-                else if (wynikListy.ActionName == "Dodaj nowy")
-                {
-                    AddNewObject();
-                }
-                else
+                else 
                 {
                     EndProcess("Zakończono listę " + nameof(T));
                 }
+
+                EndProcess(wynikListy?.ActionName);
             }
+            return null;
         }
 
         [Interpret]
