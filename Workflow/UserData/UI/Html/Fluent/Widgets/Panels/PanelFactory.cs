@@ -1,5 +1,6 @@
 ﻿using System;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Actions;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
@@ -63,6 +64,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             Panel.Elementy.Add(factory.Action);
             
             return factory;
+        }
+
+        public PanelFactory<T> AddLabel(string text)
+        {
+            Panel.Elementy.Add(new Label() {Label = text});
+            return this;
         }
     }
 }

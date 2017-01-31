@@ -134,6 +134,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 return NsCheckBox.UtworzCheckBox((UserData.UI.Html.Widgets.DataForms.CheckBox)widget);
             }
 
+            if (widget is UserData.UI.Html.Widgets.DataForms.Label)
+            {
+                return NsLabel.CreateLabel(widget);
+            }
+
             //if (widget is OpisEdytora)
             //{
             //    return UtworzEdytor((OpisEdytora)widget);

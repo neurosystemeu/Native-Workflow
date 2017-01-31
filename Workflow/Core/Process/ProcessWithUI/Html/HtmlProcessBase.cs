@@ -39,7 +39,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         /// <typeparam name="T"></typeparam>
         /// <param name="biznesObject"></param>
         /// <returns></returns>
-        public DataFormFactory<T> CreateDataFormView<T>(T biznesObject)
+        public DataFormFactory<T> CreateDataFormView<T>(T biznesObject, string title = null, string description= null)
         {
             var view = new DataFormFactory<T>();
             view.DataContext(biznesObject);
@@ -60,6 +60,15 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
             visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
             var df = view.AddDataForm();
+            if (title != null)
+            {
+                df.AddLabel(title);
+            }
+            if (description != null)
+            {
+                df.AddLabel(description);
+            }
+
             view.ActiveDataForm = df;
             foreach (var property in visibleProperty)
             {
@@ -73,7 +82,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region List -> grid
 
-        public ListViewFactory<T> CreateGridView<T>()
+        public ListViewFactory<T> CreateGridView<T>(string title = null, string description = null)
         {
             var view = new ListViewFactory<T>();
 
@@ -94,6 +103,15 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 }
             }
             var df = view.AddDataForm();
+            if (title != null )
+            {
+                df.AddLabel(title);
+            }
+            if (description != null)
+            {
+                df.AddLabel(description);
+            }
+
             var grid = df.AddGridView();
             foreach (var property in visibleProperty)
             {

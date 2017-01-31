@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.VirtualMachine.Core.Attributes;
+using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
@@ -14,7 +15,9 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         {
             while (true)
             {
-                var widokListy = CreateGridView<T>();
+                var widokListy = CreateGridView<T>(
+                    "Lista obiektów typu '" + typeof(T).Name + "'", 
+                    typeof(T).GetClassDescription());
                 widokListy.DataSource(GetDataSource());
                 widokListy.AddAction("Edytuj");
                 widokListy.AddAction("Dodaj nowy");
@@ -51,7 +54,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public void Edit(string selectedObjectId)
         {
             var obiekt = GetObjectById(selectedObjectId);
-            var widokEdycji = CreateDataFormView(obiekt);
+            var widokEdycji = CreateDataFormView(obiekt, "Edycja obiektu");
             widokEdycji.AddAction("Zapisz");
             widokEdycji.AddAction("Anuluj");
 
