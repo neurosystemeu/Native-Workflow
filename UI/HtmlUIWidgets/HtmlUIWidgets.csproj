@@ -55,7 +55,9 @@
     <Compile Include="UI\Html\Widgets\DataForms\NsDateTimePicker.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsEdytor.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsGrid.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsLabel.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\NsLabel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UI\Html\Widgets\DataForms\NsTreeComboBox.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsTreeView.cs" />
     <Compile Include="UI\Html\Widgets\Panels\NsPanel.cs" />
