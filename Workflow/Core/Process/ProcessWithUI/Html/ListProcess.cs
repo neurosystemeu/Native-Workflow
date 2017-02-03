@@ -13,16 +13,13 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
     {
         public override object Start()
         {
-            //while (true)
+            while (true)
             {
                 var widokListy = CreateGridView<T>(
-                    "Lista obiektów typu '" + typeof(T).Name + "'", 
+                    "Lista obiektów typu '" + typeof(T).Name + "'",
                     typeof(T).GetClassDescription());
                 widokListy.DataSource(GetDataSource());
-                widokListy.AddAction("Edytuj");
-                widokListy.AddAction("Dodaj nowy");
-                widokListy.AddAction("Usuń");
-                widokListy.AddAction("Zamknij");
+                generateMenu(widokListy);
 
                 var wynikListy = ShowView(widokListy);
                 var grid = wynikListy.Panel.GetWidgetByType<GridView>();
@@ -32,25 +29,40 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     AddNewObject();
                 }
 
-                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                var zaznaczonyObiekt = grid.SelectedValue?.ToString();
                 if (zaznaczonyObiekt == null)
                 {
                     //continue;
-                } else if (wynikListy.ActionName == "Edytuj")
+                }
+                else if (wynikListy.ActionName == "Edytuj")
                 {
                     Edit(zaznaczonyObiekt);
-                } else if (wynikListy.ActionName == "Usuń")
+                }
+                else if (wynikListy.ActionName == "Usuń")
                 {
                     Delete(zaznaczonyObiekt);
                 }
-                else 
+                else if (wynikListy.ActionName == "Zamknij")
                 {
                     EndProcess("Zakończono listę " + nameof(T));
                 }
 
-                EndProcess(wynikListy?.ActionName);
+                EndProcess(InvokeUserAction(wynikListy.ActionName));
             }
             return null;
+        }
+
+        private void generateMenu(UserData.UI.Html.Fluent.Views.ListViewFactory<T> widokListy)
+        {
+            widokListy.AddAction("Edytuj");
+            widokListy.AddAction("Dodaj nowy");
+            widokListy.AddAction("Usuń");
+            widokListy.AddAction("Zamknij2");
+            //dodaje akce użytkownika
+            foreach (var userAction in UserActions)
+            {
+                widokListy.AddAction(userAction);
+            }
         }
 
         [Interpret]
