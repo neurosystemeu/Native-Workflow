@@ -75,6 +75,7 @@
     <Compile Include="UserData\UI\Html\Fluent\Views\ViewFaktoryBase.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\Actions\ActionFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\DataForms\NumericBoxFactory.cs" />
+    <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\AutoCompleteFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\ComboBoxFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\TreeViewFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\DataWidgets\TreeComboBoxFactory.cs" />

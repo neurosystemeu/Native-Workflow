@@ -10,11 +10,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
     public class AutoCompleteBox : ItemsWidget
     {
         /// <summary>
-        /// Zanzaczone Id oddzielone ; 
-        /// </summary>
-        public object SelectedIds { get; set; }
-
-        /// <summary>
         /// Zaznaczone nazwy oddzielone ;
         /// </summary>
         public object SelectedNames { get; set; }

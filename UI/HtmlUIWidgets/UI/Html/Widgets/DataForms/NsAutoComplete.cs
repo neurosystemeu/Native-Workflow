@@ -17,7 +17,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         public void LoadToControl()
         {
             var dataWidget = Widget as AutoCompleteBox;
-            var ids = (string)Binding.PobierzWartosc(dataWidget.SelectedIds, dataWidget.DataContext);
+            var ids = (string)Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
             var names = (string)Binding.PobierzWartosc(dataWidget.SelectedNames, dataWidget.DataContext);
             var idsList = ids.Split(';');
             var namesList = names.Split(';');
@@ -29,7 +29,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                     i++;
                     continue;
                 }
-                if (dataWidget.SelectedNames == dataWidget.SelectedIds)
+                if (dataWidget.SelectedNames == dataWidget.SelectedValue)
                 {
                     this.Entries.Add(new AutoCompleteBoxEntry(u, u));
                 }
@@ -57,9 +57,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             var nazwystr = string.Join(";", nazwy);
 
             var dataWidget = Widget as AutoCompleteBox;
-            var binding = dataWidget.SelectedIds;
+            var binding = dataWidget.SelectedValue as object;
             Binding.UstawWartosc(ref binding, dataWidget.DataContext, idstr);
-            dataWidget.SelectedIds = binding; //w binding może być wartość - dane bez bindowania
+            dataWidget.SelectedValue = binding; //w binding może być wartość - dane bez bindowania
 
             binding = dataWidget.SelectedNames;
             Binding.UstawWartosc(ref binding, dataWidget.DataContext, nazwystr);
@@ -69,17 +69,19 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (Page.IsPostBack == false)
+            //if (Page.IsPostBack == false)
             {
-                var dataWidget = Widget as ComboBox;
+                var dataWidget = Widget as AutoCompleteBox;
                 DataSource = dataWidget.GetAllData();
                 DataBind();
             }
         }
 
-        internal static NsComboBox UtworzComboBox(ComboBox opisPola)
+        internal static NsAutoComplete UtworzAutoComplete(AutoCompleteBox opisPola)
         {
-            var cb = new NsComboBox() { Widget = opisPola, ToolTip = opisPola.ToolTip };
+            var cb = new NsAutoComplete() { Widget = opisPola, ToolTip = opisPola.ToolTip };
+            cb.DataValueField = opisPola.DataValueField;
+            cb.DataTextField = opisPola.DataTextField;
             return cb;
         }
     }

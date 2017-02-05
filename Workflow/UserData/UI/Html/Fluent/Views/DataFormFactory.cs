@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
@@ -33,6 +34,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
         {
             ActiveDataForm.AddComboBox(nazwaPola, tooltip, dataSource);
             return this;
+        }
+
+        public AutoCompleteFactory<T> AddAutoComplete<TD>(Expression<Func<T, TD>> nazwaPolaId, Expression<Func<T, TD>> nazwaPolaNames, string tooltip = null, DataSourceBase dataSource = null)
+        {
+            return ActiveDataForm.AddAutoComplete(nazwaPolaId, nazwaPolaNames, tooltip, dataSource);
         }
     }
 }

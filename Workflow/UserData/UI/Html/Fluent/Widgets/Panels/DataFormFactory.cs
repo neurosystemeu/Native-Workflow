@@ -113,6 +113,33 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             return factory;
         }
 
+
+        public AutoCompleteFactory<T> AddAutoComplete<TD>(Expression<Func<T, TD>> nazwaPolaId, Expression<Func<T, TD>> nazwaPolaNames, string tooltip = null, DataSourceBase dataSource = null)
+        {
+            var memberIds = (nazwaPolaId.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
+            var ids = memberIds.Name;
+
+            var memberNames = (nazwaPolaNames.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
+            var names = memberNames.Name;
+
+            var ac = new AutoCompleteBox();
+            ac.SetDefaultValues();
+
+            var factory = new AutoCompleteFactory<T>() { Widget = ac };
+            factory.Widget.Name = ids;
+            ac.DataValueField = "Id";
+            factory.AutoComplete.SelectedValue = new Binding(ids);
+            factory.AutoComplete.SelectedNames = new Binding(names);
+            Panel.Elementy.Add(factory.AutoComplete);
+
+            if (dataSource != null)
+            {
+                factory.DataSource(dataSource);
+            }
+            return factory;
+        }
+
+
         public GridViewFactory<T> AddGridView(Action<GridViewFactory<T>> panel = null)
         {
             var factory = new GridViewFactory<T>() {Widget = new GridView() {Name = "grid"} };

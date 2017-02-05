@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.VirtualMachine.Core.Attributes;
 using NeuroSystem.Workflow.Core.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
@@ -69,7 +70,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public void Edit(string selectedObjectId)
         {
             var obiekt = GetObjectById(selectedObjectId);
-            var widokEdycji = CreateDataFormView(obiekt, "Edycja obiektu");
+            var widokEdycji = CreateEditView(obiekt);
             widokEdycji.AddAction("Zapisz");
             widokEdycji.AddAction("Anuluj");
 
@@ -82,6 +83,9 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 EndProcess("Wykonano edycję obiektu " + obiekt);
             }
         }
+
+        
+
 
         [Interpret]
         public void AddNewObject()

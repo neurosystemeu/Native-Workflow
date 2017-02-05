@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
+using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
@@ -25,7 +26,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public override object Start()
         {
             var obiekt = (T)ProcesInput;
-            var widokEdycji = CreateDataFormView(obiekt, description: this.GetType().GetClassDescription());
+            var widokEdycji = CreateEditView(obiekt);
             widokEdycji.AddAction("Zapisz");
             widokEdycji.AddAction("Anuluj");
 
@@ -67,6 +68,11 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         {
             var ds = GetDataSource();
             ds.Update(obiekt);
+        }
+
+        public virtual DataFormFactory<T> CreateEditView(T obj)
+        {
+            return CreateDataFormView(obj, "Edycja obiektu", this.GetType().GetClassDescription());
         }
     }
 }

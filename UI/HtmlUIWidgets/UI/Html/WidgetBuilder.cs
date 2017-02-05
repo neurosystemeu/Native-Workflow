@@ -99,6 +99,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 return NsComboBox.UtworzComboBox((ComboBox)widget);
             }
 
+            if (widget is AutoCompleteBox)
+            {
+                return NsAutoComplete.UtworzAutoComplete((AutoCompleteBox)widget);
+            }
+
             if (widget is DateTimePicker)
             {
                 return NsDateTimePicker.UtworzDate((DateTimePicker)widget);

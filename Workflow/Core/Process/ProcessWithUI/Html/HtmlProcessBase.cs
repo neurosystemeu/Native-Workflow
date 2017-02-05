@@ -26,10 +26,20 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region Edit data form
 
-        public DataFormFactory<T> CreateDataFormView<T>()
+        public DataFormFactory<T> CreateDataFormView<T>(string title = null, string description = null)
         {
             var view = new DataFormFactory<T>();
+            var df = view.AddDataForm();
+            if (title != null)
+            {
+                df.AddLabel(title);
+            }
+            if (description != null)
+            {
+                df.AddLabel(description);
+            }
 
+            view.ActiveDataForm = df;
             return view;
         }
 
