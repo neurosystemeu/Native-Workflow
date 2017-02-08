@@ -138,12 +138,16 @@ namespace NeuroSystem.Workflow.Core.Extensions
         /// <param name="wartoscStringowa"></param>
         private static void ustawWartoscPropercji(object obiekt, PropertyInfo propercja, string wartoscStringowa)
         {
-            if (propercja.PropertyType.FullName.Contains("Nullable") && string.IsNullOrEmpty(wartoscStringowa))
+            if (propercja.PropertyType.IsEnum)
+            {
+                var wartoscEnumu = Enum.Parse(propercja.PropertyType, wartoscStringowa);
+                propercja.SetValue(obiekt, wartoscEnumu, null);
+            }
+            else if (propercja.PropertyType.FullName.Contains("Nullable") && string.IsNullOrEmpty(wartoscStringowa))
             {
                 propercja.SetValue(obiekt, null, null);
             }
-            else
-                            if (propercja.PropertyType == typeof(System.Int32) || propercja.PropertyType == typeof(System.Int32?))
+            else if (propercja.PropertyType == typeof(System.Int32) || propercja.PropertyType == typeof(System.Int32?))
             {
                 propercja.SetValue(obiekt, int.Parse(wartoscStringowa), null);
             }
@@ -161,7 +165,7 @@ namespace NeuroSystem.Workflow.Core.Extensions
             }
             else if (propercja.PropertyType == typeof(System.Decimal) || propercja.PropertyType == typeof(System.Decimal?))
             {
-                propercja.SetValue(obiekt, Decimal.Parse(wartoscStringowa), null);
+                propercja.SetValue(obiekt, Decimal.Parse(wartoscStringowa.Replace(" ", "").Replace(".",",")), null);
             }
             else if (propercja.PropertyType == typeof(System.DateTime) || propercja.PropertyType == typeof(System.DateTime?))
             {

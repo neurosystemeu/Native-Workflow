@@ -22,7 +22,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         {
             var dataWidget = Widget as ComboBox;
             var date = Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
-            if (dataWidget.LoadOnDemand)
+            if (dataWidget.LoadOnDemand && date != null)
             {
                 //wczytywanie na rządanie - doczytuje wartość początkową
                 var id = date;

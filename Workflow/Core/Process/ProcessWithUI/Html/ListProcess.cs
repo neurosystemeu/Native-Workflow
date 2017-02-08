@@ -29,23 +29,25 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 {
                     AddNewObject();
                 }
-
-                var zaznaczonyObiekt = grid.SelectedValue?.ToString();
-                if (zaznaczonyObiekt == null)
+                else
                 {
-                    //continue;
-                }
-                else if (wynikListy.ActionName == "Edytuj")
-                {
-                    Edit(zaznaczonyObiekt);
-                }
-                else if (wynikListy.ActionName == "Usuń")
-                {
-                    Delete(zaznaczonyObiekt);
-                }
-                else if (wynikListy.ActionName == "Zamknij")
-                {
-                    EndProcess("Zakończono listę " + nameof(T));
+                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                    if (zaznaczonyObiekt == null)
+                    {
+                        //continue;
+                    }
+                    else if (wynikListy.ActionName == "Edytuj")
+                    {
+                        Edit(zaznaczonyObiekt);
+                    }
+                    else if (wynikListy.ActionName == "Usuń")
+                    {
+                        Delete(zaznaczonyObiekt);
+                    }
+                    else if (wynikListy.ActionName == "Zamknij")
+                    {
+                        EndProcess("Zakończono listę " + nameof(T));
+                    }
                 }
             }
             return null;
@@ -99,6 +101,8 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 obiekt = (T)wynikEdycji.DataContext;
 
                 AddObject(obiekt);
+                wynikEdycji.Panel?.SetDataContext(null);
+                obiekt = default(T); //null'uje obiekt żeby go nie serializować
                 ShowMessage("Dodano nowy obiektu " + obiekt);
             }
         }
