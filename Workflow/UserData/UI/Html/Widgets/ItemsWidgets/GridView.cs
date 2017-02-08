@@ -17,5 +17,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
         public bool AllowPaging { get; set; }
         public bool AllowEditing { get; set; }
         public int PageSize { get; set; }
+        public bool AllowFilteringByColumn { get; set; }
     }
 }

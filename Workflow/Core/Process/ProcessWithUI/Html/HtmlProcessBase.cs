@@ -123,9 +123,10 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             }
 
             var grid = df.AddGridView();
+            grid.GridView.AllowFilteringByColumn = true;
             foreach (var property in visibleProperty)
             {
-                grid.Column(property.PropertyInfo.Name);
+                grid.Column(property.PropertyInfo.Name).ShowColumnFilter();
             }
 
             view.Grid = grid;

@@ -10,6 +10,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
         public ItemsWidget()
         {
             AutoLoadDataSource = true;
+            WebServiceSettingsMethod = "PobierzDane";
+            WebServiceSettingsPath = "~/UI/WebSerwisy/ZrodloDanych.asmx";
         }
 
         public void SetDefaultValues()
@@ -52,8 +54,25 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets
 
         public string DataTextField { get; set; } //TextField dla elementu kolekcji
 
+        /// <summary>
+        /// Czydoczytywanie kolekcji
+        /// </summary>
         public bool AutoLoadDataSource { get; set; }
 
+        /// <summary>
+        /// Urldoczytywanego webserwice
+        /// </summary>
+        public string WebServiceSettingsMethod { get; set; }
+
+        /// <summary>
+        /// Nazwametody
+        /// </summary>
+        public string WebServiceSettingsPath { get; set; }
+
+        /// <summary>
+        /// Wczytywanie danych na żądanie - w przypadku dużych kolekcji
+        /// </summary>
+        public bool LoadOnDemand { get; set; }
 
         #region Data access
 

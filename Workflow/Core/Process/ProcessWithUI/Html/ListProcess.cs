@@ -47,8 +47,6 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 {
                     EndProcess("Zakończono listę " + nameof(T));
                 }
-
-                EndProcess(InvokeUserAction(wynikListy.ActionName));
             }
             return null;
         }
@@ -58,7 +56,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             widokListy.AddAction("Edytuj");
             widokListy.AddAction("Dodaj nowy");
             widokListy.AddAction("Usuń");
-            widokListy.AddAction("Zamknij2");
+            widokListy.AddAction("Zamknij");
             //dodaje akce użytkownika
             foreach (var userAction in UserActions)
             {
@@ -80,7 +78,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 obiekt = (T)wynikEdycji.DataContext;
 
                 UpdateObject(obiekt);
-                EndProcess("Wykonano edycję obiektu " + obiekt);
+                ShowMessage("Zapisano zmiany w " + obiekt);
             }
         }
 
@@ -91,7 +89,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public void AddNewObject()
         {
             var obiekt = CreateNewObject();
-            var widokEdycji = CreateDataFormView(obiekt);
+            var widokEdycji = CreateEditView(obiekt);
             widokEdycji.AddAction("Dodaj");
             widokEdycji.AddAction("Anuluj");
 
@@ -101,7 +99,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 obiekt = (T)wynikEdycji.DataContext;
 
                 AddObject(obiekt);
-                EndProcess("Dodano nowy obiektu " + obiekt);
+                ShowMessage("Dodano nowy obiektu " + obiekt);
             }
         }
 
@@ -109,7 +107,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         public void Delete(string selectedObjectId)
         {
             DeleteObject(selectedObjectId);
-            EndProcess("Usunięto obiekt o Id "+ selectedObjectId);
+            ShowMessage("Usunięto obiekt o Id "+ selectedObjectId);
         }
 
         public virtual void DeleteObject(string id)

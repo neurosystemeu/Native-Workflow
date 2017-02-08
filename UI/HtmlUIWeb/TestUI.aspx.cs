@@ -53,9 +53,10 @@ namespace HtmlUIWeb
                 {
                     p.AddField(pp => pp.Nazwisko);
                     p.AddField(pp => pp.IloscLat);
-                    p.AddComboBox(pp => pp.ProjektId)
-                    .DataTextField("Name")
-                    .DataSource(new NeuroSystem.Workflow.UserData.UI.Html.DataSources.ObjectDataSource(listaPracownikow));
+                    p.AddComboBox(pp => pp.ProjektId,
+                            dataSource:
+                            new NeuroSystem.Workflow.UserData.UI.Html.DataSources.ObjectDataSource(listaPracownikow))
+                        .DataTextField("Name");
                 });
                 pan.AddDataForm(p =>
                 {

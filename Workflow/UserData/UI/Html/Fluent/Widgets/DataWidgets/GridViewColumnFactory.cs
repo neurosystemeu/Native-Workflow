@@ -17,6 +17,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
             return this;
         }
 
+        public GridViewColumnFactory<T> ShowColumnFilter(bool show = true)
+        {
+            Column.ShowColumnFilter = show;
+            return this;
+        }
+
         public GridViewColumnFactory<T> Label(string label)
         {
             Column.Label = label;

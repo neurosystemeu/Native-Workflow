@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using Telerik.Web.Data.Extensions;
 using Telerik.Web.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
@@ -14,12 +16,24 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
     public class NsComboBox : RadComboBox, IBindingControl
     {
         public WidgetBase Widget { get; set; }
+        
 
         public void LoadToControl()
         {
             var dataWidget = Widget as ComboBox;
             var date = Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
-            SelectedValue = date?.ToString();
+            if (dataWidget.LoadOnDemand)
+            {
+                //wczytywanie na rządanie - doczytuje wartość początkową
+                var id = date;
+                var obiekt = dataWidget.DataSource.GetObjectById(id.ToString());
+                SelectedValue = id.ToString();
+                Text = obiekt.ToString();
+            }
+            else
+            {
+                SelectedValue = date?.ToString();
+            }
         }
 
         public void SaveFromControl()
@@ -36,8 +50,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             if (Page.IsPostBack == false)
             {
                 var dataWidget = Widget as ComboBox;
-                DataSource = dataWidget.GetAllData();
-                DataBind();
+                if (dataWidget != null)
+                {
+                    if(dataWidget.LoadOnDemand == false)
+                    {
+                        DataSource = dataWidget.GetAllData();
+                        DataBind();
+                    }
+                }
             }
         }
 
@@ -46,6 +66,18 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             var cb = new NsComboBox() { Widget = opisPola, ToolTip = opisPola.ToolTip };
             cb.DataValueField = opisPola.DataValueField;
             cb.DataTextField = opisPola.DataTextField;
+            
+            if (opisPola.LoadOnDemand)
+            {
+                cb.EnableAutomaticLoadOnDemand = true;
+                cb.WebServiceSettings.Path = opisPola.WebServiceSettingsPath;
+                cb.WebServiceSettings.Method = opisPola.WebServiceSettingsMethod;
+                cb.ShowMoreResultsBox = true;
+                cb.EnableVirtualScrolling = true;
+                cb.OnClientItemsRequesting = "OnClientItemsRequesting";
+                var repository = opisPola.DataSource as RepositoryDataSourceBase;
+                cb.Attributes.Add("data-rodzajProwajdera", repository.RepositoryName);
+            }
 
             return cb;
         }

@@ -69,6 +69,7 @@
     <Compile Include="UserData\UI\Html\DataSources\DataSourceBase.cs" />
     <Compile Include="UserData\UI\Html\DataSources\EnumDataSource.cs" />
     <Compile Include="UserData\UI\Html\DataSources\ObjectDataSource.cs" />
+    <Compile Include="UserData\UI\Html\DataSources\RepositoryDataSourceBase.cs" />
     <Compile Include="UserData\UI\Html\Fluent\DataSources\DataSourceFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Views\DataFormFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Views\ListViewFactory.cs" />

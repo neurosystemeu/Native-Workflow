@@ -139,6 +139,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 radGrid.EnableHeaderContextFilterMenu = true;
             }
 
+            if (opisGrida.AllowFilteringByColumn)
+            {
+                radGrid.AllowFilteringByColumn = true;
+                radGrid.MasterTableView.AllowFilteringByColumn = true;
+            }
+
         }
 
         public static void UtworzKolumny(List<GridViewColumn> kolumny, NsGrid radGrid)
@@ -160,6 +166,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 //{
                 //    boundColumn.DataFormatString = "{0:#.##}";
                 //}
+                if (opisKolumny.ShowColumnFilter)
+                {
+                    boundColumn.AutoPostBackOnFilter = true;
+                    boundColumn.CurrentFilterFunction = GridKnownFunction.Contains;
+                    boundColumn.ShowFilterIcon = false;
+                }
 
                 radGrid.MasterTableView.Columns.Add(boundColumn);
             }

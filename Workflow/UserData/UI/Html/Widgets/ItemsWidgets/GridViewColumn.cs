@@ -8,5 +8,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
 {
     public class GridViewColumn : WidgetBase
     {
+        public bool ShowColumnFilter { get; set; }
     }
 }

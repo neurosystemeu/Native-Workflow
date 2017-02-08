@@ -66,7 +66,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
                     Name = name,
                     Label = name,
                     SelectedValue = new Binding(name),
-                    DataSource = new EnumDataSource(member.PropertyType)
+                    DataSource = new EnumDataSource(member.PropertyType),
+                    ToolTip = tooltip
                 };
             } else
             {
@@ -84,14 +85,27 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             return this;
         }
 
-        public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null, DataSourceBase dataSource= null)
+        public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, 
+            string tooltip = null, 
+            DataSourceBase dataSource= null,
+            bool loadOnDemand = false)
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             var name = member.Name;
-            var cb = new ComboBox();
-            cb.SetDefaultValues();
 
-            var factory = new ComboBoxFactory<T>() { Widget = cb };
+            if (tooltip == null)
+            {
+                tooltip = member.GetPropertyDescription();
+            }
+
+
+            var cb = new ComboBox();
+            cb.Label = name;
+            cb.LoadOnDemand = loadOnDemand;
+            cb.SetDefaultValues();
+            cb.ToolTip = tooltip;
+
+            var factory = new ComboBoxFactory<T>() { Widget = cb  };
             factory.Widget.Name = name;
             cb.DataValueField = "Id";
             factory.ComboBox.SelectedValue = new Binding(name);

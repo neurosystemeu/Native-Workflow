@@ -65,6 +65,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 {
                     kont.Style["display"] = "block";
                     kont.Width = new Unit("99%");
+                    kont.Style[HtmlTextWriterStyle.MarginBottom] = "10px";
                 }
 
                 panelRodzic.Controls.Add(kontrolka);

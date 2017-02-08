@@ -30,9 +30,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
             return ActiveDataForm.AddField(nazwaPola, tooltip);
         }
 
-        public DataFormFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null, DataSourceBase dataSource = null)
+        public DataFormFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola,
+            string tooltip = null,
+            DataSourceBase dataSource = null,
+            bool loadOnDemand = false)
         {
-            ActiveDataForm.AddComboBox(nazwaPola, tooltip, dataSource);
+            ActiveDataForm.AddComboBox(nazwaPola, tooltip, dataSource, loadOnDemand);
             return this;
         }
 

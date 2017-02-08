@@ -19,7 +19,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         {
             var dataWidget = Widget as DataWidget;
             var date = (DateTime?)Binding.PobierzWartosc(dataWidget.Value, dataWidget.DataContext);
-            SelectedDate = date;
+            if (date == DateTime.MinValue)
+            {
+                SelectedDate = DateTime.Now;
+            }
+            else
+            {
+                SelectedDate = date;
+            }
         }
 
         public void SaveFromControl()

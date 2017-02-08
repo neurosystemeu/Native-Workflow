@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.VirtualMachine.Core.Attributes;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
@@ -48,6 +49,20 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             }
 
             return InvokeUserAction(wynikEdycji.ActionName);
+        }
+
+        [Interpret]
+        public void ShowMessage(string text, string endText = "Zakończono proces")
+        {
+            var view=  CreateDataFormView(new object(), text);
+            view.AddAction("Ok");
+            view.AddAction("Zamknij");
+
+            var wynikEdycji = ShowView(view);
+            if (wynikEdycji.ActionName == "Zamknij")
+            {
+                EndProcess(endText);
+            }
         }
 
         public virtual object InvokeUserAction(string actionName)
