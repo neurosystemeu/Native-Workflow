@@ -19,7 +19,7 @@
 
         public string GetReadableName()
         {
-            return Name;
+            return Label?.ToString() ?? Name;
         }
 
         public static string GetReadableName(string name)

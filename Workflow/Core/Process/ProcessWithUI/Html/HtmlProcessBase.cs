@@ -8,7 +8,9 @@ using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.UserDataActions;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using System.Reflection;
+using NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
@@ -21,7 +23,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         private class VisibleProperty
         {
             public PropertyInfo PropertyInfo { get; set; }
-            public int Order { get; set; }
+            public GridViewAttribute ListView { get; set; }
         }
 
         #region Edit data form
@@ -64,11 +66,11 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 if (displays.Any())
                 {
                     var display = displays.First() as DisplayAttribute;
-                    visibleProperty.Add(new VisibleProperty() { Order = display.GetOrder() ?? 0, PropertyInfo = propertyInfo });
+                    //visibleProperty.Add(new VisibleProperty() { ListView = , PropertyInfo = propertyInfo });
                 }
             }
 
-            visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
+            //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
             var df = view.AddDataForm();
             if (title != null)
             {
@@ -102,13 +104,13 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             var properties = type.GetProperties();
             foreach (var propertyInfo in properties)
             {
-                var scaffoldColumns = propertyInfo.GetCustomAttributes(typeof(ScaffoldColumnAttribute));
+                var scaffoldColumns = propertyInfo.GetCustomAttributes(typeof(GridViewAttribute));
                 if (scaffoldColumns.Any())
                 {
-                    var scaffoldColumn = scaffoldColumns.First() as ScaffoldColumnAttribute;
-                    if (scaffoldColumn.Scaffold)
+                    var scaffoldColumn = scaffoldColumns.First() as GridViewAttribute;
+                    if (scaffoldColumn != null)
                     {
-                        visibleProperty.Add(new VisibleProperty() { Order = 1, PropertyInfo = propertyInfo });
+                        visibleProperty.Add(new VisibleProperty() { ListView = scaffoldColumn, PropertyInfo = propertyInfo });
                     }
                 }
             }
@@ -123,10 +125,15 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             }
 
             var grid = df.AddGridView();
+            grid.GridView.GroupingEnabled = true;
             grid.GridView.AllowFilteringByColumn = true;
+            grid.GridView.AllowSorting = true;
             foreach (var property in visibleProperty)
             {
-                grid.Column(property.PropertyInfo.Name).ShowColumnFilter();
+                var column = grid.Column(property.PropertyInfo.Name).Label(property.ListView.Label ?? property.PropertyInfo.Name);
+                column.ShowColumnFilter();
+                column.Column.FilterFunction = property.ListView.FilterFunction;
+                column.Column.DataFormatString = property.ListView.DataFormatString;
             }
 
             view.Grid = grid;

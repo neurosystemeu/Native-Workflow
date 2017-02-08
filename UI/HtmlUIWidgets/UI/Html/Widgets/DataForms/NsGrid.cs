@@ -120,9 +120,17 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             radGrid.ClientSettings.Selecting.AllowRowSelect = true;
             radGrid.MasterTableView.EnableColumnsViewState = false;
 
+            radGrid.AllowSorting = opisGrida.AllowSorting;
             radGrid.AllowPaging = opisGrida.AllowPaging;
             radGrid.PageSize = opisGrida.PageSize;
             radGrid.AllowCustomPaging = opisGrida.AllowPaging;
+            if (opisGrida.GroupingEnabled)
+            {
+                radGrid.ShowGroupPanel = true;
+                radGrid.GroupingEnabled = true;
+                radGrid.GroupPanel.Visible = true;
+                radGrid.ClientSettings.AllowDragToGroup = true;
+            }
 
             if (opisGrida.AllowEditing == true)
             {
@@ -164,12 +172,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 }
                 //if (opisKolumny.NazwaTypuPola == "Decimal")
                 //{
-                //    boundColumn.DataFormatString = "{0:#.##}";
+                boundColumn.DataFormatString = opisKolumny.DataFormatString;
                 //}
                 if (opisKolumny.ShowColumnFilter)
                 {
                     boundColumn.AutoPostBackOnFilter = true;
-                    boundColumn.CurrentFilterFunction = GridKnownFunction.Contains;
+                    boundColumn.CurrentFilterFunction = (Telerik.Web.UI.GridKnownFunction)opisKolumny.FilterFunction;
                     boundColumn.ShowFilterIcon = false;
                 }
 

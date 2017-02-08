@@ -14,8 +14,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets
 
         public List<GridViewColumn> Columns { get; set; }
 
+        public bool AllowSorting { get; set; }
         public bool AllowPaging { get; set; }
         public bool AllowEditing { get; set; }
+        public bool GroupingEnabled { get; set; }
         public int PageSize { get; set; }
         public bool AllowFilteringByColumn { get; set; }
     }
