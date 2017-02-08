@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations
 {
-    public class EditViewAttribute : Attribute
+    public class DataFormViewAttribute : Attribute
     {
         public string Name { get; set; }
     }

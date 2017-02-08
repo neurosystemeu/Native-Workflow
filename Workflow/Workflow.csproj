@@ -66,7 +66,7 @@
     <Compile Include="UserData\Actions\Timeout.cs" />
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleRead.cs" />
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleWrite.cs" />
-    <Compile Include="UserData\UI\Html\DataAnnotations\EditViewAttribute.cs" />
+    <Compile Include="UserData\UI\Html\DataAnnotations\DataFormViewAttribute.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridAggregateFunction.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridKnownFunction.cs" />
     <Compile Include="UserData\UI\Html\DataAnnotations\GridViewAttribute.cs" />

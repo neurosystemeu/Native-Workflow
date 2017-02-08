@@ -132,6 +132,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 radGrid.ClientSettings.AllowDragToGroup = true;
             }
 
+            if (opisGrida.AggregateEnabled)
+            {
+                radGrid.ShowFooter = true;
+                radGrid.MasterTableView.ShowFooter = true;
+            }
+
             if (opisGrida.AllowEditing == true)
             {
                 radGrid.AllowAutomaticUpdates = false;
@@ -165,6 +171,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 boundColumn.HeaderText = opisKolumny.GetReadableName();
                 boundColumn.HeaderTooltip = opisKolumny.ToolTip;
                 boundColumn.FilterControlWidth = new Unit("80px");
+                boundColumn.Aggregate = (Telerik.Web.UI.GridAggregateFunction)opisKolumny.Aggregate;
                 //boundColumn.ColumnEditorID = opisKolumny.ColumnEditorID;
                 if (opisKolumny.Width != null)
                 {

@@ -128,12 +128,21 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             grid.GridView.GroupingEnabled = true;
             grid.GridView.AllowFilteringByColumn = true;
             grid.GridView.AllowSorting = true;
+            grid.GridView.AggregateEnabled = true;
+
             foreach (var property in visibleProperty)
             {
                 var column = grid.Column(property.PropertyInfo.Name).Label(property.ListView.Label ?? property.PropertyInfo.Name);
-                column.ShowColumnFilter();
+                
                 column.Column.FilterFunction = property.ListView.FilterFunction;
+                if (property.ListView.FilterFunction != GridKnownFunction.NoFilter)
+                {
+                    column.ShowColumnFilter();
+                }
+
                 column.Column.DataFormatString = property.ListView.DataFormatString;
+                column.Column.Aggregate = property.ListView.Aggregate;
+                
             }
 
             view.Grid = grid;

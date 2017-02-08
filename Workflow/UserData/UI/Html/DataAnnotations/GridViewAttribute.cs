@@ -14,10 +14,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations
 
         public string Label { get; set; }
         public int Order { get; set; }
-        public bool SortBy { get; set; }
         public GridKnownFunction FilterFunction { get; set; }
-        public bool Group { get; set; }
         public string DataFormatString { get; set; }
-        public string Agregacja { get; set; }
+        public GridAggregateFunction Aggregate { get; set; }
     }
 }
