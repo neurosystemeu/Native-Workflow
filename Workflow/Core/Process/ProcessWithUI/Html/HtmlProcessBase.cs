@@ -24,6 +24,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         {
             public PropertyInfo PropertyInfo { get; set; }
             public GridViewAttribute ListView { get; set; }
+            public DataFormViewAttribute DataFormView { get; set; }
         }
 
         #region Edit data form
@@ -62,11 +63,11 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             var properties = type.GetProperties();
             foreach (var propertyInfo in properties)
             {
-                var displays = propertyInfo.GetCustomAttributes(typeof(DisplayAttribute));
+                var displays = propertyInfo.GetCustomAttributes(typeof(DataFormViewAttribute));
                 if (displays.Any())
                 {
-                    var display = displays.First() as DisplayAttribute;
-                    //visibleProperty.Add(new VisibleProperty() { ListView = , PropertyInfo = propertyInfo });
+                    var display = displays.First() as DataFormViewAttribute;
+                    visibleProperty.Add(new VisibleProperty() { DataFormView = display , PropertyInfo = propertyInfo });
                 }
             }
 

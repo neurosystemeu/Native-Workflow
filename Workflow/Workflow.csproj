@@ -121,6 +121,8 @@
     <Compile Include="UserData\UI\Html\Widgets\DataForms\DateTimePicker.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataForms\Label.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DataForms\TextBox.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Panels\Tab.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Panels\TabsWidget.cs" />
     <Compile Include="UserData\UI\Html\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UserDataBase.cs" />
   </ItemGroup>

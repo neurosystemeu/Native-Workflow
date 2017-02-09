@@ -42,7 +42,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     }
                     else if (wynikListy.ActionName == "Usuń")
                     {
-                        Delete(zaznaczonyObiekt);
+                        Delete(grid);
                     }
                     else if (wynikListy.ActionName == "Zamknij")
                     {
@@ -108,10 +108,30 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         }
 
         [Interpret]
-        public void Delete(string selectedObjectId)
+        public void Delete(GridView grid)
         {
-            DeleteObject(selectedObjectId);
-            ShowMessage("Usunięto obiekt o Id "+ selectedObjectId);
+            DeleteObjects(grid);
+            ShowMessage("Usunięto obiekt o Id "+ grid.SelectedValue?.ToString());
+        }
+
+        public virtual string DeleteObjects(GridView grid)
+        {
+            string zaznaczoneObiekty = "";
+            if (grid.SelectedIds != null && grid.SelectedIds.Any())
+            {
+                foreach (var gridSelectedId in grid.SelectedIds)
+                {
+                    zaznaczoneObiekty += gridSelectedId + ";";
+                    DeleteObject(gridSelectedId);
+                }
+            }
+            else
+            {
+                var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                zaznaczoneObiekty += zaznaczonyObiekt + ";";
+                DeleteObject(zaznaczonyObiekt);
+            }
+            return zaznaczoneObiekty;
         }
 
         public virtual void DeleteObject(string id)

@@ -130,6 +130,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 radGrid.GroupingEnabled = true;
                 radGrid.GroupPanel.Visible = true;
                 radGrid.ClientSettings.AllowDragToGroup = true;
+                radGrid.GroupPanel.Text = "Przeciągnij kolumnę żeby grupować";
             }
 
             if (opisGrida.AggregateEnabled)
