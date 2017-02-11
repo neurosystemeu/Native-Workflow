@@ -70,6 +70,7 @@
     <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonAction.cs" />
     <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonGrupa.cs" />
     <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonTab.cs" />
+    <Compile Include="UI\Html\Widgets\Tabs\NsTabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">

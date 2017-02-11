@@ -23,6 +23,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
             return new ViewBase() {Panel = mainPanel };
         }
 
+        public PanelFactory<T> AddPanel()
+        {
+            var factory = new PanelFactory<T>();
+            mainPanel.Elementy.Add(factory.Panel);
+            return factory;
+        }
+
         public ViewFactory<T> AddPanel(Action<PanelFactory<T>> _panel)
         {
             var factory = new PanelFactory<T>();

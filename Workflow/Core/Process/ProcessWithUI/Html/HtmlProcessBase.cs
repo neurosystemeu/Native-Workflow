@@ -11,6 +11,7 @@ using System.Reflection;
 using NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
@@ -70,23 +71,57 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     visibleProperty.Add(new VisibleProperty() { DataFormView = display , PropertyInfo = propertyInfo });
                 }
             }
+            
+            var tabsName = visibleProperty.Where(w => w.DataFormView.TabName != null)
+                .Select(w => w.DataFormView.TabName).Distinct().ToList();
+            if (tabsName.Count > 1)
+            {
+                var panel = view.AddPanel();
+                var tabsControl = panel.AddTabs();
+                foreach (var tabName in tabsName)
+                {
+                    var tab = tabsControl.AddTab(tabName);
+                    
+                    var tabWidgets = visibleProperty.Where(w => w.DataFormView.TabName == tabName);
+                    var groupsName = tabWidgets.Select(w => w.DataFormView.GroupName).Distinct().ToList();
+                    foreach (var groupName in groupsName)
+                    {
+                        var groupWidgets = tabWidgets.Where(w => w.DataFormView.GroupName == groupName);
+                        var groupPanel = tab.AddPanel();
+                        groupPanel.Label(groupName);
+                        groupPanel.Width("49%");
+                        groupPanel.Float(EnumPanelFloat.Left);
+                        var df = groupPanel.AddDataForm();
+                        foreach (var groupWidget in groupWidgets)
+                        {
+                            df.AddField(groupWidget.PropertyInfo);
+                        }
+                    }
+                    tab.AddPanel(p => p.Clear(EnumPanelClear.Both));
+                }
+                
+            }
+            else
+            {
+                //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
+                var df = view.AddDataForm();
+                if (title != null)
+                {
+                    df.AddLabel(title);
+                }
+                if (description != null)
+                {
+                    df.AddLabel(description);
+                }
 
-            //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
-            var df = view.AddDataForm();
-            if (title != null)
-            {
-                df.AddLabel(title);
-            }
-            if (description != null)
-            {
-                df.AddLabel(description);
+                view.ActiveDataForm = df;
+                foreach (var property in visibleProperty)
+                {
+                    df.AddField(property.PropertyInfo);
+                }
             }
 
-            view.ActiveDataForm = df;
-            foreach (var property in visibleProperty)
-            {
-                df.AddField(property.PropertyInfo);
-            }
+            
 
             return view;
         }

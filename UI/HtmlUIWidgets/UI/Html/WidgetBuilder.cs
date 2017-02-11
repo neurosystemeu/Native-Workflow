@@ -3,10 +3,12 @@ using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Tabs;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 using Telerik.Web.UI;
 using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels.Panel;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
@@ -42,10 +44,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                     GenerujElementy(element, panel, viewer);
                 }
             }
-            //else if (pole is OpisTaby)
-            //{
-            //    GenerujTaby(pole as OpisTaby, panelRodzic);
-            //}
+            else if (widgetBase is TabsWidget)
+            {
+                GenerujTaby((TabsWidget)widgetBase, panelRodzic, viewer);
+            }
             else
             {
                 //mamy kontrolkę - generują ją
@@ -70,6 +72,19 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 
                 panelRodzic.Controls.Add(kontrolka);
             }
+        }
+
+        private void GenerujTaby(TabsWidget widgetBase, NsPanel panelRodzic, IViewer viewer)
+        {
+            var tabs = NsTabs.UtworzTabs(widgetBase);
+            panelRodzic.Controls.Add(tabs.Panel);
+            foreach (var widgetBaseTab in widgetBase.Tabs)
+            {
+                var tab = NsPanel.UtworzPanel(widgetBaseTab);
+                GenerujElementy(widgetBaseTab, tab, viewer);
+                tabs.AddTab(tab);
+            }
+            
         }
 
         #region Tworzenie elementu

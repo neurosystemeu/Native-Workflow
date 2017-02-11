@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels
 {
-    public class Tab : WidgetBase
+    public class Tab : Panel
     {
     }
 }

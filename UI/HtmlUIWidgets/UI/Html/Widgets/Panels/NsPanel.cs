@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using Telerik.Web.UI;
+using Panel = System.Web.UI.WebControls.Panel;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 {
@@ -47,6 +51,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
         internal static NsPanel UtworzPanel(Workflow.UserData.UI.Html.Widgets.Panels.Panel panelWidget)
         {
             var panel = new NsPanel() { Widget = panelWidget };
+            panel.GroupingText = panelWidget.Label?.ToString();
             if (panelWidget.Width != null)
             {
                 panel.Width = new Unit(panelWidget.Width.ToString());
@@ -54,6 +59,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
             if (panelWidget.Height != null)
             {
                 panel.Height = new Unit(panelWidget.Height.ToString());
+            }
+            if (panelWidget.Float != EnumPanelFloat.None)
+            {
+                panel.Style["float"] = panelWidget.Float.ToString().ToLower();
+            }
+            if (panelWidget.Clear != EnumPanelClear.None)
+            {
+                panel.Style["clear"] = panelWidget.Clear.ToString().ToLower();
             }
             //if (opisPanelu is OpisGrupy)
             //{
@@ -74,5 +87,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
 
             return panel;
         }
+
+        
     }
 }
