@@ -23,13 +23,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
 
         #region Controls
 
-        public PanelFactory<T> AddField<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
+        public WidgetBase AddField<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
         {
             var member = (nazwaPola.Body as MemberExpression).Member as System.Reflection.PropertyInfo;
             return AddField(member, tooltip);
         }
 
-        public PanelFactory<T> AddField(System.Reflection.PropertyInfo member, string tooltip = null)
+        public WidgetBase AddField(System.Reflection.PropertyInfo member, string tooltip = null)
         {
             var name = member.Name;
 
@@ -82,7 +82,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             
 
             Panel.Elementy.Add(widget);
-            return this;
+            return widget;
         }
 
         public ComboBoxFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola, 
@@ -123,6 +123,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels
             var factory = new ComboBoxFactory<T>() {Widget = new ComboBox()};
             factory.ComboBox.SetDefaultValues();
             factory.Widget.Name = name;
+            factory.ComboBox.SelectedValue = new Binding(name);
             Panel.Elementy.Add(factory.ComboBox);
             return factory;
         }

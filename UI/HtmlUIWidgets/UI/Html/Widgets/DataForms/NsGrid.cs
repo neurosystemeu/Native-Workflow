@@ -19,6 +19,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         {
             this.NeedDataSource += NsGrid_NeedDataSource;
             this.BatchEditCommand += NsGrid_BatchEditCommand;
+            
         }
 
         public WidgetBase Widget { get; set; }
@@ -81,23 +82,33 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             var rozmiarStrony = PageSize;
             long iloscWszystkichDanych = 0;
 
+            foreach (var column in this.Columns)
+            {
+                var k = column as GridBoundColumn;
+                if (string.IsNullOrEmpty(k.CurrentFilterValue))
+                {
+                    
+                }
+            }
+
             DataSource = dataWidget.GetData(numerAktualnejStrony*rozmiarStrony, rozmiarStrony, sort, filter,
                 out iloscWszystkichDanych);
             VirtualItemCount = (int)iloscWszystkichDanych;
 
         }
 
-        public static NsGrid UtworzGridView(GridView opisPola)
+        public static NsGrid UtworzGridView(GridView opisPola, bool isPostBack)
         {
             var radGrid = new NsGrid() { Widget = opisPola, ToolTip = opisPola.ToolTip };
-            UstawParametryGrida(opisPola, radGrid);
-            UtworzKolumny(opisPola.Columns, radGrid);
             radGrid.AutoGenerateColumns = false;
             radGrid.MasterTableView.DataKeyNames = new string[] { "Id" };
+            UstawParametryGrida(opisPola, radGrid, isPostBack);
+            UtworzKolumny(opisPola.Columns, radGrid, isPostBack);
+
             return radGrid;
         }
 
-        public static void UstawParametryGrida(GridView opisGrida, NsGrid radGrid)
+        public static void UstawParametryGrida(GridView opisGrida, NsGrid radGrid, bool isPostBack)
         {
             radGrid.MasterTableView.CommandItemSettings.SaveChangesText = "Zapisz zmiany";
             radGrid.MasterTableView.CommandItemSettings.CancelChangesText = "Anuluj";
@@ -123,6 +134,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             radGrid.AllowSorting = opisGrida.AllowSorting;
             radGrid.AllowPaging = opisGrida.AllowPaging;
             radGrid.PageSize = opisGrida.PageSize;
+            radGrid.PagerStyle.PageSizes = new int[] { 20, 50, 100, 300, 3000 };
+            radGrid.MasterTableView.PagerStyle.PageSizes = radGrid.PagerStyle.PageSizes;
             radGrid.AllowCustomPaging = opisGrida.AllowPaging;
             if (opisGrida.GroupingEnabled)
             {
@@ -162,7 +175,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         }
 
-        public static void UtworzKolumny(List<GridViewColumn> kolumny, NsGrid radGrid)
+        public static void UtworzKolumny(List<GridViewColumn> kolumny, NsGrid radGrid, bool isPostBack)
         {
             foreach (var opisKolumny in kolumny)
             {
@@ -187,9 +200,30 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                     boundColumn.AutoPostBackOnFilter = true;
                     boundColumn.CurrentFilterFunction = (Telerik.Web.UI.GridKnownFunction)opisKolumny.FilterFunction;
                     boundColumn.ShowFilterIcon = false;
+
+                    if (isPostBack == false)
+                    {
+                        boundColumn.CurrentFilterValue = opisKolumny.FilterDefaultValue;
+                        if (string.IsNullOrEmpty(opisKolumny.FilterDefaultValue) == false)
+                        {
+                            var filtr = "([" + opisKolumny.Name + "] = '" + opisKolumny.FilterDefaultValue + "')";
+
+                            if (string.IsNullOrEmpty(radGrid.MasterTableView.FilterExpression))
+                            {
+                                radGrid.MasterTableView.FilterExpression = filtr;
+                            }
+                            else
+                            {
+                                radGrid.MasterTableView.FilterExpression = radGrid.MasterTableView.FilterExpression +
+                                                                           " AND " +
+                                                                           filtr;
+                            }
+                        }
+                    }
                 }
 
                 radGrid.MasterTableView.Columns.Add(boundColumn);
+                
             }
         }
     }

@@ -9,6 +9,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
@@ -25,9 +26,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views
             return this;
         }
 
-        public PanelFactory<T> AddField<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
+        public WidgetBase AddField<TD>(Expression<Func<T, TD>> nazwaPola, string tooltip = null)
         {
-            return ActiveDataForm.AddField(nazwaPola, tooltip);
+            return ActiveDataForm.AddField(nazwaPola, tooltip); ;
         }
 
         public DataFormFactory<T> AddComboBox<TD>(Expression<Func<T, TD>> nazwaPola,

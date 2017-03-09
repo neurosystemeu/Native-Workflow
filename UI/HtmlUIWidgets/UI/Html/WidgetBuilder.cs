@@ -18,13 +18,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 {
     public class WidgetBuilder
     {
-        public void GenerateView(NsPanel panel, ViewBase view, IViewer viewer)
+        public void GenerateView(NsPanel panel, ViewBase view, IViewer viewer, bool isPostBack)
         {
             panel.Widget = view.Panel;
-            GenerujElementy(view.Panel, panel, viewer);
+            GenerujElementy(view.Panel, panel, viewer, isPostBack);
         }
 
-        protected void GenerujElementy(WidgetBase widgetBase, NsPanel panelRodzic, IViewer viewer)
+        protected void GenerujElementy(WidgetBase widgetBase, NsPanel panelRodzic, IViewer viewer, bool isPostBack)
         {
             if (widgetBase is Action)
             {
@@ -41,12 +41,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                 panelRodzic.Controls.Add(panel);
                 foreach (var element in oPanel.Elementy)
                 {
-                    GenerujElementy(element, panel, viewer);
+                    GenerujElementy(element, panel, viewer, isPostBack);
                 }
             }
             else if (widgetBase is TabsWidget)
             {
-                GenerujTaby((TabsWidget)widgetBase, panelRodzic, viewer);
+                GenerujTaby((TabsWidget)widgetBase, panelRodzic, viewer, isPostBack);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
                     panelRodzic.Controls.Add(label);
                 }
 
-                var kontrolka = GenerujKontrolke(widgetBase, panelRodzic, viewer);
+                var kontrolka = GenerujKontrolke(widgetBase, panelRodzic, viewer, isPostBack);
 
                 var kont = kontrolka as WebControl;
                 if (kont != null)
@@ -74,14 +74,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             }
         }
 
-        private void GenerujTaby(TabsWidget widgetBase, NsPanel panelRodzic, IViewer viewer)
+        private void GenerujTaby(TabsWidget widgetBase, NsPanel panelRodzic, IViewer viewer, bool isPostBack)
         {
             var tabs = NsTabs.UtworzTabs(widgetBase);
             panelRodzic.Controls.Add(tabs.Panel);
             foreach (var widgetBaseTab in widgetBase.Tabs)
             {
                 var tab = NsPanel.UtworzPanel(widgetBaseTab);
-                GenerujElementy(widgetBaseTab, tab, viewer);
+                GenerujElementy(widgetBaseTab, tab, viewer, isPostBack);
                 tabs.AddTab(tab);
             }
             
@@ -108,7 +108,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             return akcja;
         }
 
-        protected Control GenerujKontrolke(WidgetBase widget, NsPanel panel, IViewer viewer)
+        protected Control GenerujKontrolke(WidgetBase widget, NsPanel panel, IViewer viewer, bool isPostBack)
         {
             if (widget is ComboBox)
             {
@@ -147,7 +147,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 
             if (widget is UserData.UI.Html.Widgets.ItemsWidgets.GridView)
             {
-                return NsGrid.UtworzGridView((UserData.UI.Html.Widgets.ItemsWidgets.GridView)widget);
+                return NsGrid.UtworzGridView((UserData.UI.Html.Widgets.ItemsWidgets.GridView)widget, isPostBack);
             }
 
             if (widget is UserData.UI.Html.Widgets.DataForms.CheckBox)
@@ -165,7 +165,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             //    return UtworzEdytor((OpisEdytora)widget);
             //}
 
-            return NsTextBox.UtworzTextBox((TextBox) widget);
+            var tb= NsTextBox.UtworzTextBox((TextBox) widget);
+            if(string.IsNullOrEmpty(widget.Height?.ToString()) == false)
+            {
+                tb.TextMode = InputMode.MultiLine;
+                tb.Height = new Unit(widget.Height.ToString());
+            }
+
+            return tb;
         }
 
        

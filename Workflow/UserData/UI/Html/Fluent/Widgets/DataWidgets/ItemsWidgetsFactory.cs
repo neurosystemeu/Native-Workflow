@@ -52,5 +52,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets
             return this;
         }
 
+        //AutoLoadDataSource
+        public ItemsWidgetsFactory<T> LoadOnDemand(bool loadOnDemand)
+        {
+            ItemsWidget.LoadOnDemand = loadOnDemand;
+            return this;
+        }
     }
 }

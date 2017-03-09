@@ -44,6 +44,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels
             return null;
         }
 
+        /// <summary>
+        /// Zwraca pierwszy element typu T z elementów panelu (oraz pod paneli)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public T GetWidgetByType<T>() where T: WidgetBase 
         {
             foreach (var widgetBase in Elementy)
