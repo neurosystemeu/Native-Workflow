@@ -60,7 +60,7 @@ namespace HtmlUIWeb
                 });
                 pan.AddDataForm(p =>
                 {
-                    p.AddField(pp => pp.IloscLat).Height("400px").Width("50%");
+                    //p.AddField(pp => pp.IloscLat).Height("400px").Width("50%");
                     //p.AddGridView(grid =>
                     //{
                     //    grid.Column(k => k.Nazwisko);
@@ -71,7 +71,7 @@ namespace HtmlUIWeb
             });
 
             var builder = new WidgetBuilder();
-            builder.GenerateView(panel, view.GetView(), this);
+            builder.GenerateView(panel, view.GetView(), this, false);
             panel.LoadToControl();
 
         }

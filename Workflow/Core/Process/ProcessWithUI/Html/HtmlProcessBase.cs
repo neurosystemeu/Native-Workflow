@@ -29,11 +29,41 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             public PropertyInfo PropertyInfo { get; set; }
             public GridViewAttribute ListView { get; set; }
             public DataFormViewAttribute DataFormView { get; set; }
+
         }
+
+        public HtmlProcessBase()
+        {
+            UserActions = new List<string>();
+        }
+
+        #region Propercje
+
+        /// <summary>
+        /// Lista dodatkowych akcji użytkownika które mają być obsługiwan
+        /// </summary>
+        public List<string> UserActions { get; set; }
+
+        /// <summary>
+        /// Funkcja użytownika do obsługi wykonania funkcji użytkownika
+        /// (wywoływana przez proces w momenci gdy użytkownik kliknie na funkcję nie standardową.
+        /// Wykonywanie będzie przeniesione na zewnątrz z informacją o nazwie funkcji)
+        /// </summary>
+        public Func<string, object> PerformUserAction;
+
+        #endregion
 
         #region Edit data form
 
-        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataFormView<T>(string title = null, string description = null)
+        /// <summary>
+        /// Tworzy widok dla trypu edycji na podstawie typu
+        /// Tworzy panel który może być łączony z innymi panelami
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(string title = null, string description = null)
         {
             var view = new UserData.UI.Html.Fluent.Views.DataFormFactory<T>();
             var df = view.AddDataForm();
@@ -51,12 +81,13 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         }
 
         /// <summary>
-        /// Generuje data form dla obiektu
+        /// Tworzy fabrykę widoku edycji dla edycji na podstawie obiektu (tworzy widok na podstawie danych w moduelu typu T)
+        /// Tworzy panel który może być łączony z innymi panelami
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="biznesObject"></param>
         /// <returns></returns>
-        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataFormView<T>(T biznesObject, string title = null, string description= null)
+        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(T biznesObject, string title = null, string description= null)
         {
             var view = new UserData.UI.Html.Fluent.Views.DataFormFactory<T>();
             view.DataContext(biznesObject);
@@ -144,7 +175,14 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region List -> grid
 
-        public virtual ListViewFactory<T> CreateGridView<T>(string title = null, string description = null)
+        /// <summary>
+        /// Tworzy widok listy
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public virtual ListViewFactory<T> CreateGrid<T>(string title = null, string description = null)
         {
             var view = new ListViewFactory<T>();
 
@@ -205,13 +243,28 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region DataSources
 
+        /// <summary>
+        /// Zwraca zródło danych w zależności od typu
+        /// </summary>
+        /// <param name="datasourceType"></param>
+        /// <returns></returns>
         protected virtual DataSourceBase GetDataSourceByType(Type datasourceType)
         {
             return null;
         }
 
+        
+
         #endregion
 
+        #region UI method
+
+        /// <summary>
+        /// Metoda służy do 'wyświetlania' widoku
+        /// (w zależności od implemantacji np. 
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
         [Interpret]
         public HtmlRead ShowView(ViewFaktoryBase view)
         {
@@ -223,5 +276,40 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             Hibernate();
             return UserDataInput as HtmlRead;
         }
+
+
+        /// <summary>
+        /// Wyświetla komunikat
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="endText"></param>
+        [Interpret]
+        public void ShowMessage(string text, string endText = "Zakończono proces")
+        {
+            var view = CreateDataForm(new object(), text);
+            view.AddAction("Ok");
+            view.AddAction("Zamknij");
+
+            var wynikEdycji = ShowView(view);
+            if (wynikEdycji.ActionName == "Zamknij")
+            {
+                EndProcess(endText);
+            }
+        }
+
+        #endregion
+
+        #region UI funkcje zewnętrzne
+
+        public virtual object InvokeUserAction(string actionName)
+        {
+            if (PerformUserAction != null)
+            {
+                return PerformUserAction(actionName);
+            }
+            return null;
+        }
+
+        #endregion
     }
 }

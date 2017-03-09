@@ -7,24 +7,32 @@ using NeuroSystem.VirtualMachine.Core.Attributes;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
 using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
-    public class EditProcess<T> : HtmlProcessBase
+    /// <summary>
+    /// Proces typowany - obsługujący jakiś proces dla danego typu (np. lista lub edycja)
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class HtmlProcessBase<T> : HtmlProcessBase
     {
-        public EditProcess()
+        public override object Start()
         {
-            UserActions = new List<string>();
+            if (ProcesInput is T)
+            {
+                return PodProcesEdycji();
+            }
+            else
+            {
+                return PodProcesListy();
+            }
         }
 
-        #region properce
-        public List<string> UserActions { get; set; }
+        #region Pod procesy
 
-        public Func<string, object> PerformUserAction;
-        #endregion
-
-
-        public override object Start()
+        [Interpret]
+        public object PodProcesEdycji()
         {
             var obiekt = (T)ProcesInput;
             var widokEdycji = CreateEditView(obiekt);
@@ -52,27 +60,121 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         }
 
         [Interpret]
-        public void ShowMessage(string text, string endText = "Zakończono proces")
+        public object PodProcesDodawaniaNowegoObiektu()
         {
-            var view=  CreateDataFormView(new object(), text);
-            view.AddAction("Ok");
-            view.AddAction("Zamknij");
+            var obiekt = CreateNewObject();
+            var widokEdycji = CreateEditView(obiekt);
+            widokEdycji.AddAction("Dodaj");
+            widokEdycji.AddAction("Anuluj");
 
-            var wynikEdycji = ShowView(view);
-            if (wynikEdycji.ActionName == "Zamknij")
+            var wynikEdycji = ShowView(widokEdycji);
+            if (wynikEdycji.ActionName == "Dodaj")
             {
-                EndProcess(endText);
+                UpdateObject(obiekt);
+                return "Dodano obiekt " + obiekt;
+            }
+            else
+            {
+                return "Anulowano dodawanie obiektu " + obiekt;
             }
         }
 
-        public virtual object InvokeUserAction(string actionName)
+        [Interpret]
+        public object PodProcesListy()
         {
-            if (PerformUserAction != null)
+            while (true)
             {
-                return PerformUserAction(actionName);
+                var widokListy = CreateGrid<T>(
+                    "Lista obiektów typu '" + typeof(T).Name + "'",
+                    typeof(T).GetClassDescription());
+                widokListy.DataSource(GetDataSource());
+                generateGridMenu(widokListy);
+
+                var wynikListy = ShowView(widokListy);
+                var grid = wynikListy.Panel.GetWidgetByType<GridView>();
+
+                if (wynikListy.ActionName == "Dodaj nowy")
+                {
+                    AddNewObject();
+                }
+                else
+                {
+                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                    if (zaznaczonyObiekt == null)
+                    {
+                        //continue;
+                    }
+                    else if (wynikListy.ActionName == "Edytuj")
+                    {
+                        Edit(zaznaczonyObiekt);
+                    }
+                    else if (wynikListy.ActionName == "Usuń")
+                    {
+                        Delete(grid);
+                    }
+                    else if (wynikListy.ActionName == "Zamknij")
+                    {
+                        EndProcess("Zakończono listę " + nameof(T));
+                    }
+                }
             }
             return null;
         }
+
+        [Interpret]
+        public void Edit(string selectedObjectId)
+        {
+            var obiekt = GetObjectById(selectedObjectId);
+            var widokEdycji = CreateEditView(obiekt);
+            widokEdycji.AddAction("Zapisz");
+            widokEdycji.AddAction("Anuluj");
+
+            var wynikEdycji = ShowView(widokEdycji);
+            if (wynikEdycji.ActionName == "Zapisz")
+            {
+                obiekt = (T)wynikEdycji.DataContext;
+
+                UpdateObject(obiekt);
+                ShowMessage("Zapisano zmiany w " + obiekt);
+            }
+        }
+
+
+
+
+        [Interpret]
+        public void AddNewObject()
+        {
+            var obiekt = CreateNewObject();
+            var widokEdycji = CreateEditView(obiekt);
+            widokEdycji.AddAction("Dodaj");
+            widokEdycji.AddAction("Anuluj");
+
+            var wynikEdycji = ShowView(widokEdycji);
+            if (wynikEdycji.ActionName == "Dodaj")
+            {
+                obiekt = (T)wynikEdycji.DataContext;
+
+                AddObject(obiekt);
+                wynikEdycji.Panel?.SetDataContext(null);
+                obiekt = default(T); //null'uje obiekt żeby go nie serializować
+                ShowMessage("Dodano nowy obiektu " + obiekt);
+            }
+        }
+
+        [Interpret]
+        public void Delete(GridView grid)
+        {
+            DeleteObjects(grid);
+            ShowMessage("Usunięto obiekt o Id " + grid.SelectedValue?.ToString());
+        }
+
+        #endregion
+
+
+        #region Funkcje dla typu T (Źródłą danych i UI)
+
+        #region Źródło danych i DAL
 
         public virtual DataSourceBase GetDataSource()
         {
@@ -85,9 +187,110 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             ds.Update(obiekt);
         }
 
+        public virtual string DeleteObjects(GridView grid)
+        {
+            string zaznaczoneObiekty = "";
+            if (grid.SelectedIds != null && grid.SelectedIds.Any())
+            {
+                foreach (var gridSelectedId in grid.SelectedIds)
+                {
+                    zaznaczoneObiekty += gridSelectedId + ";";
+                    DeleteObject(gridSelectedId);
+                }
+            }
+            else
+            {
+                var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                zaznaczoneObiekty += zaznaczonyObiekt + ";";
+                DeleteObject(zaznaczonyObiekt);
+            }
+            return zaznaczoneObiekty;
+        }
+
+        public virtual void DeleteObject(string id)
+        {
+            var ds = GetDataSource();
+            ds.DeleteById(id);
+        }
+
+        public virtual T GetObjectById(string id)
+        {
+            var ds = GetDataSource();
+            return (T)ds.GetObjectById(id, true);
+        }
+
+        public virtual T CreateNewObject()
+        {
+            var ds = GetDataSource();
+            return (T)ds.CreateNewObject();
+        }
+
+        public virtual void AddObject(object newObject)
+        {
+            var ds = GetDataSource();
+            ds.Add(newObject);
+        }
+
+        #endregion
+
+        #region UI
+
+        /// <summary>
+        /// Tworzy widok edycji
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public virtual DataFormFactory<T> CreateEditView(T obj)
         {
-            return CreateDataFormView(obj, "Edycja obiektu", this.GetType().GetClassDescription());
+            var editView = CreateDataForm(obj, "Edycja obiektu", this.GetType().GetClassDescription());
+            return editView;
         }
+
+        /// <summary>
+        /// Tworzy widok grida/listy
+        /// </summary>
+        /// <returns></returns>
+        public virtual ListViewFactory<T> CreateGridView()
+        {
+            var widokListy = CreateGrid<T>(
+                    "Lista obiektów typu '" + typeof(T).Name + "'",
+                    typeof(T).GetClassDescription());
+            widokListy.DataSource(GetDataSource());
+            generateGridMenu(widokListy);
+
+            return widokListy;
+        }
+
+        /// <summary>
+        /// Dodaje menu użytkownika do widoku
+        /// </summary>
+        /// <param name="widokListy"></param>
+        protected void generateUserMenu(ViewFactory<T> widokListy)
+        {
+            //dodaje akce użytkownika
+            foreach (var userAction in UserActions)
+            {
+                widokListy.AddAction(userAction);
+            }
+        }
+
+        /// <summary>
+        /// Dodaje menu do widoku grida
+        /// </summary>
+        /// <param name="widokListy"></param>
+        protected void generateGridMenu(ViewFactory<T> widokListy)
+        {
+            widokListy.AddAction("Edytuj");
+            widokListy.AddAction("Dodaj nowy");
+            widokListy.AddAction("Usuń");
+            widokListy.AddAction("Zamknij");
+
+            generateUserMenu(widokListy);
+        }
+
+        #endregion
+
+        #endregion
+
     }
 }

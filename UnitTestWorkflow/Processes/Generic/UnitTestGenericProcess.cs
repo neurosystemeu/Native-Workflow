@@ -14,7 +14,7 @@ namespace UnitTestWorkflow.Processes.Generic
         public void TestMethodEditProcess()
         {
             var processId = Guid.NewGuid();
-            var newProcess = new EditProcess<Person>(){ Id = processId };
+            var newProcess = new HtmlProcessBase<Person>(){ Id = processId };
             newProcess.ProcesInput = new Person();
             var dal = new WorkflowEngineDAL();
             var engine = new WorkflowEngine(dal);
@@ -28,7 +28,7 @@ namespace UnitTestWorkflow.Processes.Generic
         public void TestMethodListProcess()
         {
             var processId = Guid.NewGuid();
-            var newProcess = new ListProcess<Person>() { Id = processId };
+            var newProcess = new HtmlProcessBase<Person>() { Id = processId };
             var dal = new WorkflowEngineDAL();
             var engine = new WorkflowEngine(dal);
 

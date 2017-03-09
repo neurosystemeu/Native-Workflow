@@ -44,7 +44,7 @@ namespace UnitTestWorkflow.UI.Fluent
                 });
                 panel.AddDataForm(p =>
                 {
-                    p.AddField(pp => pp.Age).Height("400px").Width("50%").WidthBinding("Szerokosc");
+                    //p.AddField(pp => pp.Age).Height("400px").Width("50%").WidthBinding("Szerokosc");
                     p.AddGridView(grid =>
                     {
                         grid.Column(k => k.Name);

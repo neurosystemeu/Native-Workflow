@@ -30,14 +30,14 @@ namespace UnitTestWorkflow.Processes.UI.BW
         public string NazwaDokumentacji { get; set; }
     }
 
-    public class ZapiszMailaJakoDokumentacjeProces : EditProcess<DaneZapiszMailaJakoFokumentacje>
+    public class ZapiszMailaJakoDokumentacjeProces : HtmlProcessBase<DaneZapiszMailaJakoFokumentacje>
     {
         public DaneZapiszMailaJakoFokumentacje Dane { get; set; }
 
         public override object Start()
         {
 
-            var formatka = this.CreateDataFormView<DaneZapiszMailaJakoFokumentacje>(Dane);//new FormatkaDynamiczna<DaneZapiszMailaJakoFokumentacje>(Dane)
+            var formatka = this.CreateDataForm<DaneZapiszMailaJakoFokumentacje>(Dane);//new FormatkaDynamiczna<DaneZapiszMailaJakoFokumentacje>(Dane)
 
             formatka.AddAction("Dalej");
             formatka.AddAction("Anuluj");
