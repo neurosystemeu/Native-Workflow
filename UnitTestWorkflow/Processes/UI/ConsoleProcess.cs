@@ -8,7 +8,6 @@ namespace UnitTestWorkflow.Processes
 {
     public class ConsoleProcess : NeuroSystem.Workflow.Core.Process.ProcessWithUI.Console.ConsoleProcessBase
     {
-        public string Name { get; set; }
         public string Age { get; set; }
 
         public override object Start()

@@ -83,7 +83,7 @@ namespace NeuroSystem.Workflow.Engine
         public void RunEngineAsync()
         {
             this.state = EnumWorkfloEngineState.Started;
-            var engineThread = new Thread(executionThread);
+            engineThread = new Thread(executionThread);
             engineThread.Start(this);
         }
 

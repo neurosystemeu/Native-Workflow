@@ -253,7 +253,10 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             return null;
         }
 
-        
+        protected DataSourceBase GetDataSource<T>()
+        {
+            return GetDataSourceByType(typeof(T));
+        }
 
         #endregion
 

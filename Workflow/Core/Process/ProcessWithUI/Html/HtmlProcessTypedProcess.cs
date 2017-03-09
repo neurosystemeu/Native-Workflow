@@ -87,7 +87,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 var widokListy = CreateGrid<T>(
                     "Lista obiektów typu '" + typeof(T).Name + "'",
                     typeof(T).GetClassDescription());
-                widokListy.DataSource(GetDataSource());
+                widokListy.DataSource(GetProcessDataSource());
                 generateGridMenu(widokListy);
 
                 var wynikListy = ShowView(widokListy);
@@ -118,7 +118,6 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     }
                 }
             }
-            return null;
         }
 
         [Interpret]
@@ -176,14 +175,18 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         #region Źródło danych i DAL
 
-        public virtual DataSourceBase GetDataSource()
+        /// <summary>
+        /// Zwraca główne źródło danych procesu
+        /// </summary>
+        /// <returns></returns>
+        protected virtual DataSourceBase GetProcessDataSource()
         {
-            return null;
+            return GetDataSource<T>();
         }
 
         public virtual void UpdateObject(T obiekt)
         {
-            var ds = GetDataSource();
+            var ds = GetProcessDataSource();
             ds.Update(obiekt);
         }
 
@@ -209,25 +212,25 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 
         public virtual void DeleteObject(string id)
         {
-            var ds = GetDataSource();
+            var ds = GetProcessDataSource();
             ds.DeleteById(id);
         }
 
         public virtual T GetObjectById(string id)
         {
-            var ds = GetDataSource();
+            var ds = GetProcessDataSource();
             return (T)ds.GetObjectById(id, true);
         }
 
         public virtual T CreateNewObject()
         {
-            var ds = GetDataSource();
+            var ds = GetProcessDataSource();
             return (T)ds.CreateNewObject();
         }
 
         public virtual void AddObject(object newObject)
         {
-            var ds = GetDataSource();
+            var ds = GetProcessDataSource();
             ds.Add(newObject);
         }
 
@@ -255,7 +258,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             var widokListy = CreateGrid<T>(
                     "Lista obiektów typu '" + typeof(T).Name + "'",
                     typeof(T).GetClassDescription());
-            widokListy.DataSource(GetDataSource());
+            widokListy.DataSource(GetProcessDataSource());
             generateGridMenu(widokListy);
 
             return widokListy;
