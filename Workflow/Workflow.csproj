@@ -56,7 +56,7 @@
     <Compile Include="Core\Process\ProcessBase.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Console\ConsoleProcessBase.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Html\AddProcess.cs" />
-    <Compile Include="Core\Process\ProcessWithUI\Html\EditProcess.cs" />
+    <Compile Include="Core\Process\ProcessWithUI\Html\HtmlProcessTypedProcess.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Html\HtmlProcessBase.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Html\ListProcess.cs" />
     <Compile Include="Engine\DAL\ProcessContainer.cs" />
