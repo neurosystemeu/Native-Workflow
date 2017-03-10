@@ -110,7 +110,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     }
                     else if (wynikListy.ActionName == "Usuń")
                     {
-                        Delete(grid);
+                        DeleteFromGrid(grid);
                     }
                     else if (wynikListy.ActionName == "Zamknij")
                     {
@@ -138,7 +138,50 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             }
         }
 
+        [Interpret]
+        public object PodProcesTreeView()
+        {
+            while (true)
+            {
+                var widokTreeView = new ViewFactory<T>();
+                var df = widokTreeView.AddDataForm();
+                var tv = df.AddTreeView();
+                tv.DataSource(GetProcessDataSource());
+                tv.TreeView.DataIdField = "Id";
+                tv.TreeView.DataValueField = "Id";
+                tv.TreeView.DataFieldParentId = "RodzicId";
 
+                generateGridMenu(widokTreeView);
+
+                var wynikTreeView = ShowView(widokTreeView);
+
+                if (wynikTreeView.ActionName == "Dodaj nowy")
+                {
+                    AddNewObject();
+                }
+                else
+                {
+                    var grid = wynikTreeView.Panel.GetWidgetByType<TreeView>();
+                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                    if (zaznaczonyObiekt == null)
+                    {
+                        //continue;
+                    }
+                    else if (wynikTreeView.ActionName == "Edytuj")
+                    {
+                        Edit(zaznaczonyObiekt);
+                    }
+                    else if (wynikTreeView.ActionName == "Usuń")
+                    {
+                        DeleteObject(zaznaczonyObiekt);
+                    }
+                    else if (wynikTreeView.ActionName == "Zamknij")
+                    {
+                        EndProcess("Zakończono listę " + nameof(T));
+                    }
+                }
+            }
+        }
 
 
         [Interpret]
@@ -162,7 +205,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         }
 
         [Interpret]
-        public void Delete(GridView grid)
+        public void DeleteFromGrid(GridView grid)
         {
             DeleteObjects(grid);
             ShowMessage("Usunięto obiekt o Id " + grid.SelectedValue?.ToString());

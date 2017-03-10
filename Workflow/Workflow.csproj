@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\DAL\DebugProcesContainer.cs" />
     <Compile Include="Core\EnumWorkfloEngineState.cs" />
     <Compile Include="Core\Extensions\ObjectExtensions.cs" />
     <Compile Include="Core\Extensions\VirtualMachineExtensions.cs" />

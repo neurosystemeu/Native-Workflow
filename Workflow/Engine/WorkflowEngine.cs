@@ -24,7 +24,8 @@ namespace NeuroSystem.Workflow.Engine
 
         private WorkflowEngineDAL dal;
         private EnumWorkfloEngineState state;
-        private Thread engineThread;
+        private static List<DebugProcesContainer> debugProcesess = new List<DebugProcesContainer>();
+        
 
         #endregion
 
@@ -32,45 +33,94 @@ namespace NeuroSystem.Workflow.Engine
 
         public ProcessContainer AddProcess(ProcessBase process)
         {
-            process.Status = EnumProcessStatus.WaitingForExecution;
-            var wm = new VirtualMachine.VirtualMachine();
-            //dodaje tylko do kolejki uruchomienia - nie uruchamiam w tym wątku
-            wm.Start(process, doExecuting: false);
-            var xml = wm.Serialize();
+            if (process.Debug == true)
+            {
+                //uruchamiamy proces w trybie debug
+                var kontenerProcesu = new DebugProcesContainer() {Id = process.Id};
+                kontenerProcesu.Process = process;
+                kontenerProcesu.Thread = new Thread(debugThread);
+                kontenerProcesu.Thread.Name = "proces " + process.Id;
+                process.Status = EnumProcessStatus.WaitingForExecution;
+                debugProcesess.Add(kontenerProcesu);
 
-            var serializedProcess = new ProcessContainer();
-            serializedProcess.Id = process.Id;
-            serializedProcess.Status = process.Status;
-            serializedProcess.ExecutionDate = process.ExecutionDate;
-            serializedProcess.VirtualMachineXml = xml;
+                kontenerProcesu.Thread.Start(kontenerProcesu);
+                return kontenerProcesu;
+            }
+            else
+            {
+                process.Status = EnumProcessStatus.WaitingForExecution;
+                var wm = new VirtualMachine.VirtualMachine();
+                //dodaje tylko do kolejki uruchomienia - nie uruchamiam w tym wątku
+                wm.Start(process, doExecuting: false);
+                var xml = wm.Serialize();
 
-            dal.AddProcess(serializedProcess);
-            return serializedProcess;
+                var serializedProcess = new ProcessContainer();
+                serializedProcess.Id = process.Id;
+                serializedProcess.Status = process.Status;
+                serializedProcess.ExecutionDate = process.ExecutionDate;
+                serializedProcess.VirtualMachineXml = xml;
+
+                dal.AddProcess(serializedProcess);
+                return serializedProcess;
+            }
+        }
+
+        private static void debugThread(object processContainer)
+        {
+            var proces = ((DebugProcesContainer) processContainer).Process;
+            var wynikProcesu = proces.Start();
+
+            proces.Status = EnumProcessStatus.Executed;
         }
 
         public EnumProcessStatus GetProcessStatus(Guid processId)
         {
+            var procesDEbug = debugProcesess.FirstOrDefault(p => p.Id == processId);
+            if (procesDEbug != null)
+            {
+                return procesDEbug.Process.Status;
+            }
+
             return dal.GetProcessStatus(processId);
         }
 
         public void SetUserData(Guid processId, object userData)
         {
-            var ser = dal.GetSerializedProcess(processId);
-            var vm = ser.GetVirtualMachine();
-            var process = vm.GetProcess();
-            process.UserDataInput = userData;
-            process.Status = EnumProcessStatus.WaitingForExecution;
-            ser.SetProcessData(process);
-            ser.SetVirtualMachine(vm);
-            dal.Update(ser);
+            var processContainer = debugProcesess.FirstOrDefault(p => p.Id == processId);
+            if(processContainer != null)
+            { 
+                var proces = processContainer.Process;
+                proces.UserDataInput = userData;
+                proces.Status = EnumProcessStatus.WaitingForExecution;
+            }
+            else
+            {
+                var ser = dal.GetSerializedProcess(processId);
+                var vm = ser.GetVirtualMachine();
+                var process = vm.GetProcess();
+                process.UserDataInput = userData;
+                process.Status = EnumProcessStatus.WaitingForExecution;
+                ser.SetProcessData(process);
+                ser.SetVirtualMachine(vm);
+                dal.Update(ser);
+            }
         }
 
         public ProcessBase GetProcess(Guid processId)
         {
-            var ser = dal.GetSerializedProcess(processId);
-            var vm = ser.GetVirtualMachine();
+            var processContainer = debugProcesess.FirstOrDefault(p => p.Id == processId);
+            if (processContainer != null)
+            {
+                var proces = processContainer.Process;
+                return proces;
+            }
+            else
+            {
+                var ser = dal.GetSerializedProcess(processId);
+                var vm = ser.GetVirtualMachine();
 
-            return vm.GetProcess();
+                return vm.GetProcess();
+            }
         }
 
         #endregion
@@ -83,7 +133,7 @@ namespace NeuroSystem.Workflow.Engine
         public void RunEngineAsync()
         {
             this.state = EnumWorkfloEngineState.Started;
-            engineThread = new Thread(executionThread);
+            var engineThread = new Thread(executionThread);
             engineThread.Start(this);
         }
 

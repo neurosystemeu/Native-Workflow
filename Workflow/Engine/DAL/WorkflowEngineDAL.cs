@@ -15,7 +15,7 @@ namespace NeuroSystem.Workflow.Engine.DAL
         }
 
         private Dictionary<Guid, ProcessContainer> serializedProcesses;
-
+        
         public virtual List<ProcessContainer> GetSerializedProcessesToResume()
         {
             var date = DateTime.Now;
@@ -33,7 +33,7 @@ namespace NeuroSystem.Workflow.Engine.DAL
 
             return list;
         }
-
+        
         public virtual void Update(ProcessContainer process)
         {
             
@@ -48,6 +48,7 @@ namespace NeuroSystem.Workflow.Engine.DAL
         {
             return serializedProcesses[processId].Status;
         }
+
 
         public virtual ProcessContainer GetSerializedProcess(Guid processId)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NeuroSystem.VirtualMachine.Core.Attributes;
 
@@ -66,6 +67,11 @@ namespace NeuroSystem.Workflow.Core.Process
         public object UserDataInput { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// Czy proces w trybie debug
+        /// </summary>
+        public bool Debug { get; set; }
         #endregion
 
         #region Method
@@ -87,7 +93,23 @@ namespace NeuroSystem.Workflow.Core.Process
         [Interpret]
         public void Hibernate()
         {
-            NeuroSystem.VirtualMachine.VirtualMachine.Hibernate();
+            if (Debug == false)
+            {
+                NeuroSystem.VirtualMachine.VirtualMachine.Hibernate();
+            }
+            else
+            {
+                while (true)
+                {
+                    Thread.Sleep(1000);
+                    if (Status == EnumProcessStatus.Error ||
+                        Status == EnumProcessStatus.Executed ||
+                        Status == EnumProcessStatus.WaitingForExecution)
+                    {
+                        return;
+                    }
+                }
+            }
         }
 
         [Interpret]
