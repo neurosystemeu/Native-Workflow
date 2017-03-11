@@ -82,14 +82,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             var rozmiarStrony = PageSize;
             long iloscWszystkichDanych = 0;
 
-            foreach (var column in this.Columns)
-            {
-                var k = column as GridBoundColumn;
-                if (string.IsNullOrEmpty(k.CurrentFilterValue))
-                {
+            //foreach (var column in this.Columns)
+            //{
+            //    var k = column as GridBoundColumn;
+            //    if (string.IsNullOrEmpty(k.CurrentFilterValue))
+            //    {
                     
-                }
-            }
+            //    }
+            //}
 
             DataSource = dataWidget.GetData(numerAktualnejStrony*rozmiarStrony, rozmiarStrony, sort, filter,
                 out iloscWszystkichDanych);
@@ -179,31 +179,50 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
         {
             foreach (var opisKolumny in kolumny)
             {
-                var boundColumn = new GridBoundColumn();
-                boundColumn.UniqueName = opisKolumny.Name;
-                boundColumn.DataField = opisKolumny.Name;
-                boundColumn.HeaderText = opisKolumny.GetReadableName();
-                boundColumn.HeaderTooltip = opisKolumny.ToolTip;
-                boundColumn.FilterControlWidth = new Unit("80px");
-                boundColumn.Aggregate = (Telerik.Web.UI.GridAggregateFunction)opisKolumny.Aggregate;
+                GridEditableColumn column = null;
+                if (opisKolumny.ColumnType == GridColumnType.CheckboxColumn)
+                {
+                    var cbColumn = new GridCheckBoxColumn();
+                    cbColumn.DataField = opisKolumny.Name;
+                    
+
+                    column = cbColumn;
+                }
+                else if (opisKolumny.ColumnType == GridColumnType.BoundColumn)
+                {
+                    var bColumn = new GridBoundColumn();
+                    bColumn.DataField = opisKolumny.Name;
+                    bColumn.Aggregate = (Telerik.Web.UI.GridAggregateFunction)opisKolumny.Aggregate;
+                    bColumn.DataFormatString = opisKolumny.DataFormatString;
+
+                    column = bColumn;
+                }
+                
+
+                column.UniqueName = opisKolumny.Name;
+                
+                column.HeaderText = opisKolumny.GetReadableName();
+                column.HeaderTooltip = opisKolumny.ToolTip;
+                column.FilterControlWidth = new Unit("80px");
+                
                 //boundColumn.ColumnEditorID = opisKolumny.ColumnEditorID;
                 if (opisKolumny.Width != null)
                 {
-                    boundColumn.HeaderStyle.Width = new Unit(opisKolumny.Width.ToString());
+                    column.HeaderStyle.Width = new Unit(opisKolumny.Width.ToString());
                 }
                 //if (opisKolumny.NazwaTypuPola == "Decimal")
                 //{
-                boundColumn.DataFormatString = opisKolumny.DataFormatString;
+                
                 //}
                 if (opisKolumny.ShowColumnFilter)
                 {
-                    boundColumn.AutoPostBackOnFilter = true;
-                    boundColumn.CurrentFilterFunction = (Telerik.Web.UI.GridKnownFunction)opisKolumny.FilterFunction;
-                    boundColumn.ShowFilterIcon = false;
+                    column.AutoPostBackOnFilter = true;
+                    column.CurrentFilterFunction = (Telerik.Web.UI.GridKnownFunction)opisKolumny.FilterFunction;
+                    column.ShowFilterIcon = false;
 
                     if (isPostBack == false)
                     {
-                        boundColumn.CurrentFilterValue = opisKolumny.FilterDefaultValue;
+                        column.CurrentFilterValue = opisKolumny.FilterDefaultValue;
                         if (string.IsNullOrEmpty(opisKolumny.FilterDefaultValue) == false)
                         {
                             var filtr = "([" + opisKolumny.Name + "] = '" + opisKolumny.FilterDefaultValue + "')";
@@ -222,7 +241,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                     }
                 }
 
-                radGrid.MasterTableView.Columns.Add(boundColumn);
+                radGrid.MasterTableView.Columns.Add(column);
                 
             }
         }

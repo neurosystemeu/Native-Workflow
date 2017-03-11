@@ -198,7 +198,12 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     var scaffoldColumn = scaffoldColumns.First() as GridViewAttribute;
                     if (scaffoldColumn != null)
                     {
-                        visibleProperty.Add(new VisibleProperty() { ListView = scaffoldColumn, PropertyInfo = propertyInfo });
+                        var vp = new VisibleProperty() {ListView = scaffoldColumn, PropertyInfo = propertyInfo};
+                        if (propertyInfo.PropertyType == typeof(bool))
+                        {
+                            vp.ListView.ColumnType = GridColumnType.CheckboxColumn;
+                        }
+                        visibleProperty.Add(vp);
                     }
                 }
             }
@@ -224,6 +229,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                 
                 column.Column.FilterFunction = property.ListView.FilterFunction;
                 column.Column.FilterDefaultValue = property.ListView.FilterDefaultValue;
+                column.Column.ColumnType = property.ListView.ColumnType;
                 if (property.ListView.FilterFunction != GridKnownFunction.NoFilter)
                 {
                     column.ShowColumnFilter();

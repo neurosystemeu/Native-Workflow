@@ -69,6 +69,7 @@
     <Compile Include="UserData\UI\Html\Fluent\Widgets\Panels\TabFactory.cs" />
     <Compile Include="UserData\UI\Html\Fluent\Widgets\Panels\TabsFactory.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridAggregateFunction.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridColumnType.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ItemsWidgets\GridKnownFunction.cs" />
     <Compile Include="UserData\UI\Html\DataAnnotations\GridViewAttribute.cs" />
     <Compile Include="UserData\UI\Html\DataSources\DataSourceBase.cs" />

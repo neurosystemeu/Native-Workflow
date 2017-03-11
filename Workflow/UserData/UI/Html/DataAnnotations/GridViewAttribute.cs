@@ -22,5 +22,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations
         public string FilterDefaultValue { get; set; }
         public string DataFormatString { get; set; }
         public GridAggregateFunction Aggregate { get; set; }
+        public GridColumnType ColumnType { get; set; }
     }
 }
