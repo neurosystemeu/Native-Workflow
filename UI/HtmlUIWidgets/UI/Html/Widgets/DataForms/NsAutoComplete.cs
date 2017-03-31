@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
@@ -19,26 +19,29 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             var dataWidget = Widget as AutoCompleteBox;
             var ids = (string)Binding.PobierzWartosc(dataWidget.SelectedValue, dataWidget.DataContext);
             var names = (string)Binding.PobierzWartosc(dataWidget.SelectedNames, dataWidget.DataContext);
-            var idsList = ids.Split(';');
-            var namesList = names.Split(';');
+            var idsList = ids?.Split(';');
+            var namesList = names?.Split(';');
             int i = 0;
-            foreach (var u in idsList)
+            if (idsList != null)
             {
-                if (string.IsNullOrEmpty(u))
+                foreach (var u in idsList)
                 {
+                    if (string.IsNullOrEmpty(u))
+                    {
+                        i++;
+                        continue;
+                    }
+                    if (dataWidget.SelectedNames == dataWidget.SelectedValue)
+                    {
+                        this.Entries.Add(new AutoCompleteBoxEntry(u, u));
+                    }
+                    else
+                    {
+                        var nazwa = namesList[i];
+                        this.Entries.Add(new AutoCompleteBoxEntry(nazwa, u));
+                    }
                     i++;
-                    continue;
                 }
-                if (dataWidget.SelectedNames == dataWidget.SelectedValue)
-                {
-                    this.Entries.Add(new AutoCompleteBoxEntry(u, u));
-                }
-                else
-                {
-                    var nazwa = namesList[i];
-                    this.Entries.Add(new AutoCompleteBoxEntry(nazwa, u));
-                }
-                i++;
             }
 
         }

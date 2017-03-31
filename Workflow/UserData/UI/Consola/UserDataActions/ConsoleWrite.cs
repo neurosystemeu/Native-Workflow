@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Consola
+﻿namespace NeuroSystem.Workflow.UserData.UI.Consola.UserDataActions
 {
     public class ConsoleWrite : UserDataBase
     {

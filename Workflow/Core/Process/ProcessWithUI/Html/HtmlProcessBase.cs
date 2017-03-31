@@ -4,17 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using NeuroSystem.VirtualMachine.Core.Attributes;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.UserDataActions;
-using NeuroSystem.Workflow.UserData.UI.Html.Views;
 using System.Reflection;
-using NeuroSystem.Workflow.UserData.UI.Html.DataAnnotations;
-using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.DataWidgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Widgets.Panels;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Fluent.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Fluent.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.UserDataActions;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
@@ -63,9 +60,9 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(string title = null, string description = null)
+        public UserData.UI.Html.Version1.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(string title = null, string description = null)
         {
-            var view = new UserData.UI.Html.Fluent.Views.DataFormFactory<T>();
+            var view = new UserData.UI.Html.Version1.Fluent.Views.DataFormFactory<T>();
             var df = view.AddDataForm();
             if (title != null)
             {
@@ -87,9 +84,9 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         /// <typeparam name="T"></typeparam>
         /// <param name="biznesObject"></param>
         /// <returns></returns>
-        public UserData.UI.Html.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(T biznesObject, string title = null, string description= null)
+        public UserData.UI.Html.Version1.Fluent.Views.DataFormFactory<T> CreateDataForm<T>(T biznesObject, string title = null, string description= null)
         {
-            var view = new UserData.UI.Html.Fluent.Views.DataFormFactory<T>();
+            var view = new UserData.UI.Html.Version1.Fluent.Views.DataFormFactory<T>();
             view.DataContext(biznesObject);
 
             var visibleProperty = new List<VisibleProperty>();
@@ -235,9 +232,12 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
                     column.ShowColumnFilter();
                 }
 
+                column.Column.Width = property.ListView.Width;
                 column.Column.DataFormatString = property.ListView.DataFormatString;
                 column.Column.Aggregate = property.ListView.Aggregate;
-                
+
+                column.Column.DataTypeName = property.ListView.ColumnDataType?.AssemblyQualifiedName;
+                    //property.PropertyInfo.PropertyType.AssemblyQualifiedName;
             }
 
             view.Grid = grid;
@@ -257,11 +257,6 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         protected virtual DataSourceBase GetDataSourceByType(Type datasourceType)
         {
             return null;
-        }
-
-        protected DataSourceBase GetDataSource<T>()
-        {
-            return GetDataSourceByType(typeof(T));
         }
 
         #endregion
@@ -319,6 +314,32 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             return null;
         }
 
+        public virtual object InvokeUserActionForList(string actionName, List<string> ids )
+        {
+            return null;
+        }
+
         #endregion
+
+        #region uprawnienia
+
+        protected virtual bool CanExecute()
+        {
+            return true;
+        }
+
+        #endregion
+
+        public override object Start()
+        {
+            if (CanExecute())
+            {
+                return base.Start();
+            }
+            else
+            {
+                return "Brak uprawnień do wykonania procesu";
+            }
+        }
     }
 }

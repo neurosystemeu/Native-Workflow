@@ -1,7 +1,7 @@
-﻿using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataWidgets;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataWidgets;
 using Telerik.Web.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
@@ -16,7 +16,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
             if (dataWidget != null)
             {
                 var val = Binding.PobierzWartosc(dataWidget.Value, Widget.DataContext);
-                Text = val?.ToString();
+                if (val is decimal)
+                {
+                    Text = ((decimal)val).ToString("### ### ### ##0.0");
+                }
+                else
+                {
+                    Text = val?.ToString();
+                }
             }
         }
 

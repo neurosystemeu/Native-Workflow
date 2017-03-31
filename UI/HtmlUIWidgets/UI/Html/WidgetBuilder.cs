@@ -4,15 +4,19 @@ using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Tabs;
-using NeuroSystem.Workflow.UserData.UI.Html.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
 using Telerik.Web.UI;
-using Panel = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels.Panel;
-using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
-using TextBox = NeuroSystem.Workflow.UserData.UI.Html.Widgets.DataForms.TextBox;
+using Panel = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels.Panel;
+using Action = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Actions.Action;
+using CheckBox = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.CheckBox;
+using GridView = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets.GridView;
+using Label = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.Label;
+using TextBox = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.TextBox;
+using TreeView = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets.TreeView;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
 {
@@ -135,27 +139,27 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html
             //    return UtworzAutoCompleteBox((OpisAutoComplete)widget);
             //}
 
-            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.TreeView)
+            if (widget is TreeView)
             {
-                return NsTreeView.UtworzTreeView((UserData.UI.Html.Widgets.ItemsWidgets.TreeView)widget);
+                return NsTreeView.UtworzTreeView((TreeView)widget);
             }
 
-            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.TreeComboBox)
+            if (widget is TreeComboBox)
             {
-                return NsTreeComboBox.UtworzComboBox((UserData.UI.Html.Widgets.ItemsWidgets.TreeComboBox)widget);
+                return NsTreeComboBox.UtworzComboBox((TreeComboBox)widget);
             }
 
-            if (widget is UserData.UI.Html.Widgets.ItemsWidgets.GridView)
+            if (widget is GridView)
             {
-                return NsGrid.UtworzGridView((UserData.UI.Html.Widgets.ItemsWidgets.GridView)widget, isPostBack);
+                return NsGrid.UtworzGridView((GridView)widget, isPostBack, panel.Page);
             }
 
-            if (widget is UserData.UI.Html.Widgets.DataForms.CheckBox)
+            if (widget is CheckBox)
             {
-                return NsCheckBox.UtworzCheckBox((UserData.UI.Html.Widgets.DataForms.CheckBox)widget);
+                return NsCheckBox.UtworzCheckBox((CheckBox)widget);
             }
 
-            if (widget is UserData.UI.Html.Widgets.DataForms.Label)
+            if (widget is Label)
             {
                 return NsLabel.CreateLabel(widget);
             }

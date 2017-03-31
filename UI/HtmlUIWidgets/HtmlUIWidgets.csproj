@@ -49,6 +49,9 @@
     <Compile Include="UI\Html\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumEditColumnTemplate.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumFilterColumnTemplate.cs" />
+    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumItemColumnTemplate.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsAutoComplete.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsCheckBox.cs" />
     <Compile Include="UI\Html\Widgets\DataForms\NsComboBox.cs" />

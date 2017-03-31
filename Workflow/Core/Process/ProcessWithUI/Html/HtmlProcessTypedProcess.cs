@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.VirtualMachine.Core.Attributes;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Fluent.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 
 namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
 {
@@ -29,94 +29,135 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
             }
         }
 
+        #region Propercje
+
+        public bool AllowEditingList { get; set; }
+
+        #endregion
+
         #region Pod procesy
 
         [Interpret]
         public object PodProcesEdycji()
         {
-            var obiekt = (T)ProcesInput;
-            var widokEdycji = CreateEditView(obiekt);
-            widokEdycji.AddAction("Zapisz");
-            widokEdycji.AddAction("Anuluj");
-
-            //dodaje akce użytkownika
-            foreach (var userAction in UserActions)
+            if (CanExecute())
             {
-                widokEdycji.AddAction(userAction);
-            }
+                var obiekt = (T)ProcesInput;
+                var widokEdycji = CreateEditView(obiekt);
+                widokEdycji.AddAction("Zapisz");
+                widokEdycji.AddAction("Anuluj");
 
-            var wynikEdycji = ShowView(widokEdycji);
-            if (wynikEdycji.ActionName == "Zapisz")
-            {
-                UpdateObject(obiekt);
-                return "Wykonano edycję obiektu " + obiekt;
-            }
-            else if (wynikEdycji.ActionName == "Anuluj")
-            {
-                return "Anulowano edycję " + obiekt;
-            }
+                //dodaje akce użytkownika
+                foreach (var userAction in UserActions)
+                {
+                    widokEdycji.AddAction(userAction);
+                }
 
-            return InvokeUserAction(wynikEdycji.ActionName);
+                var wynikEdycji = ShowView(widokEdycji);
+                if (wynikEdycji.ActionName == "Zapisz")
+                {
+                    UpdateObject(obiekt);
+                    return "Wykonano edycję obiektu " + obiekt;
+                }
+                else if (wynikEdycji.ActionName == "Anuluj")
+                {
+                    return "Anulowano edycję " + obiekt;
+                }
+
+                return InvokeUserAction(wynikEdycji.ActionName);
+            }
+            else
+            {
+                return "Brak możliwości wykonania procesu";
+            }
         }
 
         [Interpret]
         public object PodProcesDodawaniaNowegoObiektu()
         {
-            var obiekt = CreateNewObject();
-            var widokEdycji = CreateEditView(obiekt);
-            widokEdycji.AddAction("Dodaj");
-            widokEdycji.AddAction("Anuluj");
-
-            var wynikEdycji = ShowView(widokEdycji);
-            if (wynikEdycji.ActionName == "Dodaj")
+            if (CanExecute())
             {
-                UpdateObject(obiekt);
-                return "Dodano obiekt " + obiekt;
+                var obiekt = CreateNewObject();
+                var widokEdycji = CreateEditView(obiekt);
+                widokEdycji.AddAction("Dodaj");
+                widokEdycji.AddAction("Anuluj");
+
+                var wynikEdycji = ShowView(widokEdycji);
+                if (wynikEdycji.ActionName == "Dodaj")
+                {
+                    UpdateObject(obiekt);
+                    return "Dodano obiekt " + obiekt;
+                }
+                else
+                {
+                    return "Anulowano dodawanie obiektu " + obiekt;
+                }
             }
             else
             {
-                return "Anulowano dodawanie obiektu " + obiekt;
+                return "Brak możliwości wykonania procesu";
             }
         }
 
         [Interpret]
         public object PodProcesListy()
         {
-            while (true)
+            if (CanExecute())
             {
-                var widokListy = CreateGrid<T>(
-                    "Lista obiektów typu '" + typeof(T).Name + "'",
-                    typeof(T).GetClassDescription());
-                widokListy.DataSource(GetProcessDataSource());
-                generateGridMenu(widokListy);
-
-                var wynikListy = ShowView(widokListy);
-                var grid = wynikListy.Panel.GetWidgetByType<GridView>();
-
-                if (wynikListy.ActionName == "Dodaj nowy")
+                while (true)
                 {
-                    AddNewObject();
+                    var widokListy = CreateGrid<T>(
+                        "Lista obiektów typu '" + typeof(T).Name + "'",
+                        typeof(T).GetClassDescription());
+                    widokListy.DataSource(GetProcessDataSource());
+                    widokListy.Grid.AllowEditing(AllowEditingList);
+                    generateGridMenu(widokListy);
+
+                    var wynikListy = ShowView(widokListy);
+                    var grid = wynikListy.Panel.GetWidgetByType<GridView>();
+                    var zaznaczoneId = new List<string>();
+
+                    if (grid.SelectedIds != null && grid.SelectedIds.Any())
+                    {
+                        foreach (var gridSelectedId in grid.SelectedIds)
+                        {
+                            zaznaczoneId.Add(gridSelectedId);
+                        }
+                    }
+
+                    if (wynikListy.ActionName == "Dodaj nowy")
+                    {
+                        AddNewObject();
+                    }
+                    else
+                    {
+                        var zaznaczonyObiekt = grid.SelectedValue?.ToString();
+                        if (zaznaczonyObiekt == null)
+                        {
+                            //continue;
+                        }
+                        else if (wynikListy.ActionName == "Edytuj")
+                        {
+                            Edit(zaznaczonyObiekt);
+                        }
+                        else if (wynikListy.ActionName == "Usuń")
+                        {
+                            DeleteFromGrid(grid);
+                        }
+                        else if (wynikListy.ActionName == "Zamknij")
+                        {
+                            EndProcess("Zakończono listę " + nameof(T));
+                        }
+                        else
+                        {
+                            InvokeUserActionForList(wynikListy.ActionName, zaznaczoneId);
+                        }
+                    }
                 }
-                else
-                {
-                    var zaznaczonyObiekt = grid.SelectedValue?.ToString();
-                    if (zaznaczonyObiekt == null)
-                    {
-                        //continue;
-                    }
-                    else if (wynikListy.ActionName == "Edytuj")
-                    {
-                        Edit(zaznaczonyObiekt);
-                    }
-                    else if (wynikListy.ActionName == "Usuń")
-                    {
-                        DeleteFromGrid(grid);
-                    }
-                    else if (wynikListy.ActionName == "Zamknij")
-                    {
-                        EndProcess("Zakończono listę " + nameof(T));
-                    }
-                }
+            }
+            else
+            {
+                return "Brak możliwości wykonania procesu";
             }
         }
 
@@ -224,7 +265,7 @@ namespace NeuroSystem.Workflow.Core.Process.ProcessWithUI.Html
         /// <returns></returns>
         protected virtual DataSourceBase GetProcessDataSource()
         {
-            return GetDataSource<T>();
+            return null;
         }
 
         public virtual void UpdateObject(T obiekt)

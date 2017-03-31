@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms.Columns;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
-using GridView = NeuroSystem.Workflow.UserData.UI.Html.Widgets.ItemsWidgets.GridView;
+using GridAggregateFunction = Telerik.Web.UI.GridAggregateFunction;
+using GridView = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets.GridView;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 {
@@ -97,13 +100,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         }
 
-        public static NsGrid UtworzGridView(GridView opisPola, bool isPostBack)
+        public static NsGrid UtworzGridView(GridView opisPola, bool isPostBack, Page page)
         {
             var radGrid = new NsGrid() { Widget = opisPola, ToolTip = opisPola.ToolTip };
             radGrid.AutoGenerateColumns = false;
             radGrid.MasterTableView.DataKeyNames = new string[] { "Id" };
             UstawParametryGrida(opisPola, radGrid, isPostBack);
-            UtworzKolumny(opisPola.Columns, radGrid, isPostBack);
+            UtworzKolumny(opisPola.Columns, radGrid, isPostBack, page);
 
             return radGrid;
         }
@@ -144,6 +147,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                 radGrid.GroupPanel.Visible = true;
                 radGrid.ClientSettings.AllowDragToGroup = true;
                 radGrid.GroupPanel.Text = "Przeciągnij kolumnę żeby grupować";
+                radGrid.MasterTableView.ShowGroupFooter = true;
             }
 
             if (opisGrida.AggregateEnabled)
@@ -175,7 +179,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
 
         }
 
-        public static void UtworzKolumny(List<GridViewColumn> kolumny, NsGrid radGrid, bool isPostBack)
+        public static void UtworzKolumny(List<GridViewColumn> kolumny, RadGrid radGrid, bool isPostBack, Page page)
         {
             foreach (var opisKolumny in kolumny)
             {
@@ -193,17 +197,41 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                     var bColumn = new GridBoundColumn();
                     bColumn.DataField = opisKolumny.Name;
                     bColumn.Aggregate = (Telerik.Web.UI.GridAggregateFunction)opisKolumny.Aggregate;
+                    if (string.IsNullOrEmpty(opisKolumny.DataTypeName)==false)
+                    {
+                        bColumn.DataType = Type.GetType(opisKolumny.DataTypeName);
+                    }
+                    if (bColumn.Aggregate == GridAggregateFunction.Count)
+                    {
+                        bColumn.FooterText = "Ilość: ";
+                    }
                     bColumn.DataFormatString = opisKolumny.DataFormatString;
 
                     column = bColumn;
                 }
-                
+                else if (opisKolumny.ColumnType == GridColumnType.EnumColumn)
+                {
+                    var templateColumn = new GridTemplateColumn();
+                    templateColumn.DataField = opisKolumny.Name;
+                    templateColumn.Aggregate = (Telerik.Web.UI.GridAggregateFunction)opisKolumny.Aggregate;
+                    if (string.IsNullOrEmpty(opisKolumny.DataTypeName) == false)
+                    {
+                        templateColumn.DataType = Type.GetType(opisKolumny.DataTypeName);
+                    }
+                    var typEnuma = Type.GetType(opisKolumny.DataTypeName);
+                    templateColumn.EditItemTemplate = new EnumEditColumnTemplate(opisKolumny.Name, typEnuma);
+                    templateColumn.ItemTemplate = new EnumItemColumnTemplate(opisKolumny.Name);
+                    templateColumn.FilterTemplate = new EnumFilterColumnTemplate(opisKolumny.Name, typEnuma, page);
+                    column = templateColumn;
+                }
+
 
                 column.UniqueName = opisKolumny.Name;
                 
                 column.HeaderText = opisKolumny.GetReadableName();
                 column.HeaderTooltip = opisKolumny.ToolTip;
                 column.FilterControlWidth = new Unit("80px");
+                column.ReadOnly = opisKolumny.ReadOnly;
                 
                 //boundColumn.ColumnEditorID = opisKolumny.ColumnEditorID;
                 if (opisKolumny.Width != null)
@@ -239,6 +267,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
                             }
                         }
                     }
+                }
+                else
+                {
+                    column.AllowFiltering = false;
                 }
 
                 radGrid.MasterTableView.Columns.Add(column);

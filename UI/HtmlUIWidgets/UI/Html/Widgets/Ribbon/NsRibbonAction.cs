@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Telerik.Web.UI;
-using Action = NeuroSystem.Workflow.UserData.UI.Html.Widgets.Actions.Action;
+using Action = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Actions.Action;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Ribbon
 {

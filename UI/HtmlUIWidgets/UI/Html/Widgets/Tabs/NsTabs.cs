@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
 using Telerik.Web.UI;
+using Panel = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels.Panel;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Tabs
 {
@@ -69,7 +70,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Tabs
 
         internal static NsTabs UtworzTabs(TabsWidget panelWidget)
         {
-            var panel = NsPanel.UtworzPanel(new UserData.UI.Html.Widgets.Panels.Panel());
+            var panel = NsPanel.UtworzPanel(new Panel());
 
             var tabs = new NsTabs() {Widget = panelWidget };
             tabs.Panel = panel;
