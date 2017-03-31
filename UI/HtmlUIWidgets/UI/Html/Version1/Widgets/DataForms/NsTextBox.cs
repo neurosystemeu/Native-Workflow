@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataWidgets;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms
 {
-    public class NsEdytor : RadEditor, IBindingControl
+    public class NsTextBox : RadTextBox, IBindingControl
     {
         public WidgetBase Widget { get; set; }
 
@@ -21,21 +16,28 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.DataForms
             if (dataWidget != null)
             {
                 var val = Binding.PobierzWartosc(dataWidget.Value, Widget.DataContext);
-                Text = val?.ToString();
+                if (val is decimal)
+                {
+                    Text = ((decimal)val).ToString("### ### ### ##0.0");
+                }
+                else
+                {
+                    Text = val?.ToString();
+                }
             }
         }
 
         public void SaveFromControl()
         {
-            var dataWidget = Widget as Edytor;
+            var dataWidget = Widget as TextBox;
             var binding = dataWidget.Value;
             Binding.UstawWartosc(ref binding, dataWidget.DataContext, Text);
             dataWidget.Value = binding; //w binding może być wartość - dane bez bindowania
         }
 
-        internal static NsEdytor UtworzTextBox(Edytor widget)
+        internal static NsTextBox UtworzTextBox(TextBox widget)
         {
-            return new NsEdytor() { Widget = widget };
+            return new NsTextBox() { Widget = widget};
         }
     }
 }

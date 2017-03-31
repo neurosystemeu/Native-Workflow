@@ -4,7 +4,7 @@ using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using Telerik.Web.UI;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Actions.Action;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Actions
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Actions
 {
     public class NsAction : RadButton, IBindingControl
     {

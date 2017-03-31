@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html;
-using NeuroSystem.Workflow.UserData.UI.Html.DataSources;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent;
-using NeuroSystem.Workflow.UserData.UI.Html.Fluent.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Views;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Fluent.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Views;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 
 namespace HtmlUIWeb
 {
@@ -55,7 +55,7 @@ namespace HtmlUIWeb
                     p.AddField(pp => pp.IloscLat);
                     p.AddComboBox(pp => pp.ProjektId,
                             dataSource:
-                            new NeuroSystem.Workflow.UserData.UI.Html.DataSources.ObjectDataSource(listaPracownikow))
+                            new NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources.ObjectDataSource(listaPracownikow))
                         .DataTextField("Name");
                 });
                 pan.AddDataForm(p =>

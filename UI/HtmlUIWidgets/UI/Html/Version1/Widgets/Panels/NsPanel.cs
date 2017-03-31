@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
-using Telerik.Web.UI;
 using Panel = System.Web.UI.WebControls.Panel;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Panels
 {
     public class NsPanel : Panel, IBindingControl
     {
@@ -48,7 +46,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets
             }
         }
 
-        internal static NsPanel UtworzPanel(Version1.Widgets.Panels.Panel panelWidget)
+        internal static NsPanel UtworzPanel(UserData.UI.Html.Version1.Widgets.Panels.Panel panelWidget)
         {
             var panel = new NsPanel() { Widget = panelWidget };
             panel.GroupingText = panelWidget.Label?.ToString();

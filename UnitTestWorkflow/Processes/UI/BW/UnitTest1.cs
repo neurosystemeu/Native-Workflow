@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NeuroSystem.Workflow.Engine;
 using NeuroSystem.Workflow.Engine.DAL;
-using NeuroSystem.Workflow.UserData.UI.Html.UserDataActions;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.UserDataActions;
 
 namespace UnitTestWorkflow.Processes.UI.BW
 {

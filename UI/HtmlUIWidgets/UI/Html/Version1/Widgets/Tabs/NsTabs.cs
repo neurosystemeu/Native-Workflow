@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Panels;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
 using Telerik.Web.UI;
 using Panel = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels.Panel;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Widgets.Tabs
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Tabs
 {
     public class NsTabs : RadTabStrip, IBindingControl
     {

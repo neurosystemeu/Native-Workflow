@@ -45,35 +45,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Html\WidgetBuilder.cs" />
-    <Compile Include="UI\Html\Widgets\Actions\NsAction.cs">
+    <Compile Include="UI\Html\Version1\WidgetBuilder.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumEditColumnTemplate.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumFilterColumnTemplate.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\Columns\EnumItemColumnTemplate.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsAutoComplete.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsCheckBox.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsComboBox.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsDateTimePicker.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsEdytor.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsGrid.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsLabel.cs">
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\Columns\EnumEditColumnTemplate.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\Columns\EnumFilterColumnTemplate.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\Columns\EnumItemColumnTemplate.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsAutoComplete.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsCheckBox.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsComboBox.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsDateTimePicker.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsEdytor.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsGrid.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsLabel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Html\Widgets\DataForms\NsTreeComboBox.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsTreeView.cs" />
-    <Compile Include="UI\Html\Widgets\Panels\NsPanel.cs" />
-    <Compile Include="UI\Html\Widgets\IBindingControl.cs" />
-    <Compile Include="UI\Html\Widgets\DataForms\NsTextBox.cs">
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsTreeComboBox.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsTreeView.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Panels\NsPanel.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\IBindingControl.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\DataForms\NsTextBox.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbon.cs" />
-    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonAction.cs" />
-    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonGrupa.cs" />
-    <Compile Include="UI\Html\Widgets\Ribbon\NsRibbonTab.cs" />
-    <Compile Include="UI\Html\Widgets\Tabs\NsTabs.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbon.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonAction.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonGrupa.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonTab.cs" />
+    <Compile Include="UI\Html\Version1\Widgets\Tabs\NsTabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">
