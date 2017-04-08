@@ -31,48 +31,48 @@ namespace HtmlUIWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var p1 = new Pracownik();
-            p1.Id = "1";
-            p1.IloscLat = "30";
-            p1.Nazwisko = "Kowalski";
-            p1.Imie = "Jan";
+            //var p1 = new Pracownik();
+            //p1.Id = "1";
+            //p1.IloscLat = "30";
+            //p1.Nazwisko = "Kowalski";
+            //p1.Imie = "Jan";
 
-            var p2 = new Pracownik();
-            p2.Id = "2";
-            p2.IloscLat = "33";
-            p2.Nazwisko = "Nowak";
-            p2.Imie = "Krzysztof";
+            //var p2 = new Pracownik();
+            //p2.Id = "2";
+            //p2.IloscLat = "33";
+            //p2.Nazwisko = "Nowak";
+            //p2.Imie = "Krzysztof";
 
-            var listaPracownikow = new List<Pracownik>() {p1,p2};
+            //var listaPracownikow = new List<Pracownik>() {p1,p2};
             
-            var view = new ViewFactory<Pracownik>();
-            view.DataContext(p1);
-            view.AddPanel(pan =>
-            {
-                pan.AddDataForm(p =>
-                {
-                    p.AddField(pp => pp.Nazwisko);
-                    p.AddField(pp => pp.IloscLat);
-                    p.AddComboBox(pp => pp.ProjektId,
-                            dataSource:
-                            new NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources.ObjectDataSource(listaPracownikow))
-                        .DataTextField("Name");
-                });
-                pan.AddDataForm(p =>
-                {
-                    //p.AddField(pp => pp.IloscLat).Height("400px").Width("50%");
-                    //p.AddGridView(grid =>
-                    //{
-                    //    grid.Column(k => k.Nazwisko);
-                    //    grid.Column(k => k.IloscLat).Width("50%");
-                    //});
-                });
-                pan.AddAction("Test");
-            });
+            //var view = new ViewFactory<Pracownik>();
+            //view.DataContext(p1);
+            //view.AddPanel(pan =>
+            //{
+            //    pan.AddDataForm(p =>
+            //    {
+            //        p.AddField(pp => pp.Nazwisko);
+            //        p.AddField(pp => pp.IloscLat);
+            //        p.AddComboBox(pp => pp.ProjektId,
+            //                dataSource:
+            //                new NeuroSystem.Workflow.UserData.UI.Html.Version1.DataSources.ObjectDataSource(listaPracownikow))
+            //            .DataTextField("Name");
+            //    });
+            //    pan.AddDataForm(p =>
+            //    {
+            //        //p.AddField(pp => pp.IloscLat).Height("400px").Width("50%");
+            //        //p.AddGridView(grid =>
+            //        //{
+            //        //    grid.Column(k => k.Nazwisko);
+            //        //    grid.Column(k => k.IloscLat).Width("50%");
+            //        //});
+            //    });
+            //    pan.AddAction("Test");
+            //});
 
-            var builder = new WidgetBuilder();
-            builder.GenerateView(panel, view.GetView(), this, false);
-            panel.LoadToControl();
+            //var builder = new WidgetBuilder();
+            //builder.GenerateView(panel, view.GetView(), this, false);
+            //panel.LoadToControl();
 
         }
 

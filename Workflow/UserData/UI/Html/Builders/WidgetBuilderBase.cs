@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.Extensions;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
 {
@@ -35,6 +36,48 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
         {
             this.Component.Name = componentName;
             return (TBuilder)(this as TBuilder);
+        }
+
+        /// <summary>
+        /// Sets the HTML attributes.
+        /// </summary>
+        /// <param name="attributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public virtual TBuilder HtmlAttributes(object attributes)
+        {
+            return this.HtmlAttributes(attributes.ToDictionary());
+        }
+
+        /// <summary>
+        /// Sets the HTML attributes.
+        /// </summary>
+        /// <param name="attributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public virtual TBuilder HtmlAttributes(IDictionary<string, object> attributes)
+        {
+            this.Component.HtmlAttributes.Clear();
+            this.Component.HtmlAttributes.Merge(attributes);
+            return (TBuilder)(this as TBuilder);
+        }
+
+
+        /// <summary>
+        /// Returns the internal view component.
+        /// </summary>
+        /// <returns></returns>
+        public TViewComponent ToComponent()
+        {
+            return this.Component;
+        }
+
+        public virtual string ToHtmlString()
+        {
+            return this.ToComponent().ToHtmlString();
+        }
+
+        public override string ToString()
+        {
+            return this.ToHtmlString();
         }
     }
 }

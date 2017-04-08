@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\..\NeuroSystem9\lib\KENDOUIMVC\2016.2.714.545\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -74,6 +77,11 @@
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonGrupa.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonTab.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Tabs\NsTabs.cs" />
+    <Compile Include="UI\Html\Version2\Extensions\WidgetExtensions.cs" />
+    <Compile Include="UI\Html\Version2\HtmlBuilder.cs" />
+    <Compile Include="UI\Html\Version2\TestViews\ProcesMW.cs" />
+    <Compile Include="UI\Html\Version2\TestViews\TestView.cs" />
+    <Compile Include="UI\Html\Version2\Widgets\NsPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">

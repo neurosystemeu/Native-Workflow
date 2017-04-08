@@ -15,6 +15,7 @@ namespace UnitTestWorkflow.UI.HtmlBuilder
                 .DataSource(source=>
                     source.Read(a=>a.ToString())
                 );
+            var panel = html.Panel();
         }
     }
 }

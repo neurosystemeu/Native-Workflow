@@ -28,5 +28,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
         {
             return new AutoCompleteBuilder(new AutoComplete());
         }
+
+        public virtual PanelBuilder Panel()
+        {
+            return new PanelBuilder(new Panel());
+        }
     }
 }
