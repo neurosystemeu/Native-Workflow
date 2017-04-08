@@ -13,12 +13,16 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
     {
         public Panel GetView()
         {
+            var model = new PracownikTestModel();
+            model.Imie = "Jan";
+            model.Nazwisko = "Kowalski";
+
             var html = new WidgetFactory();
             var ac = html.AutoComplete()
                 .DataSource(source =>
                     source.Read(a => a.ToString())
                 );
-            var panel = html.Panel().Class("form-group");
+            var panel = html.Panel<PracownikTestModel>();
             panel.HtmlAttributes("style", "height:400px; width:400px; background-color:red;");
             panel.AddItem(panels =>
             {
@@ -33,7 +37,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
                 p.Add().AddItem(pp => pp.Class("p4")).Class("p3");
             });
 
-            var tb = html.TextBox();
+            var tb = html.TextBox<string>();
 
             panel.AddItem(tb.ToComponent());
             return panel.ToComponent();

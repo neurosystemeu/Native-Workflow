@@ -43,6 +43,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
             return this;
         }
 
+        public void AddItem<TViewComponent, TBuilder>(WidgetBuilderBase<TViewComponent, TBuilder> tb)
+            where TViewComponent : WidgetBase
+            where TBuilder : WidgetBuilderBase<TViewComponent, TBuilder>
+        {
+            Component.Items.Add(tb.Component);
+        }
+
         /// <summary>
         /// Defines the items in the ComboBox
         /// </summary>

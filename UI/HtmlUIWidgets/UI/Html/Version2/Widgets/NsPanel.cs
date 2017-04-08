@@ -4,17 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Web.UI;
+using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
 {
-    public class NsPanel
+    public class NsPanel : Kendo.Mvc.UI.WidgetBase
     {
         private Panel panel;
 
-        public NsPanel(Panel panel)
+        public NsPanel(Panel panel, ViewContext viewContext, IJavaScriptInitializer initializer, ViewDataDictionary viewData = null)
+            :base(viewContext, initializer, viewData)
         {
             this.panel = panel;
         }
@@ -22,7 +25,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
         /// <summary>
         /// Writes the HTML.
         /// </summary>
-        protected virtual void WriteHtml(HtmlTextWriter writer)
+        protected override void WriteHtml(HtmlTextWriter writer)
         {
             writer.WriteBeginTag("div");
             foreach (var key in panel.HtmlAttributes.Keys)
@@ -34,8 +37,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
             //renderuje itemy
             foreach (var item in panel.Items)
             {
-                var control = item.ToControl();
-                control.WriteHtml(writer);
+                var control = item.ToKendoWidget(ViewContext, Initializer, ViewData);
+                control.Render();
+                
             }
 
             writer.WriteEndTag("div");
@@ -54,5 +58,5 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
         }
     }
 
-    
+
 }

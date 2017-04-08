@@ -9,6 +9,17 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
 {
     public class WidgetFactory
     {
+        public object Helper;
+
+        public WidgetFactory()
+        {
+        }
+
+        public WidgetFactory(object helper)
+        {
+            this.Helper = helper;
+        }
+
         /// <summary>
         /// Creates a new <see cref="M:Kendo.Mvc.UI.Fluent.WidgetFactory.AutoComplete" />.
         /// </summary>
@@ -32,6 +43,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
         public virtual PanelBuilder Panel()
         {
             return new PanelBuilder(new Panel());
+        }
+
+        public virtual PanelBuilder<T> Panel<T>()
+        {
+            return new PanelBuilder<T>(new Panel<T>());
         }
 
         /// <summary>
@@ -62,6 +78,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
         public virtual TextBoxBuilder<T> TextBox<T>()
         {
             return new TextBoxBuilder<T>(new TextBox<T>());
+        }
+
+        public object Process()
+        {
+            return "Proces :)";
         }
     }
 }

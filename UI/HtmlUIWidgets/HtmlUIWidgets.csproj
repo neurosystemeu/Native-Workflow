@@ -33,10 +33,47 @@
     <Reference Include="Kendo.Mvc">
       <HintPath>..\..\..\NeuroSystem9\lib\KENDOUIMVC\2016.2.714.545\Kendo.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\HtmlUIWeb\bin\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\HtmlUIWeb\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HtmlUIWeb\bin\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\HtmlUIWeb\bin\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,8 +114,10 @@
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonGrupa.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonTab.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Tabs\NsTabs.cs" />
+    <Compile Include="UI\Html\Version2\Extensions\HtmlHelperExtension.cs" />
     <Compile Include="UI\Html\Version2\Extensions\WidgetExtensions.cs" />
     <Compile Include="UI\Html\Version2\HtmlBuilder.cs" />
+    <Compile Include="UI\Html\Version2\TestViews\PracownikTestModel.cs" />
     <Compile Include="UI\Html\Version2\TestViews\ProcesMW.cs" />
     <Compile Include="UI\Html\Version2\TestViews\TestView.cs" />
     <Compile Include="UI\Html\Version2\Widgets\NsPanel.cs" />
@@ -89,6 +128,9 @@
       <Project>{3cbe8348-7af7-4e99-afdf-2b11fa63fea2}</Project>
       <Name>Workflow</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Html\Version2\HtmlHelper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

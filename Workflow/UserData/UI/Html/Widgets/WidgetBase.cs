@@ -33,4 +33,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
             return null;
         }
     }
+
+    public class WidgetBase<T> : WidgetBase
+    {
+        
+    }
 }

@@ -73,6 +73,7 @@
     <Compile Include="UserData\UI\Html\Builders\GridBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\ListBuilderBase.cs" />
     <Compile Include="UserData\UI\Html\Builders\PanelBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\PanelBuilderTyped.cs" />
     <Compile Include="UserData\UI\Html\Builders\PanelItemFactory.cs" />
     <Compile Include="UserData\UI\Html\Builders\ReadOnlyDataSourceBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\TextBoxBuilder.cs" />

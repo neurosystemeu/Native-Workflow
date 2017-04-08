@@ -16,4 +16,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
 
         public List<WidgetBase> Items { get; set; } 
     }
+
+    public class Panel<T> : Panel
+    {
+    }
 }
