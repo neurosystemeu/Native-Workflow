@@ -65,6 +65,18 @@
     <Compile Include="UserData\Actions\Timeout.cs" />
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleRead.cs" />
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleWrite.cs" />
+    <Compile Include="UserData\UI\Html\Builders\AutoCompleteBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\ButtonBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\CrudOperationBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\CrudOperationBuilderBase.cs" />
+    <Compile Include="UserData\UI\Html\Builders\DropDownListBuilderBase.cs" />
+    <Compile Include="UserData\UI\Html\Builders\GridBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\ListBuilderBase.cs" />
+    <Compile Include="UserData\UI\Html\Builders\ReadOnlyDataSourceBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\WidgetBuilderBase.cs" />
+    <Compile Include="UserData\UI\Html\Builders\WidgetFactory.cs" />
+    <Compile Include="UserData\UI\Html\CrudOperation.cs" />
+    <Compile Include="UserData\UI\Html\DataSource.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\DataFormViewAttribute.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\EnumControlType.cs" />
     <Compile Include="UserData\UI\Html\Version1\Fluent\Widgets\Panels\TabFactory.cs" />
@@ -127,6 +139,12 @@
     <Compile Include="UserData\UI\Html\Version1\Widgets\Panels\Tab.cs" />
     <Compile Include="UserData\UI\Html\Version1\Widgets\Panels\TabsWidget.cs" />
     <Compile Include="UserData\UI\Html\Version1\Widgets\WidgetBase.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\AutoComplete.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Button.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DropDownListBase.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\Grid.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\ListBase.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UserDataBase.cs" />
   </ItemGroup>
   <ItemGroup>
