@@ -15,9 +15,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
             if (widget is Panel)
             {
                 return new NsPanel(widget as Panel);
-            }
+            } 
             return null;
-
         }
+
+        //public static Kendo.Mvc.UI.TextBox<T> ToControl<T>(this TextBox<T> widget)
+        //{
+        //    return new Kendo.Mvc.UI.TextBox<T>()
+        //}
     }
 }

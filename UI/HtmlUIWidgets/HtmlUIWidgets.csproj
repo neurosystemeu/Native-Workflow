@@ -82,6 +82,7 @@
     <Compile Include="UI\Html\Version2\TestViews\ProcesMW.cs" />
     <Compile Include="UI\Html\Version2\TestViews\TestView.cs" />
     <Compile Include="UI\Html\Version2\Widgets\NsPanel.cs" />
+    <Compile Include="UI\Html\Version2\Widgets\NsTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">
@@ -89,7 +90,6 @@
       <Name>Workflow</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

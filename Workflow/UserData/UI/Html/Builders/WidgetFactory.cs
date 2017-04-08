@@ -33,5 +33,35 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
         {
             return new PanelBuilder(new Panel());
         }
+
+        /// <summary>
+        /// Creates a new <see cref="M:Kendo.Mvc.UI.Fluent.WidgetFactory.TextBox" />.
+        /// </summary>
+        /// <example>
+        /// <code lang="CS">
+        ///  &lt;%= Html.Kendo().TextBox()
+        ///             .Name("TextBox")
+        /// %&gt;
+        /// </code>
+        /// </example>
+        public virtual TextBoxBuilder<string> TextBox()
+        {
+            return new TextBoxBuilder<string>(new TextBox<string>());
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="M:Kendo.Mvc.UI.Fluent.WidgetFactory.TextBox``1" />.
+        /// </summary>
+        /// <example>
+        /// <code lang="CS">
+        ///  &lt;%= Html.Kendo().TextBox&lt;double&gt;()
+        ///             .Name("TextBox")
+        /// %&gt;
+        /// </code>
+        /// </example>
+        public virtual TextBoxBuilder<T> TextBox<T>()
+        {
+            return new TextBoxBuilder<T>(new TextBox<T>());
+        }
     }
 }

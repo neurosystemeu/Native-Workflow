@@ -73,7 +73,9 @@
     <Compile Include="UserData\UI\Html\Builders\GridBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\ListBuilderBase.cs" />
     <Compile Include="UserData\UI\Html\Builders\PanelBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\PanelItemFactory.cs" />
     <Compile Include="UserData\UI\Html\Builders\ReadOnlyDataSourceBuilder.cs" />
+    <Compile Include="UserData\UI\Html\Builders\TextBoxBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\WidgetBuilderBase.cs" />
     <Compile Include="UserData\UI\Html\Builders\WidgetFactory.cs" />
     <Compile Include="UserData\UI\Html\CrudOperation.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="UserData\UI\Html\Widgets\Grid.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ListBase.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panel.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\TextBox.cs" />
     <Compile Include="UserData\UI\Html\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UserDataBase.cs" />
   </ItemGroup>
