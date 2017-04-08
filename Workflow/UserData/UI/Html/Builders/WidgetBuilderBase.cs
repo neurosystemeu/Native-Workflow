@@ -38,6 +38,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
             return (TBuilder)(this as TBuilder);
         }
 
+        public virtual TBuilder HtmlAttributes(string key, string value)
+        {
+            Component.HtmlAttributes[key] = value;
+            return (TBuilder)(this as TBuilder);
+        }
+
         /// <summary>
         /// Sets the HTML attributes.
         /// </summary>
