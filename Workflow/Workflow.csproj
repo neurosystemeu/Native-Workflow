@@ -69,6 +69,7 @@
     <Compile Include="UserData\UI\Html\Builders\ButtonBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\CrudOperationBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\CrudOperationBuilderBase.cs" />
+    <Compile Include="UserData\UI\Html\Builders\DataSourceBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\DropDownListBuilderBase.cs" />
     <Compile Include="UserData\UI\Html\Builders\GridBuilder.cs" />
     <Compile Include="UserData\UI\Html\Builders\ListBuilderBase.cs" />
@@ -147,8 +148,11 @@
     <Compile Include="UserData\UI\Html\Version1\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UI\Html\Widgets\AutoComplete.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Button.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataSource.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\DataSourceType.cs" />
     <Compile Include="UserData\UI\Html\Widgets\DropDownListBase.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Grid.cs" />
+    <Compile Include="UserData\UI\Html\Widgets\JsonObject.cs" />
     <Compile Include="UserData\UI\Html\Widgets\ListBase.cs" />
     <Compile Include="UserData\UI\Html\Widgets\Panel.cs" />
     <Compile Include="UserData\UI\Html\Widgets\TextBox.cs" />

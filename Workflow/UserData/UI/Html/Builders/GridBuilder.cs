@@ -7,6 +7,9 @@ using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
 {
+    /// <summary>
+    /// The fluent API for configuring Kendo UI Grid for ASP.NET MVC.
+    /// </summary>
     public class GridBuilder<T> : WidgetBuilderBase<Grid<T>, GridBuilder<T>>
     where T : class
     {

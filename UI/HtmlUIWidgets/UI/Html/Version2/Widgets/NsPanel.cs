@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.UI;
+using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
@@ -15,11 +16,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
     public class NsPanel : Kendo.Mvc.UI.WidgetBase
     {
         private Panel panel;
+        private IUrlGenerator urlGenerator;
 
-        public NsPanel(Panel panel, ViewContext viewContext, IJavaScriptInitializer initializer, ViewDataDictionary viewData = null)
+        public NsPanel(Panel panel, ViewContext viewContext, IJavaScriptInitializer initializer,
+            ViewDataDictionary viewData, IUrlGenerator urlGenerator)
             :base(viewContext, initializer, viewData)
         {
             this.panel = panel;
+            this.urlGenerator = urlGenerator;
         }
 
         /// <summary>
@@ -37,7 +41,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
             //renderuje itemy
             foreach (var item in panel.Items)
             {
-                var control = item.ToKendoWidget(ViewContext, Initializer, ViewData);
+                var control = item.ToKendoWidget(ViewContext, Initializer, ViewData, urlGenerator);
                 control.Render();
                 
             }

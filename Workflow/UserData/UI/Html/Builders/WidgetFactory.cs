@@ -80,9 +80,22 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
             return new TextBoxBuilder<T>(new TextBox<T>());
         }
 
-        public object Process()
+        /// <summary>
+        /// Creates a new <see cref="T:Kendo.Mvc.UI.Grid`1" /> bound to the specified data item type.
+        /// </summary>
+        /// <example>
+        /// <typeparam name="T">The type of the data item</typeparam>
+        /// <code lang="CS">
+        ///  &lt;%= Html.Kendo().Grid&lt;Order&gt;()
+        ///             .Name("Grid")
+        ///             .BindTo(Model)
+        /// %&gt;
+        /// </code>
+        /// </example>      
+        public virtual GridBuilder<T> Grid<T>()
+        where T : class
         {
-            return "Proces :)";
+            return new GridBuilder<T>(new Grid<T>());
         }
     }
 }

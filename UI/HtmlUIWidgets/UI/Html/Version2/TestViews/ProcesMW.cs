@@ -19,15 +19,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
             this.procesController = procesController;
         }
 
-        public HtmlString GetProcessViewHtml()
-        {
-            var viewContext = procesController.ControllerContext as ViewContext;
+        //public HtmlString GetProcessViewHtml()
+        //{
+        //    //var viewContext = procesController.ControllerContext as ViewContext;
             
-            var testView = new TestView();
-            var panel = testView.GetView();
-            var c = panel.ToKendoWidget(viewContext, new JavaScriptInitializer(), new ViewDataDictionary());
-            var str= c.ToHtmlString();
-            return new HtmlString(str);
-        }
+        //    //var testView = new TestView();
+        //    //var panel = testView.GetView();
+        //    //var c = panel.ToKendoWidget(viewContext, new JavaScriptInitializer(), new ViewDataDictionary());
+        //    //var str= c.ToHtmlString();
+        //    //return new HtmlString(str);
+        //}
     }
 }

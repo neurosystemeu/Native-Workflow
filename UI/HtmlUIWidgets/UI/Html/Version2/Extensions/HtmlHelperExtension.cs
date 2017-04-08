@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Web.WebPages.Html;
 using NeuroSystem.Workflow.UserData.UI.Html.Builders;
 using System.Web.Mvc;
+using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
+using Kendo.Mvc.UI.Html;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
@@ -22,6 +24,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
         {
             var viewContext = helper.ViewContext;
             var initializer = DI.Current.Resolve<IJavaScriptInitializer>();
+            var urlGenerator = DI.Current.Resolve<IUrlGenerator>();
 
             var model = new PracownikTestModel();
             model.Imie = "Jan";
@@ -34,9 +37,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
             var tb = html.TextBox<string>();
             panel.AddItem(tb);
 
+            var grid = html.Grid<PracownikTestModel>();
+            grid.Name("grid");
+            panel.AddItem(grid);
 
 
-            var kontrolka = panel.ToComponent().ToKendoWidget(viewContext, initializer);
+            var kontrolka = panel.ToComponent().ToKendoWidget(viewContext, initializer, helper.ViewData, urlGenerator);
 
             return new MvcHtmlString(kontrolka.ToHtmlString());
         }
