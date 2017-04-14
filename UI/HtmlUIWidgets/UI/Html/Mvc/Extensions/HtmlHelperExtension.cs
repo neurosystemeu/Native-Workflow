@@ -39,6 +39,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
 
             var grid = html.Grid<PracownikTestModel>();
             grid.Name("grid");
+            grid.DataSource(ds => ds
+                .Ajax()
+                .Model(m=> m.Id("Id"))
+                .Read("Read", "Home")
+                );
             panel.AddItem(grid);
 
 

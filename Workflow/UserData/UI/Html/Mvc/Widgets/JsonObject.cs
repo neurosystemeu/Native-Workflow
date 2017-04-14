@@ -12,7 +12,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
         {
         }
 
-        protected abstract void Serialize(IDictionary<string, object> json);
+        //protected abstract void Serialize(IDictionary<string, object> json);
+        protected virtual void Serialize(IDictionary<string, object> json)
+        {
+            
+        }
 
         public IDictionary<string, object> ToJson()
         {

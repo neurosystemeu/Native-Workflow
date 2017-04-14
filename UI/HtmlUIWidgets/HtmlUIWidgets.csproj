@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\Html\Mvc\Builder\DataSourceBuilder.cs" />
     <Compile Include="UI\Html\Version1\WidgetBuilder.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
@@ -114,14 +115,14 @@
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonGrupa.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Ribbon\NsRibbonTab.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Tabs\NsTabs.cs" />
-    <Compile Include="UI\Html\Version2\Extensions\HtmlHelperExtension.cs" />
-    <Compile Include="UI\Html\Version2\Extensions\WidgetExtensions.cs" />
-    <Compile Include="UI\Html\Version2\HtmlBuilder.cs" />
-    <Compile Include="UI\Html\Version2\TestViews\PracownikTestModel.cs" />
-    <Compile Include="UI\Html\Version2\TestViews\ProcesMW.cs" />
-    <Compile Include="UI\Html\Version2\TestViews\TestView.cs" />
-    <Compile Include="UI\Html\Version2\Widgets\NsPanel.cs" />
-    <Compile Include="UI\Html\Version2\Widgets\NsTextBox.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\HtmlHelperExtension.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\WidgetExtensions.cs" />
+    <Compile Include="UI\Html\Mvc\HtmlBuilder.cs" />
+    <Compile Include="UI\Html\Mvc\TestViews\PracownikTestModel.cs" />
+    <Compile Include="UI\Html\Mvc\TestViews\ProcesMW.cs" />
+    <Compile Include="UI\Html\Mvc\TestViews\TestView.cs" />
+    <Compile Include="UI\Html\Mvc\Widgets\NsPanel.cs" />
+    <Compile Include="UI\Html\Mvc\Widgets\NsTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Workflow\Workflow.csproj">
@@ -130,7 +131,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UI\Html\Version2\HtmlHelper\" />
+    <Folder Include="UI\Html\Mvc\HtmlHelper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

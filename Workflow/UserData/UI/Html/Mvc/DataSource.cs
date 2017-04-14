@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
+using NeuroSystem.Workflow.UserData.UI.Html.Version2;
+using NeuroSystem.Workflow.UserData.UI.Html.Version2.Builders;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
 {
@@ -15,11 +18,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
         //    set;
         //}
 
-        //public IList<AggregateDescriptor> Aggregates
-        //{
-        //    get;
-        //    private set;
-        //}
+        public IList<AggregateDescriptor> Aggregates
+        {
+            get;
+            set;
+        }
 
         public bool AutoSync
         {
@@ -57,11 +60,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
             private set;
         }
 
-        //public IList<IFilterDescriptor> Filters
-        //{
-        //    get;
-        //    private set;
-        //}
+        public IList<IFilterDescriptor> Filters
+        {
+            get;
+            private set;
+        }
 
         //public IList<GroupDescriptor> Groups
         //{
@@ -143,11 +146,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
             set;
         }
 
-        //public DataSourceSchema Schema
-        //{
-        //    get;
-        //    private set;
-        //}
+        public DataSourceSchema Schema
+        {
+            get;
+            private set;
+        }
 
         public bool ServerAggregates
         {
@@ -191,11 +194,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
             set;
         }
 
-        //public Transport Transport
-        //{
-        //    get;
-        //    protected set;
-        //}
+        public Transport Transport
+        {
+            get;
+            protected set;
+        }
 
         public DataSourceType? Type
         {

@@ -32,15 +32,17 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
 
                 if (type.GetGenericTypeDefinition() == typeof(UserData.UI.Html.Widgets.Grid<>))
                 {
+                    var grid = widget as NeuroSystem.Workflow.UserData.UI.Html.Widgets.Grid;
                     var controlType = typeof(Kendo.Mvc.UI.Grid<>).MakeGenericType(type.GenericTypeArguments[0]);
                     var control = (Kendo.Mvc.UI.WidgetBase)Activator.CreateInstance(controlType, new object[]
                     {
                         viewContext, initializer, urlGenerator, DI.Current.Resolve<Kendo.Mvc.UI.Html.IGridHtmlBuilderFactory>()
                     });
+                   
                     control.Name = "grid";
-                    var grid = (Kendo.Mvc.UI.IGrid) control;
+                    var gridControl = (Kendo.Mvc.UI.IGrid) control;
 
-                    var ds = grid.DataSource;
+                    var ds = gridControl.DataSource;
                     var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTestModel>(ds, viewContext, urlGenerator);
                     dsb.Ajax()
                         .Read("PracownikTestModel_Read", "Proces");

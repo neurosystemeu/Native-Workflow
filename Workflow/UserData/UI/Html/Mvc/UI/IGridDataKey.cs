@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {
-    public class DataSource
+    public interface IGridDataKey<T> : IDataKey
+    where T : class
     {
     }
 }
