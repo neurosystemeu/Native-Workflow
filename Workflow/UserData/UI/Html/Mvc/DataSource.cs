@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Builders;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.Version2;
-using NeuroSystem.Workflow.UserData.UI.Html.Version2.Builders;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc
 {
     public class DataSource : JsonObject
     {
@@ -208,13 +205,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
 
         public DataSource()
         {
-            //this.Transport = new Transport();
+            this.Transport = new Transport();
             //this.Filters = new List<IFilterDescriptor>();
             //this.OrderBy = new List<SortDescriptor>();
             //this.Groups = new List<GroupDescriptor>();
             //this.Aggregates = new List<AggregateDescriptor>();
             this.Events = new Dictionary<string, object>();
-            //this.Schema = new DataSourceSchema();
+            this.Schema = new DataSourceSchema();
             this.OfflineStorage = new Dictionary<string, object>();
         }
 

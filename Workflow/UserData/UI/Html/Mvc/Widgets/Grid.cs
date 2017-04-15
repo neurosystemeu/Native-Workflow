@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets
 {
     public class Grid : WidgetBase
     {
         public DataSource DataSource { get; set; }
+
+        public Grid()
+        {
+            DataSource = new DataSource();
+        }
     }
 
     /// <summary>
@@ -18,7 +17,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
     public class Grid<T> : Grid
         where T : class
     {
-
+        
         
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NeuroSystem.Workflow.UserData.UI.Html.Builders;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Builders;
 
 namespace UnitTestWorkflow.UI.HtmlBuilder
 {

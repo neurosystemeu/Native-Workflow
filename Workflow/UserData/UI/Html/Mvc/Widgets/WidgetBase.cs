@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets
 {
     public class WidgetBase
     {

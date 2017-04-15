@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kendo.Mvc.Infrastructure;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
 using Telerik.Web.UI.Editor;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets

@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Version2
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {
     public class ModelDescriptor : JsonObject
     {

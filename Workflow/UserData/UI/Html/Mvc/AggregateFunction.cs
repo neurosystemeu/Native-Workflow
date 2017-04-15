@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.Version2
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc
 {
     /// <summary>
     ///  Represents an aggregate function.

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NeuroSystem.Workflow.UserData.UI.Html.Version2.Builders;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
-
-namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Builders
 {
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="T:Kendo.Mvc.UI.DataSource" /> component.
@@ -14,9 +6,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Builders
     public class DataSourceBuilder<TModel>
     where TModel : class
     {
-        private Widgets.DataSource dataSource;
+        private DataSource dataSource;
 
-        public DataSourceBuilder(Widgets.DataSource dataSource)
+        public DataSourceBuilder(DataSource dataSource)
         {
             this.dataSource = dataSource;
         }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Builders;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Builders;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
 {

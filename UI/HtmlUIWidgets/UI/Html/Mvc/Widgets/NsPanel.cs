@@ -8,8 +8,10 @@ using System.Web.Mvc;
 using System.Web.UI;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
+using WidgetBase = Kendo.Mvc.UI.WidgetBase;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
 {
@@ -17,7 +19,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
     {
         private Panel panel;
         private IUrlGenerator urlGenerator;
-
+        
         public NsPanel(Panel panel, ViewContext viewContext, IJavaScriptInitializer initializer,
             ViewDataDictionary viewData, IUrlGenerator urlGenerator)
             :base(viewContext, initializer, viewData)

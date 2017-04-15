@@ -101,6 +101,7 @@
     <Compile Include="UserData\UI\Html\Mvc\UI\IGridDataKey.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ModelFieldDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Transport.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\Widgets\AutoComplete.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\DataFormViewAttribute.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\EnumControlType.cs" />
     <Compile Include="UserData\UI\Html\Version1\Fluent\Widgets\Panels\TabFactory.cs" />
@@ -165,7 +166,6 @@
     <Compile Include="UserData\UI\Html\Version1\Widgets\WidgetBase.cs" />
     <Compile Include="UserData\UI\Html\Mvc\IFilterDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ModelDescriptor.cs" />
-    <Compile Include="UserData\UI\Html\Mvc\Widgets\AutoComplete.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Widgets\Button.cs" />
     <Compile Include="UserData\UI\Html\Mvc\DataSource.cs" />
     <Compile Include="UserData\UI\Html\Mvc\DataSourceType.cs" />
