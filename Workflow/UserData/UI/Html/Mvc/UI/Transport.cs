@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {

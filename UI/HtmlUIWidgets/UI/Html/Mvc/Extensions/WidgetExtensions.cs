@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
@@ -17,7 +17,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             {
                 if (type.GetGenericTypeDefinition() == typeof(TextBox<>))
                 {
-                    //var tx = widget.ToKendoWidget();
+                    var tb = TextBoxExtensions.CreateTextBox(type.GenericTypeArguments[0],
+                        viewContext, initializer, viewData);
+                    tb.Name = widget.Name;
+                    return tb;
                 }
 
                 if (type.GetGenericTypeDefinition() == typeof(Grid<>))
@@ -31,13 +34,25 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 
                     control.Name = "grid";
                     var gridControl = (Kendo.Mvc.UI.IGrid)control;
+                    grid.DataSource.SetDataSource(gridControl.DataSource, viewContext, initializer, viewData,
+                        urlGenerator);
 
-                    var ds = gridControl.DataSource;
-                    var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTestModel>(ds, viewContext, urlGenerator);
-                    dsb.Ajax()
-                        .Read("PracownikTestModel_Read", "Proces");
 
                     return control;
+                }
+            }
+            else
+            {
+                if (widget is DatePicker)
+                {
+                    var dp = widget as DatePicker;
+                    return dp.ToKendoWidget(viewContext, initializer, viewData);
+                }
+
+                if (widget is ComboBox)
+                {
+                    var cb = widget as ComboBox;
+                    return cb.ToKendoWidget(viewContext, initializer, viewData, urlGenerator);
                 }
             }
 

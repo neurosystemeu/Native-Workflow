@@ -10,7 +10,7 @@ using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI.Html;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Builders;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
 {
@@ -32,23 +32,46 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
             model.Nazwisko = "Kowalski";
 
             var html = new WidgetFactory();
-            var panel = html.Panel();
-            
+            var panelGlwony = html.Panel();
+
+            var g1 = html.Panel();
+            g1.Class("form-horizontal form-widgets col-sm-6");
 
             var tb = html.TextBox<string>();
-            panel.AddItem(tb);
+            tb.Name("Imie");
+            g1.AddItem(tb);
+
+            var b2 = html.TextBox<string>();
+            b2.Name("Nazwisko");
+            g1.AddItem(b2);
+            panelGlwony.AddItem(g1);
+
+            var dp = html.DatePicker();
+            dp.Value(DateTime.Now);
+            dp.Name("Data");
+            g1.AddItem(dp);
+
+            var cb = html.ComboBox();
+            cb.Name("cb");
+
+            cb.DataSource(ds => ds.Read("PracownikTestModel_Read", "Proces")
+                );
+            g1.AddItem(cb);
+
 
             var grid = html.Grid<PracownikTestModel>();
             grid.Name("grid");
             grid.DataSource(ds => ds
                 .Ajax()
-                .Model(m=> m.Id("Id"))
-                .Read("Read", "Home")
+                .Model(m => m.Id("Id"))
+                .Read("PracownikTestModel_Read", "Proces")
                 );
-            panel.AddItem(grid);
+            panelGlwony.AddItem(grid);
 
 
-            var kontrolka = panel.ToComponent().ToKendoWidget(viewContext, initializer, helper.ViewData, urlGenerator);
+
+
+            var kontrolka = panelGlwony.ToComponent().ToKendoWidget(viewContext, initializer, helper.ViewData, urlGenerator);
 
             return new MvcHtmlString(kontrolka.ToHtmlString());
         }

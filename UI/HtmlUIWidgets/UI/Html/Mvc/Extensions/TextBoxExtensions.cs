@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
@@ -20,12 +20,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             return tx;
         }
 
-        public static Kendo.Mvc.UI.WidgetBase ToKendoTextBox(Type typArgumentu, ViewContext viewContext,
+        public static Kendo.Mvc.UI.WidgetBase CreateTextBox(Type typArgumentu, ViewContext viewContext,
             IJavaScriptInitializer initializer, ViewDataDictionary viewData)
         {
             var controlType = typeof(Kendo.Mvc.UI.TextBox<>).MakeGenericType(typArgumentu);
             var control = (Kendo.Mvc.UI.WidgetBase)Activator.CreateInstance(controlType, new object[] { viewContext, initializer, viewData });
-            control.Name = "cb";
+            
             return control;
         } 
     }

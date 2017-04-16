@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {

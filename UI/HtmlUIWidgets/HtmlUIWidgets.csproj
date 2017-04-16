@@ -86,6 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UI\Html\Mvc\Builder\DataSourceBuilder.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\ComboBoxExtension.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\DataSourceExtension.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\DatePickerExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\PanelExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\TextBoxExtensions.cs" />
     <Compile Include="UI\Html\Version1\WidgetBuilder.cs" />

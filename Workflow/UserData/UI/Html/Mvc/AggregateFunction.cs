@@ -1,5 +1,5 @@
 ﻿using System;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc
 {
