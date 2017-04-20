@@ -82,31 +82,18 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
 
             //return new MvcHtmlString(kontrolka.ToHtmlString());
 
+            
 
             var model = new PracownikTest();
             model.Imie = "Jan";
             model.Nazwisko = "Kowalski";
 
+            var dataForm = ViewGenerator.CreateDefaultDataForm(model);
+
             var html = new WidgetFactory();
-            var panelGlwony = html.Panel();
+            var kendoPanel = dataForm.ToKendoWidget(helper, initializer, urlGenerator);
             
-            var visibleProperty = new List<VisibleProperty>();
-            var type = model.GetType();
-            var properties = type.GetProperties();
-            foreach (var propertyInfo in properties)
-            {
-                var displays = propertyInfo.GetCustomAttributes(typeof(DataFormViewAttribute));
-                if (displays.Any())
-                {
-                    var display = displays.First() as DataFormViewAttribute;
-                    visibleProperty.Add(new VisibleProperty() { DataFormView = display, PropertyInfo = propertyInfo });
-                }
-            }
-
-            visibleProperty = visibleProperty.Where(v => v.DataFormView.GroupName == null).ToList();
-
-            var nsGrupa = generujGrupe(visibleProperty, viewContext, initializer, viewData, urlGenerator);
-            var htmlstr = nsGrupa.ToHtmlString();
+            var htmlstr = kendoPanel.ToHtmlString();
             return new MvcHtmlString(htmlstr);
         }
 
@@ -128,7 +115,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
 
             var biznesObject = new PracownikTest();
             var viewPanel = new Panel();
-            var view = new NsPanel(viewPanel, viewContext, initializer, viewData, urlGenerator);
+            var view = new NsPanel(viewPanel, helper, initializer, urlGenerator);
 
             var visibleProperty = new List<VisibleProperty>();
 
@@ -209,18 +196,18 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
         }
 
         public static NsPanel generujGrupe(IEnumerable<VisibleProperty> tabWidgets
-            , ViewContext viewContext, IJavaScriptInitializer initializer,
-            ViewDataDictionary viewData, IUrlGenerator urlGenerator)
+            , System.Web.Mvc.HtmlHelper helper, IJavaScriptInitializer initializer,
+            IUrlGenerator urlGenerator)
         {
-            var nsgrupa = new NsPanel(new Panel(),viewContext, initializer, viewData, urlGenerator );
+            var nsgrupa = new NsPanel(new Panel(),helper, initializer, urlGenerator );
             nsgrupa.Class("form-horizontal form-widgets col-sm-6");
 
             foreach (var visibleProperty in tabWidgets)
             {
                 //blok
-                var blok = new NsPanel(new Panel(), viewContext, initializer, viewData, urlGenerator);
+                var blok = new NsPanel(new Panel(), helper, initializer, urlGenerator);
                 blok.Class("form-group");
-                var label = new NsLabel(viewContext);
+                var label = new NsLabel(new Label(), helper);
                 label.Content = visibleProperty.PropertyInfo.Name;
                 blok.AddItem(label);
                 var div = new Panel();

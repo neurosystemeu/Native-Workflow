@@ -8,6 +8,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations
         public DataFormViewAttribute()
         {
             TabName = "Podstawowe";
+            GroupName = "Podstawowa";
         }
 
         public string Name { get; set; }

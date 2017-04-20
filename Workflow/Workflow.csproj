@@ -105,9 +105,14 @@
     <Compile Include="UserData\UI\Html\Mvc\UI\DatePickerBase.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\IDataKey.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\IGridDataKey.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\Label.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ModelFieldDescriptor.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\PlaceHolder.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\Tab.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\Tabs.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Transport.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\AutoComplete.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\ViewGenerator.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\DataFormViewAttribute.cs" />
     <Compile Include="UserData\UI\Html\Version1\DataAnnotations\EnumControlType.cs" />
     <Compile Include="UserData\UI\Html\Version1\Fluent\Widgets\Panels\TabFactory.cs" />

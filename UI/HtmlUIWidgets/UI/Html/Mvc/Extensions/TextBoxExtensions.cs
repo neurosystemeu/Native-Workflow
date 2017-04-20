@@ -20,11 +20,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             return tx;
         }
 
-        public static Kendo.Mvc.UI.WidgetBase CreateTextBox(Type typArgumentu, ViewContext viewContext,
-            IJavaScriptInitializer initializer, ViewDataDictionary viewData)
+        public static Kendo.Mvc.UI.WidgetBase CreateTextBox(Type typArgumentu, HtmlHelper helper,
+            IJavaScriptInitializer initializer)
         {
             var controlType = typeof(Kendo.Mvc.UI.TextBox<>).MakeGenericType(typArgumentu);
-            var control = (Kendo.Mvc.UI.WidgetBase)Activator.CreateInstance(controlType, new object[] { viewContext, initializer, viewData });
+            var control = (Kendo.Mvc.UI.WidgetBase)Activator.CreateInstance(controlType, new object[] { helper.ViewContext, initializer, helper.ViewData });
             
             return control;
         } 

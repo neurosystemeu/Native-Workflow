@@ -35,15 +35,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
 
         [Description("Miasto zamieszkania")]
         [GridView]
-        [DataFormView]
+        [DataFormView(GroupName = "Adres")]
         public string Miasto { get; set; }
 
         [Description("Adres zamieszkania")]
-        [DataFormView]
+        [DataFormView(GroupName = "Adres")]
         public string Adres { get; set; }
 
         [Description("Kod pocztowy zamieszkania")]
-        [DataFormView]
+        [DataFormView(GroupName = "Adres")]
         public string KodPocztowy { get; set; }
 
         [Description("Rodzaj pracownika")]

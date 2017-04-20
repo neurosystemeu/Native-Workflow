@@ -11,10 +11,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
     public static class DatePickerExtensions
     {
-        public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this DatePicker widget, ViewContext viewContext,
-            IJavaScriptInitializer initializer, ViewDataDictionary viewData)
+        public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this DatePicker widget, HtmlHelper helper,
+            IJavaScriptInitializer initializer)
         {
-            var control = new Kendo.Mvc.UI.DatePicker(viewContext, initializer, viewData);
+            var control = new Kendo.Mvc.UI.DatePicker(helper.ViewContext, initializer, helper.ViewData);
             control.Name = widget.Name;
             control.Value = widget.Value;
             return control;

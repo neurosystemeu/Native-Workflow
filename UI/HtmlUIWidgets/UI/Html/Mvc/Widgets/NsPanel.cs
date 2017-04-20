@@ -21,12 +21,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
         public Panel Panel;
         private IUrlGenerator urlGenerator;
         private IList<Kendo.Mvc.UI.WidgetBase> KendoWidgets;
-        
-        public NsPanel(Panel panel, ViewContext viewContext, IJavaScriptInitializer initializer,
-            ViewDataDictionary viewData, IUrlGenerator urlGenerator)
-            :base(viewContext, initializer, viewData)
+        private HtmlHelper helper;
+
+        public NsPanel(Panel panel, HtmlHelper helper, 
+            IJavaScriptInitializer initializer,
+            IUrlGenerator urlGenerator)
+            :base(helper.ViewContext, initializer, helper.ViewData)
         {
             this.Panel = panel;
+            this.helper = helper;
             this.urlGenerator = urlGenerator;
             KendoWidgets = new List<WidgetBase>();
         }
@@ -51,8 +54,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
             //renderuje itemy
             foreach (var item in Panel.Items)
             {
-                var control = item.ToKendoWidget(ViewContext, Initializer, ViewData, urlGenerator);
-                control.Render();
+                var control = item.ToKendoWidget(helper, Initializer, urlGenerator);
+                var html = control.ToHtmlString();
+                writer.Write(html);
+            }
+
+            if(Panel.HtmlContent != null)
+            {
+                writer.Write(Panel.HtmlContent);
             }
 
             foreach (var kendoWidget in KendoWidgets)

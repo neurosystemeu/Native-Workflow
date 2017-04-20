@@ -12,14 +12,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
     public static class ComboBoxExtension
     {
-        public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this ComboBox widget, ViewContext viewContext,
-            IJavaScriptInitializer initializer, ViewDataDictionary viewData, IUrlGenerator urlGenerator)
+        public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this ComboBox widget, HtmlHelper helper,
+            IJavaScriptInitializer initializer, IUrlGenerator urlGenerator)
         {
-            var control = new Kendo.Mvc.UI.ComboBox(viewContext, initializer, viewData, urlGenerator);
+            var control = new Kendo.Mvc.UI.ComboBox(helper.ViewContext, initializer, helper.ViewData, urlGenerator);
             control.Name = widget.Name;
             control.DataValueField = "Id";
             control.DataTextField = "Nazwisko";
-            widget.DataSource.SetDataSource(control.DataSource,viewContext,initializer,viewData, urlGenerator);
+            widget.DataSource.SetDataSource(control.DataSource,helper.ViewContext,initializer,helper.ViewData, urlGenerator);
 
             return control;
         }

@@ -12,10 +12,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
     public static class PanelExtension
     {
-        public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this Panel panel, ViewContext viewContext,
-            IJavaScriptInitializer initializer, ViewDataDictionary viewData, Kendo.Mvc.IUrlGenerator urlGenerator)
+        public static NsPanel ToKendoWidget(this Panel panel, HtmlHelper helper,
+            IJavaScriptInitializer initializer, Kendo.Mvc.IUrlGenerator urlGenerator)
         {
-            var p = new NsPanel(panel, viewContext, initializer, viewData, urlGenerator);
+            var p = new NsPanel(panel, helper, initializer, urlGenerator);
             
             return p;
         }

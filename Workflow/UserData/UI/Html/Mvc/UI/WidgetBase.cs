@@ -30,6 +30,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
         {
             return null;
         }
+
+        public override string ToString()
+        {
+            return Name ?? base.ToString();
+        }
     }
 
     public class WidgetBase<T> : WidgetBase
