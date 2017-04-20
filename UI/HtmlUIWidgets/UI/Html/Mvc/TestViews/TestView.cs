@@ -13,7 +13,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
     {
         public Panel GetView()
         {
-            var model = new PracownikTestModel();
+            var model = new PracownikTest();
             model.Imie = "Jan";
             model.Nazwisko = "Kowalski";
 
@@ -22,7 +22,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
                 .DataSource(source =>
                     source.Read(a => a.ToString())
                 );
-            var panel = html.Panel<PracownikTestModel>();
+            var panel = html.Panel<PracownikTest>();
             panel.HtmlAttributes("style", "height:400px; width:400px; background-color:red;");
             panel.AddItem(panels =>
             {

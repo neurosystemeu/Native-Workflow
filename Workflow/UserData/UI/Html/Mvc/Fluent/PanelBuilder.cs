@@ -11,7 +11,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent
 
         public PanelBuilder Class(string htmlClass)
         {
-            Component.HtmlAttributes.Add("class", htmlClass);
+            Component.Class(htmlClass);
             return this;
         }
 

@@ -21,7 +21,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 
         private IDictionary<string, object> htmlAttributes;
 
-
+        public void Class(string htmlClass)
+        {
+            HtmlAttributes.Add("class", htmlClass);
+        }
 
         public virtual string ToHtmlString()
         {

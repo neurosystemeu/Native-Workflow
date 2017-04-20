@@ -20,7 +20,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
         {
             if (ds.Type==null || ds.Type.Value == UserData.UI.Html.Mvc.DataSourceType.Custom)
             {
-                var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTestModel>(datasource, viewContext,
+                var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTest>(datasource, viewContext,
                     urlGenerator);
                 dsb.Custom().Transport(t =>
                 t.Read(ds.Transport.Read.ActionName, ds.Transport.Read.ControllerName))
@@ -34,7 +34,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             if (ds.Type == UserData.UI.Html.Mvc.DataSourceType.Ajax)
             {
 
-                var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTestModel>(datasource, viewContext,
+                var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTest>(datasource, viewContext,
                     urlGenerator);
                 dsb.Ajax()
                     .Model(m => m.Id("Id"))
