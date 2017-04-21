@@ -199,6 +199,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="UserData\UI\Html\Mvc\DataAnnotations\" />
     <Folder Include="UserData\UI\Html\Mvc\Widgets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
