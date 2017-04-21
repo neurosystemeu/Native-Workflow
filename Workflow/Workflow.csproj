@@ -66,6 +66,10 @@
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleRead.cs" />
     <Compile Include="UserData\UI\Consola\UserDataActions\ConsoleWrite.cs" />
     <Compile Include="UserData\UI\Html\Mvc\AggregateFunction.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\DataAnnotations\DataFormViewAttribute.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\DataAnnotations\EnumControlType.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\DataAnnotations\GridViewAttribute.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\ExpressionBuilder.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Fluent\AggregateDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Fluent\AjaxDataSourceBuilder.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Fluent\AjaxDataSourceBuilderBase.cs" />
@@ -94,10 +98,12 @@
     <Compile Include="UserData\UI\Html\Mvc\ClientHandlerDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\CrudOperation.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Fluent\DataSourceFilterDescriptorFactoryBase.cs" />
-    <Compile Include="UserData\UI\Html\Mvc\ExpressionBuilder.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Extensions\DictionaryExtensions.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Extensions\ObjectExtensions.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Extensions\StringExtensions.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\GridAggregateFunction.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\GridColumnType.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\GridKnownFunction.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Infrastructure\FluentDictionary.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ComboBox.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\DataSourceSchema.cs" />
@@ -199,7 +205,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UserData\UI\Html\Mvc\DataAnnotations\" />
     <Folder Include="UserData\UI\Html\Mvc\Widgets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

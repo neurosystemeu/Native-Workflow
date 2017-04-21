@@ -1,4 +1,4 @@
-﻿using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations;
+﻿using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
