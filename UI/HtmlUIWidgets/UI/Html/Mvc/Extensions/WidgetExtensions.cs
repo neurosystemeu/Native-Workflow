@@ -2,8 +2,7 @@
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions

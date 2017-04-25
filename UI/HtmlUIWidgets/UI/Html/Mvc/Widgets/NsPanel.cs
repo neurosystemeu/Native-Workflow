@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.UI;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 using WidgetBase = Kendo.Mvc.UI.WidgetBase;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets
 {
     public class NsPanel : Kendo.Mvc.UI.WidgetBase
     {

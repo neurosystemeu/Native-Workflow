@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc;
 using DataSourceType = Kendo.Mvc.UI.DataSourceType;
 

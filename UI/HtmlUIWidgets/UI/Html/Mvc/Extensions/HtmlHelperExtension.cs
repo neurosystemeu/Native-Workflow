@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.WebPages.Html;
 using System.Web.Mvc;
-using System.Web.Mvc.Html;
 using Kendo.Mvc;
-using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
-using Kendo.Mvc.UI.Html;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
 {
     public static class HtmlHelperExtension
     {
