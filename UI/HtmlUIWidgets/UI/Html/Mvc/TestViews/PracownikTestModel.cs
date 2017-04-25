@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews
+namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews
 {
     public class PracownikTest 
     {

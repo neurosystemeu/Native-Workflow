@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
+using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
@@ -17,6 +18,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             var tx = new Kendo.Mvc.UI.TextBox<T>(viewContext, initializer, viewData);
             tx.Name = textBox.Name;
             tx.Format = textBox.Format;
+            tx.Value = textBox.Value;
             return tx;
         }
 

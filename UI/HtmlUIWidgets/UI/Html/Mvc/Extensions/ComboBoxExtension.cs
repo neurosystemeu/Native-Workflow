@@ -17,9 +17,19 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
         {
             var control = new Kendo.Mvc.UI.ComboBox(helper.ViewContext, initializer, helper.ViewData, urlGenerator);
             control.Name = widget.Name;
-            control.DataValueField = "Id";
-            control.DataTextField = "Nazwisko";
-            widget.DataSource.SetDataSource(control.DataSource,helper.ViewContext,initializer,helper.ViewData, urlGenerator);
+            control.DataValueField = widget.DataValueField;
+            control.DataTextField = widget.DataTextField;
+            control.SelectedIndex = widget.SelectedIndex;
+
+            if (widget.DataSource.Type == UserData.UI.Html.Mvc.DataSourceType.Server)
+            {
+                control.DataSource.Data = widget.DataSource.Data;
+            }
+            else
+            {
+                widget.DataSource.SetDataSource(control.DataSource, helper.ViewContext, initializer, helper.ViewData,
+                    urlGenerator);
+            }
 
             return control;
         }

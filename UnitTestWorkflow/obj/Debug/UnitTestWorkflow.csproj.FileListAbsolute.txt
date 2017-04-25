@@ -1,0 +1,16 @@
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\obj\Debug\UnitTestWorkflow.csprojResolveAssemblyReference.cache
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\UnitTestWorkflow.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\UnitTestWorkflow.pdb
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\NeuroSystem.VirtualMachine.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\NeuroSystem.Workflow.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Polenter.SharpSerializer.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Mono.Reflection.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Mono.Cecil.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\ExpressionEvaluator.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Antlr3.Runtime.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\NeuroSystem.VirtualMachine.pdb
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\NeuroSystem.Workflow.pdb
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Polenter.SharpSerializer.xml
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\bin\Debug\Antlr3.Runtime.pdb
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\obj\Debug\UnitTestWorkflow.dll
+C:\NeuroSystem\Native-Workflow\UnitTestWorkflow\obj\Debug\UnitTestWorkflow.pdb

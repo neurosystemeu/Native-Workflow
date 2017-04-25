@@ -103,7 +103,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             {
                 t = (T)Enum.Parse(typeof(T), value, true);
             }
-            catch (ArgumentException argumentException)
+            catch
             {
                 t = defaultValue;
             }

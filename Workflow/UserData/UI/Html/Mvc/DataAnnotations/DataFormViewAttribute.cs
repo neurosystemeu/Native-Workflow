@@ -14,6 +14,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations
             GroupName = "Podstawowa";
         }
 
+        public bool IsReadOnly { get; set; }
         public string Name { get; set; }
         public string GroupName { get; set; }
         public string TabName { get; set; }

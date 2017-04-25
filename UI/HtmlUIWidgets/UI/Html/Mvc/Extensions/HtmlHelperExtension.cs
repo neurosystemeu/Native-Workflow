@@ -13,6 +13,7 @@ using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.UI.Html;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets;
@@ -29,68 +30,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions
             return new WidgetFactory(helper);
         }
 
-        public static object Ns<TModel>(this HtmlHelper<TModel> helper)
+        public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model)
         {
-            var viewContext = helper.ViewContext;
             var initializer = DI.Current.Resolve<IJavaScriptInitializer>();
             var urlGenerator = DI.Current.Resolve<IUrlGenerator>();
-            var viewData = helper.ViewData;
-
-            //var model = new PracownikTest();
-            //model.Imie = "Jan";
-            //model.Nazwisko = "Kowalski";
-
-            //var html = new WidgetFactory();
-            //var panelGlwony = html.Panel();
-
-            //var g1 = html.Panel();
-            //g1.Class("form-horizontal form-widgets col-sm-6");
-
-            //var tb = html.TextBox<string>();
-            //tb.Name("Imie");
-            //g1.AddItem(tb);
-
-            //var b2 = html.TextBox<string>();
-            //b2.Name("Nazwa");
-            //g1.AddItem(b2);
-            //panelGlwony.AddItem(g1);
-
-            //var dp = html.DatePicker();
-            //dp.Value(DateTime.Now);
-            //dp.Name("Data");
-            //g1.AddItem(dp);
-
-            //var cb = html.ComboBox();
-            //cb.Name("cb");
-
-            //cb.DataSource(ds => ds.Read("PracownikTestModel_Read", "Proces")
-            //    );
-            //g1.AddItem(cb);
-
-
-            //var grid = html.Grid<PracownikTest>();
-            //grid.Name("grid");
-
-            //grid.DataSource(ds => ds
-            //    .Ajax()
-            //    .Model(m => m.Id("Id"))
-            //    .Read("PracownikTestModel_Read", "Proces")
-            //    );
-            //panelGlwony.AddItem(grid);
-
-            //var kontrolka = panelGlwony.ToComponent().ToKendoWidget(viewContext, initializer, helper.ViewData, urlGenerator);
-
-            //return new MvcHtmlString(kontrolka.ToHtmlString());
-
             
-
-            var model = new PracownikTest();
-            model.Imie = "Jan";
-            model.Nazwisko = "Kowalski";
-
             var dataForm = ViewGenerator.CreateDefaultDataForm(model);
-
-            var html = new WidgetFactory();
             var kendoPanel = dataForm.ToKendoWidget(helper, initializer, urlGenerator);
             
             var htmlstr = kendoPanel.ToHtmlString();

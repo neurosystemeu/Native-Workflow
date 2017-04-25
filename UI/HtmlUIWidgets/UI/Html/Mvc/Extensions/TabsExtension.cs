@@ -17,11 +17,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             IJavaScriptInitializer initializer, Kendo.Mvc.IUrlGenerator urlGenerator)
         {
             var tabsBuilder = helper.Kendo().TabStrip().Name(tabs.Name);
+            var selected = true;
             foreach (var tab in tabs.Items)
             {
                 var control = tab.Panel.ToKendoWidget(helper, initializer, urlGenerator);
                 var html = control.ToHtmlString();
-                tabsBuilder.Items(a => { a.Add().Text(tab.Name).Content(html); });
+                tabsBuilder.Items(a => { a.Add().Text(tab.Name).Content(html).Selected(selected); });
+                selected = false;
             }
 
             var tabsControl = tabsBuilder.ToComponent();

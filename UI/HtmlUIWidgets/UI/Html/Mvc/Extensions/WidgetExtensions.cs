@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
+using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
@@ -20,6 +21,11 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
                     var tb = TextBoxExtensions.CreateTextBox(
                         type.GenericTypeArguments[0], helper, initializer);
                     tb.Name = widget.Name;
+
+                    tb.SetPropValue("Value", widget.GetPropValue("Value"));
+
+                    dynamic dynamicTb = tb;
+                    dynamicTb.Enabled = !widget.IsReadOnly;
                     return tb;
                 }
 
@@ -47,6 +53,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
                 {
                     var dp = widget as DatePicker;
                     return dp.ToKendoWidget(helper, initializer);
+                }
+
+                if (widget is CheckBox)
+                {
+                    var cb = widget as CheckBox;
+                    return cb.ToKendoWidget(helper, initializer);
                 }
 
                 if (widget is ComboBox)

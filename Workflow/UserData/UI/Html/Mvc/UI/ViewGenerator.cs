@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using NeuroSystem.Workflow.Core.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {
@@ -50,7 +52,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     var tabWidgets = visibleProperty.Where(w => w.DataFormView.TabName == tabName);
                     var tabPanel = new Panel("tab_"+tabName);                                    
                     tab.Panel = tabPanel;
-                    generateGroups(tabWidgets, tabPanel);
+                    generateGroups(tabWidgets, tabPanel, model);
                     tabsControl.Items.Add(tab);
                 }
                 dataForm.Items.Add(tabsControl);
@@ -59,13 +61,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
             {
                 //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
                 
-                generateGroups(visibleProperty, dataForm);
+                generateGroups(visibleProperty, dataForm, model);
             }
 
             return dataForm;
         }
 
-        private static void generateGroups(IEnumerable<VisibleProperty> tabWidgets, Panel tab)
+        private static void generateGroups(IEnumerable<VisibleProperty> tabWidgets, Panel tab, object model)
         {
             var groupsName = tabWidgets.Select(w => w.DataFormView.GroupName).Distinct().ToList();
             foreach (var groupName in groupsName)
@@ -84,7 +86,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     var blok = new Panel("block_" + groupWidget.PropertyInfo.Name);
                     blok.Class("form-group");
                     var label = new Label();
-                    label.Content = groupWidget.PropertyInfo.Name;
+                    label.Content = groupWidget.PropertyInfo.Name.SplitPascalCase();
                     label.Class("control-label col-sm-3");
                     label.For(groupWidget.PropertyInfo.Name);
                     blok.Items.Add(label);
@@ -99,9 +101,58 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         var div = new Panel("item_" + groupWidget.PropertyInfo.Name);
                         div.Class("col-sm-7");
                         blok.Items.Add(div);
-                        var tb = new TextBox<string>();
-                        tb.Name = groupWidget.PropertyInfo.Name;
-                        div.Items.Add(tb);
+
+                        if (groupWidget.PropertyInfo.PropertyType == typeof(DateTime) ||
+                            groupWidget.PropertyInfo.PropertyType == typeof(DateTime?))
+                        {
+                            var dp = new DatePicker();
+                            dp.Name = groupWidget.PropertyInfo.Name;
+                            dp.Value = (DateTime?)model.GetPropValue(groupWidget.PropertyInfo.Name);
+                            dp.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
+                            div.Items.Add(dp);
+                        }
+                        else if (groupWidget.PropertyInfo.PropertyType == typeof(bool) ||
+                                   groupWidget.PropertyInfo.PropertyType == typeof(bool?))
+                        {
+                            var cb = new CheckBox();
+                            cb.Name = groupWidget.PropertyInfo.Name;
+                            cb.Value = (bool?)model.GetPropValue(groupWidget.PropertyInfo.Name);
+                            cb.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
+                            div.Items.Add(cb);
+                        }
+                        else if(groupWidget.PropertyInfo.PropertyType.IsEnum)
+                        {
+                            var cb = new ComboBox();
+                            cb.Name = groupWidget.PropertyInfo.Name;
+                            cb.Text = model.GetPropValue(groupWidget.PropertyInfo.Name).ToString();
+                            var ds = new DataSource();
+                            var values = Enum.GetNames(groupWidget.PropertyInfo.PropertyType);
+                            
+                            ds.Type = DataSourceType.Server;
+                            ds.Data = values;
+                            cb.DataSource = ds;
+
+                            int index = 0;
+                            foreach (var value in values)
+                            {
+                                if (value == cb.Text)
+                                {
+                                    cb.SelectedIndex = index;
+                                    break;
+                                }
+                                index++;
+                            }
+
+                            div.Items.Add(cb);
+                        }
+                        else
+                        {
+                            var tb = new TextBox<string>();
+                            tb.Name = groupWidget.PropertyInfo.Name;
+                            tb.Value = model.GetPropValue(groupWidget.PropertyInfo.Name)?.ToString();
+                            tb.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
+                            div.Items.Add(tb);
+                        }
 
                         groupPanel.Items.Add(blok);
                         //df.AddField(groupWidget.PropertyInfo).Height = groupWidget.DataFormView.Height;

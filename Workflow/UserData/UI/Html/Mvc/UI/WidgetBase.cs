@@ -11,6 +11,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 
         public string Name { get; set; }
 
+        public bool IsReadOnly { get; set; }
+
         /// <summary>
         /// Gets the HTML attributes.
         /// </summary>

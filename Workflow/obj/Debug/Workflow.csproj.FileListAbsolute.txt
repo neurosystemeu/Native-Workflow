@@ -1,0 +1,14 @@
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\NeuroSystem.Workflow.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\NeuroSystem.Workflow.pdb
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Antlr3.Runtime.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\ExpressionEvaluator.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\NeuroSystem.VirtualMachine.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Polenter.SharpSerializer.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Mono.Reflection.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Mono.Cecil.dll
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\NeuroSystem.VirtualMachine.pdb
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Antlr3.Runtime.pdb
+C:\NeuroSystem\Native-Workflow\Workflow\bin\Debug\Polenter.SharpSerializer.xml
+C:\NeuroSystem\Native-Workflow\Workflow\obj\Debug\Workflow.csprojResolveAssemblyReference.cache
+C:\NeuroSystem\Native-Workflow\Workflow\obj\Debug\NeuroSystem.Workflow.dll
+C:\NeuroSystem\Native-Workflow\Workflow\obj\Debug\NeuroSystem.Workflow.pdb

@@ -17,6 +17,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             var control = new Kendo.Mvc.UI.DatePicker(helper.ViewContext, initializer, helper.ViewData);
             control.Name = widget.Name;
             control.Value = widget.Value;
+            control.Enabled = !widget.IsReadOnly;
             return control;
         }
         

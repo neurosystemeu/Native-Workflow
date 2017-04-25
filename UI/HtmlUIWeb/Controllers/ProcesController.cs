@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using Kendo.Mvc.UI;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
 
 namespace HtmlUIWeb.Controllers
 {
@@ -14,7 +15,18 @@ namespace HtmlUIWeb.Controllers
         // GET: Proces
         public ActionResult Index()
         {
-            return View("Index", new ProcesMW(this));
+            var pracownik = new PracownikTest();
+            pracownik.Nazwisko = "Kowalski";
+            pracownik.Imie = "Jan";
+            pracownik.DataWaznosciBadan = DateTime.Now;
+            pracownik.RodzajPracownika = EnumRodzajPracownika.Biurowy;
+            
+            return View("Index", new ProcesMW() {Pracownik = pracownik});
+        }
+
+        public ActionResult Zapisz(PracownikTest pracownik)
+        {
+            return View("Index", new ProcesMW() { Pracownik = pracownik });
         }
 
         public ActionResult PracownikTestModel_Read([DataSourceRequest] DataSourceRequest request)
@@ -32,7 +44,7 @@ namespace HtmlUIWeb.Controllers
             //    var result = zapytanie.ToDataSourceResult(request, o => new FakturaMW(o));
             //    return Json(result);
             //}
-            return null;
+            //return null;
         }
 
 

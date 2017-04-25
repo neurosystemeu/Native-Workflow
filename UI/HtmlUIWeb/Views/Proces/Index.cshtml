@@ -10,8 +10,11 @@
 
 <div >
     <h2>Proces22</h2>
-
-    @Html.Ns()
+@using (Html.BeginForm("Zapisz","Proces"))
+{
+    @(Html.Kendo().Button().Name("btnZapisz").Content("Zapisz"))
+    @Html.CreateDataForm(Model.Pracownik)
+}
 
     @(Html.Kendo().ComboBox()
         .Name("ccb")

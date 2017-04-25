@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
+using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc;
 using DataSourceType = Kendo.Mvc.UI.DataSourceType;
@@ -18,6 +19,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
             ViewContext viewContext,IJavaScriptInitializer initializer, ViewDataDictionary viewData,
             IUrlGenerator urlGenerator) 
         {
+            
             if (ds.Type==null || ds.Type.Value == UserData.UI.Html.Mvc.DataSourceType.Custom)
             {
                 var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<PracownikTest>(datasource, viewContext,

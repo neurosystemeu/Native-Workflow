@@ -40,6 +40,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
             set;
         }
 
+        public string DataTextField { get; set; }
+
         public bool? HighlightFirst
         {
             get;
