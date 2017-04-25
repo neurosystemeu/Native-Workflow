@@ -37,6 +37,6 @@ namespace HtmlUIWeb {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Panels.NsPanel panel;
+        protected global::NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels.NsPanel panel;
     }
 }

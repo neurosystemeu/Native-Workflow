@@ -2,10 +2,10 @@
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 {
     public static class WidgetExtensions
     {

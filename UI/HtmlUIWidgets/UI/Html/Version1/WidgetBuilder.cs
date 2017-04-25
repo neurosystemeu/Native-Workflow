@@ -1,14 +1,12 @@
 ﻿using System.Web.UI;
 using System.Web.UI.WebControls;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Actions;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Panels;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Tabs;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Views;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Actions;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Tabs;
 using Telerik.Web.UI;
 using Panel = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels.Panel;
 using Action = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Actions.Action;
@@ -18,7 +16,7 @@ using Label = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.L
 using TextBox = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.TextBox;
 using TreeView = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets.TreeView;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1
 {
     public class WidgetBuilder
     {

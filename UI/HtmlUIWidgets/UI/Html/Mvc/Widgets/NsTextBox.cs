@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets
 {
     //public class NsTextBox<T> : Kendo.Mvc.UI.TextBox<T>
     //{

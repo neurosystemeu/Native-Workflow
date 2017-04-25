@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms
 {
     public class NsAutoComplete : RadAutoCompleteBox, IBindingControl
     {

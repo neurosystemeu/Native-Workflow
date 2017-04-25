@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Infrastructure;
-using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 {
     public static class TextBoxExtensions
     {

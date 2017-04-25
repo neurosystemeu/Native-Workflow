@@ -4,11 +4,11 @@ using System.Web.Mvc;
 using System.Web.UI;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 using WidgetBase = Kendo.Mvc.UI.WidgetBase;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets
 {
     public class NsPanel : Kendo.Mvc.UI.WidgetBase
     {

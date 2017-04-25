@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
 {
     public class PracownikTest 
     {

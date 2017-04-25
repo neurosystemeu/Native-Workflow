@@ -18,7 +18,6 @@ C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\HtmlUIWeb.pdb
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Microsoft.Web.Infrastructure.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.dll
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.UserData.UI.Html.ASP.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Newtonsoft.Json.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\System.Net.Http.Formatting.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\System.Web.Helpers.dll
@@ -42,7 +41,6 @@ C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Mono.Cecil.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Antlr3.Runtime.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Telerik.Windows.Zip.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.pdb
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.UserData.UI.Html.ASP.pdb
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\Telerik.Web.UI.xml
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\System.Web.Razor.xml
@@ -87,3 +85,5 @@ C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\sv-SE\Kendo.Mvc.resources.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\tr-TR\Kendo.Mvc.resources.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\uk-UA\Kendo.Mvc.resources.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.UserData.dll
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWeb\bin\NeuroSystem.Workflow.UserData.pdb

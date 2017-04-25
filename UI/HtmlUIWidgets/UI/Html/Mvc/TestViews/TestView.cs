@@ -1,7 +1,7 @@
 ﻿using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
 {
     public class TestView
     {

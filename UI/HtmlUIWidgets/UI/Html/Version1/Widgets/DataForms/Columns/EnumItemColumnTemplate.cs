@@ -4,7 +4,7 @@ using System.Web.UI;
 using NeuroSystem.Workflow.Core.Extensions;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms.Columns
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.Columns
 {
     public class EnumItemColumnTemplate : ITemplate, IBindableTemplate
     {

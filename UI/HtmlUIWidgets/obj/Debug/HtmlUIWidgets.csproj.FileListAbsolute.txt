@@ -1,6 +1,4 @@
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\obj\Debug\HtmlUIWidgets.csprojResolveAssemblyReference.cache
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.Workflow.UserData.UI.Html.ASP.dll
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.Workflow.UserData.UI.Html.ASP.pdb
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.Workflow.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.VirtualMachine.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\ExpressionEvaluator.dll
@@ -25,8 +23,6 @@ C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Telerik.Windows.Docume
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Polenter.SharpSerializer.xml
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Antlr3.Runtime.pdb
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Telerik.Windows.Zip.xml
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\obj\Debug\NeuroSystem.Workflow.UserData.UI.Html.ASP.dll
-C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\obj\Debug\NeuroSystem.Workflow.UserData.UI.Html.ASP.pdb
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Kendo.Mvc.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\Newtonsoft.Json.dll
@@ -69,3 +65,7 @@ C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\sv-SE\Kendo.Mvc.resour
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\tr-TR\Kendo.Mvc.resources.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\uk-UA\Kendo.Mvc.resources.dll
 C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\zh-CN\Kendo.Mvc.resources.dll
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.Workflow.UserData.dll
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\bin\Debug\NeuroSystem.Workflow.UserData.pdb
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\obj\Debug\NeuroSystem.Workflow.UserData.dll
+C:\NeuroSystem\Native-Workflow\UI\HtmlUIWidgets\obj\Debug\NeuroSystem.Workflow.UserData.pdb

@@ -1,4 +1,4 @@
-﻿namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews
+﻿namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
 {
     public class ProcesMW
     {

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.Mvc;
-using DataSourceType = Kendo.Mvc.UI.DataSourceType;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 {
     public static class DataSourceExtension
     {

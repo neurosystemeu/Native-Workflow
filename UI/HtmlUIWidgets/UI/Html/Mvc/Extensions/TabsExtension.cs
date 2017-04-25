@@ -1,15 +1,9 @@
-﻿using Kendo.Mvc.Infrastructure;
+﻿using System.Web.Mvc;
+using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 {
     public static class TabsExtension
     {

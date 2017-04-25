@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Web.UI;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms.Columns
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.Columns
 {
     public class EnumFilterColumnTemplate : ITemplate, IBindableTemplate
     {

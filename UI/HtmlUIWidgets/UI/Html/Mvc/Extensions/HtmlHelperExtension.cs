@@ -5,13 +5,13 @@ using System.Web.Mvc;
 using Kendo.Mvc;
 using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.DataAnnotations;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.Extensions
+namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 {
     public static class HtmlHelperExtension
     {

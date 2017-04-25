@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Mvc.TestViews;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews;
 
 namespace HtmlUIWeb.Controllers
 {

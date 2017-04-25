@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels;
-using Panel = System.Web.UI.WebControls.Panel;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.Panels
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.Panels
 {
-    public class NsPanel : Panel, IBindingControl
+    public class NsPanel : System.Web.UI.WebControls.Panel, IBindingControl
     {
         public NsPanel()
         {

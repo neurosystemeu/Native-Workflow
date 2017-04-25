@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NeuroSystem.Workflow.Core.Extensions;
-using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms.Columns;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
+using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms.Columns;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 using GridAggregateFunction = Telerik.Web.UI.GridAggregateFunction;
 using GridView = NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets.GridView;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms
 {
     public class NsGrid : RadGrid, IBindingControl
     {

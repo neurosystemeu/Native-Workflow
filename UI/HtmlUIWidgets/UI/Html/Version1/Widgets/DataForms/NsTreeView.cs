@@ -1,11 +1,10 @@
 ﻿using System;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.ViewModel;
-using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets;
 using NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.ItemsWidgets;
 using Telerik.Web.UI;
 
-namespace NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version1.Widgets.DataForms
+namespace NeuroSystem.Workflow.UserData.UI.Html.Version1.Widgets.DataForms
 {
     public class NsTreeView : RadTreeView, IBindingControl
     {
