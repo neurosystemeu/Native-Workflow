@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_Layout.cshtml";
+}
+@using Kendo.Mvc.UI
+@using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.Extensions;
+@using NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews;
+
+@model NeuroSystem.Workflow.UserData.UI.Html.ASP.UI.Html.Version2.TestViews.ProcesMW
+
+<div >
+    <h2>Proces22</h2>
+
+    @Html.Ns()
+
+    @(Html.Kendo().ComboBox()
+        .Name("ccb")
+    .DataValueField("Id")
+    .DataTextField("Nazwa")
+    .DataSource(ds =>
+    ds.Read("PracownikTestModel_Read", "Proces")
+    .Custom()
+    .Schema(schema =>
+    {
+        schema.Data("Data") //Define the [data](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.data) option.
+              .Total("Total"); //Define the [total](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.total) option.
+    })
+    .ServerFiltering(false)
+
+    )
+    )
+
+
+    @*@(Html.Kendo().Grid<PracownikTestModel>()
+            .Name("grid")
+        .DataSource(ds =>
+        {
+            ds
+            .Ajax()
+            .Read("PracownikTestModel_Read", "Proces");
+        }))*@
+
+</div>
