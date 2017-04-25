@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\DAL\DebugProcesContainer.cs" />
     <Compile Include="Core\EnumWorkfloEngineState.cs" />
     <Compile Include="Core\Extensions\ObjectExtensions.cs" />
     <Compile Include="Core\Extensions\VirtualMachineExtensions.cs" />
@@ -58,6 +57,7 @@
     <Compile Include="Core\Process\ProcessWithUI\Console\ConsoleProcessBase.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Html\HtmlProcessTypedProcess.cs" />
     <Compile Include="Core\Process\ProcessWithUI\Html\HtmlProcessBase.cs" />
+    <Compile Include="Engine\DAL\DebugProcesContainer.cs" />
     <Compile Include="Engine\DAL\ProcessContainer.cs" />
     <Compile Include="Engine\DAL\WorkflowEngineDAL.cs" />
     <Compile Include="Engine\WorkflowEngine.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="UserData\UI\Html\Mvc\GridAggregateFunction.cs" />
     <Compile Include="UserData\UI\Html\Mvc\GridColumnType.cs" />
     <Compile Include="UserData\UI\Html\Mvc\GridKnownFunction.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\IFilterDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Infrastructure\FluentDictionary.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ComboBox.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\DataSourceSchema.cs" />
@@ -181,7 +182,6 @@
     <Compile Include="UserData\UI\Html\Version1\Widgets\Panels\Tab.cs" />
     <Compile Include="UserData\UI\Html\Version1\Widgets\Panels\TabsWidget.cs" />
     <Compile Include="UserData\UI\Html\Version1\Widgets\WidgetBase.cs" />
-    <Compile Include="UserData\UI\Html\Mvc\IFilterDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ModelDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Button.cs" />
     <Compile Include="UserData\UI\Html\Mvc\DataSource.cs" />
