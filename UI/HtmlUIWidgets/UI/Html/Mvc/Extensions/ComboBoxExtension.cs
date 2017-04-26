@@ -10,7 +10,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
         public static Kendo.Mvc.UI.WidgetBase ToKendoWidget(this ComboBox widget, HtmlHelper helper,
             IJavaScriptInitializer initializer, IUrlGenerator urlGenerator)
         {
-            var control = new Kendo.Mvc.UI.ComboBox(helper.ViewContext, initializer, helper.ViewData, urlGenerator);
+            var kendoFabric = Kendo.Mvc.UI.HtmlHelperExtension.Kendo(helper).ComboBox();
+            var control = kendoFabric.ToComponent();
             control.Name = widget.Name;
             control.DataValueField = widget.DataValueField;
             control.DataTextField = widget.DataTextField;
@@ -22,8 +23,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             }
             else
             {
-                widget.DataSource.SetDataSource(control.DataSource, helper.ViewContext, initializer, helper.ViewData,
-                    urlGenerator);
+                widget.DataSource.SetDataSource(control.DataSource, helper, initializer,urlGenerator);
             }
 
             return control;

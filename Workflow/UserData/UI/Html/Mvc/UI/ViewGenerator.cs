@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroSystem.Workflow.Core.Extensions;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Infrastructure;
 
 namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {
     public class ViewGenerator
     {
-        public static Panel CreateDefaultDataForm(object model)
+        public static Panel CreateDefaultDataForm(object model, IViewGeneratorHelper generatorHelper = null)
         {
             var visibleProperty = new List<VisibleProperty>();
             var type = model.GetType();
@@ -31,8 +32,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                .Select(w => w.DataFormView.TabName).Distinct().ToList();
 
             var dataForm = new Panel("dataForm");
-            dataForm.Class("container well");
-
+            //dataForm.Class("container well");
             //var sekcja = new Panel("sekcja");
             //sekcja.Class("well");
             //sekcja.HtmlContent = "<h2 class='ra - well - title'>What is this page?</h2>".Replace("'", "\"");
@@ -52,7 +52,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     var tabWidgets = visibleProperty.Where(w => w.DataFormView.TabName == tabName);
                     var tabPanel = new Panel("tab_"+tabName);                                    
                     tab.Panel = tabPanel;
-                    generateGroups(tabWidgets, tabPanel, model);
+                    generateGroups(tabWidgets, tabPanel, model, generatorHelper);
                     tabsControl.Items.Add(tab);
                 }
                 dataForm.Items.Add(tabsControl);
@@ -61,13 +61,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
             {
                 //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
                 
-                generateGroups(visibleProperty, dataForm, model);
+                generateGroups(visibleProperty, dataForm, model, generatorHelper);
             }
 
             return dataForm;
         }
 
-        private static void generateGroups(IEnumerable<VisibleProperty> tabWidgets, Panel tab, object model)
+        private static void generateGroups(IEnumerable<VisibleProperty> tabWidgets, Panel tab, object model, 
+            IViewGeneratorHelper generatorHelper)
         {
             var groupsName = tabWidgets.Select(w => w.DataFormView.GroupName).Distinct().ToList();
             foreach (var groupName in groupsName)
@@ -90,17 +91,35 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     label.Class("control-label col-sm-3");
                     label.For(groupWidget.PropertyInfo.Name);
                     blok.Items.Add(label);
+
+                    var div = new Panel("item_" + groupWidget.PropertyInfo.Name);
+                    div.Class("col-sm-7");
+                    blok.Items.Add(div);
+
                     if (groupWidget.DataFormView.RepositoryType != null)
                     {
-                        //var cb = df.AddComboBox(groupWidget.PropertyInfo.Name).LoadOnDemand(true);
-                        //cb.DataSource(GetDataSourceByType(groupWidget.DataFormView.RepositoryType));
-                        //cb.Label(groupWidget.PropertyInfo.Name);
+                        var cb = new ComboBox();
+                        cb.Name = groupWidget.PropertyInfo.Name;
+                        var idObiektu = model.GetPropValue(groupWidget.PropertyInfo.Name)?.ToString();
+                        if (generatorHelper != null)
+                        {
+                            cb.Text = generatorHelper.GetObjectName(groupWidget.DataFormView.RepositoryType, idObiektu);
+                        }
+                        cb.DataTextField = "Nazwa";
+                        cb.DataValueField = "Id";
+                        var ds = new DataSource();
+                        ds.ObjectType = groupWidget.DataFormView.RepositoryType;
+                        ds.Type = DataSourceType.Ajax;
+                        ds.Transport.Read.ActionName = groupWidget.DataFormView.RepositoryType.Name + "_Read";
+                        ds.Transport.Read.ControllerName = null;
+                        cb.DataSource = ds;
+                        div.Items.Add(cb);
+                        
+                        groupPanel.Items.Add(blok);
                     }
                     else
                     {
-                        var div = new Panel("item_" + groupWidget.PropertyInfo.Name);
-                        div.Class("col-sm-7");
-                        blok.Items.Add(div);
+                        
 
                         if (groupWidget.PropertyInfo.PropertyType == typeof(DateTime) ||
                             groupWidget.PropertyInfo.PropertyType == typeof(DateTime?))

@@ -28,7 +28,7 @@ namespace HtmlUIWeb.Controllers
             return View("Index", new ProcesMW() { Pracownik = pracownik });
         }
 
-        public ActionResult PracownikTestModel_Read([DataSourceRequest] DataSourceRequest request)
+        public ActionResult PracownikTest_Read([DataSourceRequest] DataSourceRequest request)
         {
             var lista = listaPracownikow();
             var filtr = "k";
@@ -58,7 +58,7 @@ namespace HtmlUIWeb.Controllers
             {
                 foreach (var imie in imiona)
                 {
-                    lista.Add(new PracownikTest() { Nazwisko = nazwisko, Imie = imie, Id = i });
+                    lista.Add(new PracownikTest() { Nazwisko = nazwisko, Imie = imie, Id = Guid.NewGuid() });
                     i++;
                 }
             }

@@ -39,8 +39,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
 
                     control.Name = "grid";
                     var gridControl = (Kendo.Mvc.UI.IGrid)control;
-                    grid.DataSource.SetDataSource(gridControl.DataSource, helper.ViewContext, initializer, helper.ViewData,
-                        urlGenerator);
+                    grid.DataSource.SetDataSource(gridControl.DataSource, helper, initializer,urlGenerator);
 
 
                     return control;

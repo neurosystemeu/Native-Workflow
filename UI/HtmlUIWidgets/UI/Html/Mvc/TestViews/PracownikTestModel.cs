@@ -6,7 +6,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
 {
     public class PracownikTest 
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         #region Dane podstawowe 
 
@@ -62,6 +62,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
         #endregion
 
         #region Dane kadrowe 
+
+        
 
         //[Description("Jednostka organizacyjna Id")]
         //[DataFormView(RepositoryType = typeof(JednostkaOrganizacyjna), GroupName = "Kadrowe", TabName = "Kadrowe")]

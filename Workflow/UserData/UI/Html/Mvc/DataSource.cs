@@ -201,6 +201,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc
             get;
             set;
         }
+        public Type ObjectType { get; internal set; }
 
         public DataSource()
         {

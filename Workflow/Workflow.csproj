@@ -107,6 +107,7 @@
     <Compile Include="UserData\UI\Html\Mvc\GridKnownFunction.cs" />
     <Compile Include="UserData\UI\Html\Mvc\IFilterDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\Infrastructure\FluentDictionary.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\Infrastructure\IViewGeneratorHelper.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Chceckbox.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ComboBox.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\DataSourceSchema.cs" />
