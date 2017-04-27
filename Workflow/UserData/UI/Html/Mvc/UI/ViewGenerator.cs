@@ -115,9 +115,10 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         cb.DataValueField = "Id";
                         var ds = new DataSource();
                         ds.ObjectType = groupWidget.DataFormView.RepositoryType;
-                        ds.Type = DataSourceType.Custom;
-                        ds.ServerFiltering = true;
-                        ds.Transport.Read.ActionName = groupWidget.DataFormView.RepositoryType.Name + "_Read";
+                        ds.Type = DataSourceType.Ajax;
+                        //ds.ServerFiltering = true;
+                        //ds.PageSize = 10;
+                        ds.Transport.Read.ActionName = groupWidget.DataFormView.RepositoryType.Name + "_ReadList";
                         ds.Transport.Read.ControllerName = null;
                         cb.DataSource = ds;
                         div.Items.Add(cb);

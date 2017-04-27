@@ -19,7 +19,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
                 //var dsbType = typeof(Kendo.Mvc.UI.Fluent.DataSourceBuilder<>).MakeGenericType(ds.ObjectType);
                 //Kendo.Mvc.UI.Fluent.DataSourceBuilder<object> dsb = Activator.CreateInstance(dsbType, datasource, helper.ViewContext, urlGenerator);
 
-                dsb.Custom().Transport(t =>
+                var custom = dsb.Custom();
+                if (ds.PageSize != 0)
+                {
+                    custom.PageSize(ds.PageSize);
+                    custom.ServerFiltering(true);
+                }
+                
+                    custom.Transport(t =>
                 t.Read(ds.Transport.Read.ActionName, 
                     ds.Transport.Read.ControllerName ?? helper.ViewContext.Controller.GetType().Name.Replace("Controller", "")))
                 .Schema(schema =>
@@ -32,16 +39,20 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             else
             if (ds.Type == UserData.UI.Html.Mvc.DataSourceType.Ajax)
             {
-                var dsbType = typeof(Kendo.Mvc.UI.Fluent.DataSourceBuilder<>).MakeGenericType(ds.ObjectType);
-                dynamic dsb = Activator.CreateInstance(dsbType, datasource, helper.ViewContext, urlGenerator);
+                //var dsbType = typeof(Kendo.Mvc.UI.Fluent.DataSourceBuilder<>).MakeGenericType(ds.ObjectType);
+                //dynamic dsb = Activator.CreateInstance(dsbType, datasource, helper.ViewContext, urlGenerator);
 
-                //var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<object>(datasource, helper.ViewContext,
-                //    urlGenerator);
+                var dsb = new Kendo.Mvc.UI.Fluent.DataSourceBuilder<object>(datasource, helper.ViewContext,
+                    urlGenerator);
                 var ajax = dsb.Ajax();
-                
+                if (ds.PageSize != 0)
+                {
+                    ajax.PageSize(ds.PageSize);
+                }
                 //ajax.Model(m => m.Id("Id"));
                 ajax.Read(ds.Transport.Read.ActionName,
-                    ds.Transport.Read.ControllerName ?? helper.ViewContext.Controller.GetType().Name.Replace("Controller", "")
+                    ds.Transport.Read.ControllerName 
+                    ?? helper.ViewContext.Controller.GetType().Name.Replace("Controller", "")
                     );
             }
 

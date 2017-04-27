@@ -15,22 +15,16 @@
     @Html.CreateDataForm(Model.Pracownik)
 }
 
-    @(Html.Kendo().ComboBox()
-        .Name("ccb")
-    .DataValueField("Id")
-    .DataTextField("Nazwa")
-    .DataSource(ds =>
-    ds.Read("PracownikTestModel_Read", "Proces")
-    .Custom()
-    .Schema(schema =>
-    {
-        schema.Data("Data") //Define the [data](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.data) option.
-              .Total("Total"); //Define the [total](http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-schema.total) option.
-    })
-    .ServerFiltering(false)
 
-    )
-    )
+    @(Html.Kendo().ComboBox()
+          .Name("ccb")
+          .DataValueField("Id")
+          .DataTextField("Nazwa")
+          .Filter("contains")
+          .DataSource(ds =>
+              ds.Read("PracownikTest_ReadList", "Proces")
+                  .ServerFiltering(true)
+          ))
 
 
     @*@(Html.Kendo().Grid<PracownikTestModel>()

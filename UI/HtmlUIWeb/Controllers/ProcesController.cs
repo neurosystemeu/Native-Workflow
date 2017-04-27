@@ -32,9 +32,29 @@ namespace HtmlUIWeb.Controllers
         public ActionResult PracownikTest_Read([DataSourceRequest] DataSourceRequest request)
         {
             var lista = listaPracownikow();
-            var filtr = "k";
-            var result = lista.Where(p=>p.Nazwa.Contains(filtr)).ToDataSourceResult(request);
+            var result = lista.ToDataSourceResult(request);
             return Json(result, JsonRequestBehavior.AllowGet);
+
+            //using (var kontekst = UtworzKontekstWykonania())
+            //{
+            //    var projektId = PobierzParametrGuid(nameof(ZapytaniaOfertoweMW.ProjektId));
+            //    var jednostkaOrgId = PobierzParametrGuid(nameof(ZapytaniaOfertoweMW.JednostkaOrganizacyjnaId));
+            //    var logika = kontekst.Logika<FakturaBL>();
+            //    var zapytanie = logika.PobierzFaktury(projektId, jednostkaOrgId);
+            //    var result = zapytanie.ToDataSourceResult(request, o => new FakturaMW(o));
+            //    return Json(result);
+            //}
+            //return null;
+        }
+
+        public ActionResult PracownikTest_ReadList(string text)
+        {
+            var lista = listaPracownikow();
+            var wynik = lista.Where(l => l.Nazwa.Contains(text ?? "")).Select(
+                e=> new {Id = e.Id, Nazwa = e.Nazwa}).ToList();
+            return Json(wynik, JsonRequestBehavior.AllowGet);
+            //var result = lista.ToDataSourceResult(request);
+            //return Json(result, JsonRequestBehavior.AllowGet);
 
             //using (var kontekst = UtworzKontekstWykonania())
             //{
