@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews;
 
 namespace HtmlUIWeb.Controllers
@@ -34,6 +35,7 @@ namespace HtmlUIWeb.Controllers
             var filtr = "k";
             var result = lista.Where(p=>p.Nazwa.Contains(filtr)).ToDataSourceResult(request);
             return Json(result, JsonRequestBehavior.AllowGet);
+
             //using (var kontekst = UtworzKontekstWykonania())
             //{
             //    var projektId = PobierzParametrGuid(nameof(ZapytaniaOfertoweMW.ProjektId));
@@ -64,6 +66,15 @@ namespace HtmlUIWeb.Controllers
             }
 
             return lista;
+        }
+    }
+
+
+    public class ViewGeneratorHelper : IViewGeneratorHelper
+    {
+        public string GetObjectName(Type repositoryType, string idObiektu)
+        {
+            throw new NotImplementedException();
         }
     }
 }

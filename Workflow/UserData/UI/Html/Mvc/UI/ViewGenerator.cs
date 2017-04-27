@@ -50,7 +50,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     var tab = new Tab();
                     tab.Name = tabName;
                     var tabWidgets = visibleProperty.Where(w => w.DataFormView.TabName == tabName);
-                    var tabPanel = new Panel("tab_"+tabName);                                    
+                    var tabPanel = new Panel("tab_"+tabName);
+                    tabPanel.Class("tabPanel");
                     tab.Panel = tabPanel;
                     generateGroups(tabWidgets, tabPanel, model, generatorHelper);
                     tabsControl.Items.Add(tab);
@@ -76,6 +77,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                 var groupWidgets = tabWidgets.Where(w => w.DataFormView.GroupName == groupName);
                 var groupPanel = new Panel("group_"+groupName);
                 tab.Items.Add(groupPanel);
+
                 groupPanel.Class("form-horizontal form-widgets col-xs-12 col-sm-5");
                 //var groupPanel = new NsPanel(panel, viewContext, initializer, viewData, urlGenerator);
                 //groupPanel.Label(groupName);
@@ -91,9 +93,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     label.Class("control-label col-sm-3");
                     label.For(groupWidget.PropertyInfo.Name);
                     blok.Items.Add(label);
-
+                    
                     var div = new Panel("item_" + groupWidget.PropertyInfo.Name);
                     div.Class("col-sm-7");
+                    div.HtmlAttributes.Add("data-toggle", "tooltip");
+                    div.HtmlAttributes.Add("title", groupWidget.PropertyInfo.GetPropertyDescription());
+                    div.HtmlAttributes.Add("data-placement", "right");
+
                     blok.Items.Add(div);
 
                     if (groupWidget.DataFormView.RepositoryType != null)
@@ -109,7 +115,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         cb.DataValueField = "Id";
                         var ds = new DataSource();
                         ds.ObjectType = groupWidget.DataFormView.RepositoryType;
-                        ds.Type = DataSourceType.Ajax;
+                        ds.Type = DataSourceType.Custom;
+                        ds.ServerFiltering = true;
                         ds.Transport.Read.ActionName = groupWidget.DataFormView.RepositoryType.Name + "_Read";
                         ds.Transport.Read.ControllerName = null;
                         cb.DataSource = ds;

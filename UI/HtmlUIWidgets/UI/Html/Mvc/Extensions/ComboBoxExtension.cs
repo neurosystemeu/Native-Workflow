@@ -16,7 +16,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             control.DataValueField = widget.DataValueField;
             control.DataTextField = widget.DataTextField;
             control.SelectedIndex = widget.SelectedIndex;
-
+            
             if (widget.DataSource.Type == UserData.UI.Html.Mvc.DataSourceType.Server)
             {
                 control.DataSource.Data = widget.DataSource.Data;

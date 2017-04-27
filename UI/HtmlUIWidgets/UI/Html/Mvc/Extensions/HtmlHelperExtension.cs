@@ -7,6 +7,7 @@ using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.UI;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Fluent;
+using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Infrastructure;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.Widgets;
@@ -20,12 +21,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             return new WidgetFactory(helper);
         }
 
-        public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model)
+        public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model, IViewGeneratorHelper generatorHelper = null)
         {
             var initializer = DI.Current.Resolve<IJavaScriptInitializer>();
             var urlGenerator = DI.Current.Resolve<IUrlGenerator>();
             
-            var dataForm = ViewGenerator.CreateDefaultDataForm(model);
+            var dataForm = ViewGenerator.CreateDefaultDataForm(model, generatorHelper);
             var kendoPanel = dataForm.ToKendoWidget(helper, initializer, urlGenerator);
             
             var htmlstr = kendoPanel.ToHtmlString();
