@@ -122,7 +122,27 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         ds.Transport.Read.ControllerName = null;
                         cb.DataSource = ds;
                         div.Items.Add(cb);
-                        
+
+                        if (groupWidget.DataFormView.ListViewUrl != null)
+                        {
+                            //dodaje link do listy obiektów
+                            div.Items.Add(new Link(){
+                                Name = groupWidget.PropertyInfo.Name+"Lista",
+                                Content = "Lista ",
+                                NavigateUrl = groupWidget.DataFormView.ListViewUrl });
+                        }
+
+                        if (groupWidget.DataFormView.DataFormViewUrl != null)
+                        {
+                            //dodaje link do listy obiektów
+                            div.Items.Add(new Link()
+                            {
+                                Name = groupWidget.PropertyInfo.Name+"Edycja",
+                                Content = "Edycja",
+                                NavigateUrl = groupWidget.DataFormView.DataFormViewUrl + model.GetPropValue(groupWidget.PropertyInfo.Name)
+                            });
+                        }
+
                         groupPanel.Items.Add(blok);
                     }
                     else

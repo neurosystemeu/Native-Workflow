@@ -20,5 +20,15 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations
         public string TabName { get; set; }
         public string Height { get; set; }
         public Type RepositoryType { get; set; }
+
+        /// <summary>
+        /// Url do widoku listy danego typu
+        /// </summary>
+        public string ListViewUrl { get; set; }
+
+        /// <summary>
+        /// Url do widoku formy 
+        /// </summary>
+        public string DataFormViewUrl { get; set; }
     }
 }

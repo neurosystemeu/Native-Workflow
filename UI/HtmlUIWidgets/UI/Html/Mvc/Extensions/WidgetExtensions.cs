@@ -71,6 +71,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
                     return label.ToKendoWidget(helper, initializer);
                 }
 
+                if (widget is Link)
+                {
+                    var link = widget as Link;
+                    return link.ToKendoWidget(helper, initializer);
+                }
+
                 if (widget is Tabs)
                 {
                     var tabs = widget as Tabs;

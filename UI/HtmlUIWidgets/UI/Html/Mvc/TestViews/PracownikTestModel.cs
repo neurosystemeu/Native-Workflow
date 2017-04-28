@@ -92,7 +92,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
         public string Stanowisko { get; set; }
 
         [Description("Przełożony pracownika")]
-        [DataFormView(RepositoryType = typeof(PracownikTest), GroupName = "Kadrowe", TabName = "Kadrowe")]
+        [DataFormView(RepositoryType = typeof(PracownikTest), GroupName = "Kadrowe", TabName = "Kadrowe", 
+            ListViewUrl = "~/sdfsdf")]
         public Guid? PrzelozonyId { get; set; }
 
         

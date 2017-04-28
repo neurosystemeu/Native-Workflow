@@ -116,6 +116,7 @@
     <Compile Include="UserData\UI\Html\Mvc\UI\IDataKey.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\IGridDataKey.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Label.cs" />
+    <Compile Include="UserData\UI\Html\Mvc\UI\Link.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\ModelFieldDescriptor.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\PlaceHolder.cs" />
     <Compile Include="UserData\UI\Html\Mvc\UI\Tab.cs" />

@@ -92,10 +92,12 @@
     <Compile Include="UI\Html\Mvc\Extensions\DataSourceExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\DatePickerExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\LabelExtension.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\LinkExtensions.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\PanelExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\TabsExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\TextBoxExtensions.cs" />
     <Compile Include="UI\Html\Mvc\Widgets\NsLabel.cs" />
+    <Compile Include="UI\Html\Mvc\Widgets\NsLink.cs" />
     <Compile Include="UI\Html\Version1\WidgetBuilder.cs" />
     <Compile Include="UI\Html\Version1\Widgets\Actions\NsAction.cs">
       <SubType>Code</SubType>
