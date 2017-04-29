@@ -13,7 +13,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
 {
     public class ViewGenerator
     {
-        public static Panel CreateDefaultDataForm(object model, IViewGeneratorHelper generatorHelper = null)
+        public static Panel CreateDefaultDataForm(object model,
+            string propertyPrefix = null)
         {
             var visibleProperty = new List<VisibleProperty>();
             var type = model.GetType();
@@ -53,7 +54,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                     var tabPanel = new Panel("tab_"+tabName);
                     tabPanel.Class("tabPanel");
                     tab.Panel = tabPanel;
-                    generateGroups(tabWidgets, tabPanel, model, generatorHelper);
+                    generateGroups(tabWidgets, tabPanel, model, propertyPrefix);
                     tabsControl.Items.Add(tab);
                 }
                 dataForm.Items.Add(tabsControl);
@@ -62,14 +63,14 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
             {
                 //visibleProperty = visibleProperty.OrderBy(p => p.Order).ToList();
                 
-                generateGroups(visibleProperty, dataForm, model, generatorHelper);
+                generateGroups(visibleProperty, dataForm, model, propertyPrefix);
             }
 
             return dataForm;
         }
 
         private static void generateGroups(IEnumerable<VisibleProperty> tabWidgets, Panel tab, object model, 
-            IViewGeneratorHelper generatorHelper)
+            string propertyPrefix)
         {
             var groupsName = tabWidgets.Select(w => w.DataFormView.GroupName).Distinct().ToList();
             foreach (var groupName in groupsName)
@@ -86,31 +87,32 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                 
                 foreach (var groupWidget in groupWidgets)
                 {
-                    var blok = new Panel("block_" + groupWidget.PropertyInfo.Name);
+                    var propertyName = groupWidget.PropertyInfo.Name;
+                    var propertyNameWithObject = propertyPrefix + propertyName;
+                    
+
+                    var blok = new Panel("block_" + propertyNameWithObject);
                     blok.Class("form-group");
                     var label = new Label();
-                    label.Content = groupWidget.PropertyInfo.Name.SplitPascalCase();
+                    label.Content = propertyName.SplitPascalCase();
                     label.Class("control-label col-sm-3");
-                    label.For(groupWidget.PropertyInfo.Name);
+                    label.For(propertyNameWithObject);
                     blok.Items.Add(label);
                     
-                    var div = new Panel("item_" + groupWidget.PropertyInfo.Name);
+                    var div = new Panel("item_" + propertyNameWithObject);
                     div.Class("col-sm-7");
                     div.HtmlAttributes.Add("data-toggle", "tooltip");
                     div.HtmlAttributes.Add("title", groupWidget.PropertyInfo.GetPropertyDescription());
                     div.HtmlAttributes.Add("data-placement", "right");
+
+                    
 
                     blok.Items.Add(div);
 
                     if (groupWidget.DataFormView.RepositoryType != null)
                     {
                         var cb = new ComboBox();
-                        cb.Name = groupWidget.PropertyInfo.Name;
-                        var idObiektu = model.GetPropValue(groupWidget.PropertyInfo.Name)?.ToString();
-                        if (generatorHelper != null)
-                        {
-                            cb.Text = generatorHelper.GetObjectName(groupWidget.DataFormView.RepositoryType, idObiektu);
-                        }
+                        cb.Name = propertyNameWithObject;
                         cb.DataTextField = "Nazwa";
                         cb.DataValueField = "Id";
                         var ds = new DataSource();
@@ -127,7 +129,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         {
                             //dodaje link do listy obiektów
                             div.Items.Add(new Link(){
-                                Name = groupWidget.PropertyInfo.Name+"Lista",
+                                Name = propertyNameWithObject+"Lista",
                                 Content = "Lista ",
                                 NavigateUrl = groupWidget.DataFormView.ListViewUrl });
                         }
@@ -137,9 +139,9 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                             //dodaje link do listy obiektów
                             div.Items.Add(new Link()
                             {
-                                Name = groupWidget.PropertyInfo.Name+"Edycja",
+                                Name = propertyNameWithObject+"Edycja",
                                 Content = "Edycja",
-                                NavigateUrl = groupWidget.DataFormView.DataFormViewUrl + model.GetPropValue(groupWidget.PropertyInfo.Name)
+                                NavigateUrl = groupWidget.DataFormView.DataFormViewUrl + model.GetPropValue(propertyNameWithObject)
                             });
                         }
 
@@ -153,8 +155,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                             groupWidget.PropertyInfo.PropertyType == typeof(DateTime?))
                         {
                             var dp = new DatePicker();
-                            dp.Name = groupWidget.PropertyInfo.Name;
-                            dp.Value = (DateTime?)model.GetPropValue(groupWidget.PropertyInfo.Name);
+                            dp.Name = propertyNameWithObject;
+                            dp.Value = (DateTime?)model.GetPropValue(propertyName);
                             dp.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
                             div.Items.Add(dp);
                         }
@@ -162,16 +164,16 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                                    groupWidget.PropertyInfo.PropertyType == typeof(bool?))
                         {
                             var cb = new CheckBox();
-                            cb.Name = groupWidget.PropertyInfo.Name;
-                            cb.Value = (bool?)model.GetPropValue(groupWidget.PropertyInfo.Name);
+                            cb.Name = propertyNameWithObject;
+                            cb.Value = (bool?)model.GetPropValue(propertyName);
                             cb.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
                             div.Items.Add(cb);
                         }
                         else if(groupWidget.PropertyInfo.PropertyType.IsEnum)
                         {
                             var cb = new ComboBox();
-                            cb.Name = groupWidget.PropertyInfo.Name;
-                            cb.Text = model.GetPropValue(groupWidget.PropertyInfo.Name).ToString();
+                            cb.Name = propertyNameWithObject;
+                            cb.Text = model.GetPropValue(propertyName).ToString();
                             var ds = new DataSource();
                             var values = Enum.GetNames(groupWidget.PropertyInfo.PropertyType);
                             
@@ -195,8 +197,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.UI
                         else
                         {
                             var tb = new TextBox<string>();
-                            tb.Name = groupWidget.PropertyInfo.Name;
-                            tb.Value = model.GetPropValue(groupWidget.PropertyInfo.Name)?.ToString();
+                            tb.Name = propertyNameWithObject;
+                            tb.Value = model.GetPropValue(propertyName)?.ToString();
                             tb.IsReadOnly = groupWidget.DataFormView.IsReadOnly;
                             div.Items.Add(tb);
                         }

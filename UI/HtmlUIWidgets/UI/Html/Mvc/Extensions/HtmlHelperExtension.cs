@@ -21,12 +21,13 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             return new WidgetFactory(helper);
         }
 
-        public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model, IViewGeneratorHelper generatorHelper = null)
+        public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model,
+            string propertyPrefix = null)
         {
             var initializer = DI.Current.Resolve<IJavaScriptInitializer>();
             var urlGenerator = DI.Current.Resolve<IUrlGenerator>();
             
-            var dataForm = ViewGenerator.CreateDefaultDataForm(model, generatorHelper);
+            var dataForm = ViewGenerator.CreateDefaultDataForm(model, propertyPrefix);
             var kendoPanel = dataForm.ToKendoWidget(helper, initializer, urlGenerator);
             
             var htmlstr = kendoPanel.ToHtmlString();

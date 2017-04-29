@@ -88,13 +88,5 @@ namespace HtmlUIWeb.Controllers
             return lista;
         }
     }
-
-
-    public class ViewGeneratorHelper : IViewGeneratorHelper
-    {
-        public string GetObjectName(Type repositoryType, string idObiektu)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    
 }
