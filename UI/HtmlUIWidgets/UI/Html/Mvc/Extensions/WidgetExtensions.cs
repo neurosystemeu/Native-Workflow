@@ -47,6 +47,12 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             }
             else
             {
+                if (widget is Grid)
+                {
+                    var grid = widget as Grid;
+                    return grid.ToKendoWidget(helper, initializer);
+                }
+
                 if (widget is DatePicker)
                 {
                     var dp = widget as DatePicker;

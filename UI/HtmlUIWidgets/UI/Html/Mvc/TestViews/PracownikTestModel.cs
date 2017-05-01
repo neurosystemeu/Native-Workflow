@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations;
 
@@ -13,22 +14,22 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
         public string Nazwa => Imie + " " + Nazwisko;
 
         [Description("Imię pracownika")]
-        [GridView(Aggregate = GridAggregateFunction.Count)]
+        [GridView(Aggregate = GridAggregateFunction.Count, VisibleMode = EnumGridColumnVisibleMode.SmallAndBigList)]
         [DataFormView]
         public string Imie { get; set; }
 
         [Description("Nazwisko pracownika")]
-        [GridView]
+        [GridView(VisibleMode = EnumGridColumnVisibleMode.SmallAndBigList)]
         [DataFormView]
         public string Nazwisko { get; set; }
 
         [Description("Telefon")]
-        [GridView]
+        [GridView()]
         [DataFormView]
         public string Telefon { get; set; }
 
         [Description("Miasto zamieszkania")]
-        [GridView]
+        [GridView(VisibleMode = EnumGridColumnVisibleMode.SmallAndBigList)]
         [DataFormView(GroupName = "Adres")]
         public string Miasto { get; set; }
 
@@ -96,6 +97,8 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.TestViews
             ListViewUrl = "~/sdfsdf")]
         public Guid? PrzelozonyId { get; set; }
 
+        [DataFormView(ControlType = EnumControlType.Grid)]
+        public List<PracownikTest> Podwladni { get; set; }
         
         [DataFormView(GroupName = "Informacje", TabName = "Kadrowe")]
         public string NumerButa { get; set; }

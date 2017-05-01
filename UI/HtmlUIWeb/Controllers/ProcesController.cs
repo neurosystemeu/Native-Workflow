@@ -29,7 +29,7 @@ namespace HtmlUIWeb.Controllers
             return View("Index", new ProcesMW() { Pracownik = pracownik });
         }
 
-        public ActionResult PracownikTest_Read([DataSourceRequest] DataSourceRequest request)
+        public ActionResult PracownikTest_Read([DataSourceRequest] DataSourceRequest request, string id)
         {
             var lista = listaPracownikow();
             var result = lista.ToDataSourceResult(request);

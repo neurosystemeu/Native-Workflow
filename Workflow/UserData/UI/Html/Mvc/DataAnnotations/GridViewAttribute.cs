@@ -24,5 +24,6 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations
         public GridColumnType ColumnType { get; set; }
         public Type ColumnDataType { get; set; }
         public string Width { get; set; }
+        public EnumGridColumnVisibleMode VisibleMode { get; set; }
     }
 }

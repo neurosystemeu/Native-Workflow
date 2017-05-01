@@ -10,6 +10,7 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.DataAnnotations
     {
         BoundType,
         ComboBox,
-        TreeDropDown
+        TreeDropDown,
+        Grid
     }
 }

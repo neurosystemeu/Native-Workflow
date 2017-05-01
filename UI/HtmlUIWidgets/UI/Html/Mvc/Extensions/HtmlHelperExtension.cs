@@ -21,6 +21,19 @@ namespace NeuroSystem.Workflow.UserData.UI.Html.Mvc.Extensions
             return new WidgetFactory(helper);
         }
 
+        public static object CreateGrid<TModel>(this HtmlHelper<TModel> helper,string filter, object model)
+        {
+            var initializer = DI.Current.Resolve<IJavaScriptInitializer>();
+            var urlGenerator = DI.Current.Resolve<IUrlGenerator>();
+
+            var grid = ViewGenerator.CreateDefaultGrid(model.GetType(), filter,
+                EnumGridColumnVisibleMode.BigList);
+            var kendoPanel = grid.ToKendoWidget(helper, initializer);
+
+            var htmlstr = kendoPanel.ToHtmlString();
+            return new MvcHtmlString(htmlstr);
+        }
+
         public static object CreateDataForm<TModel>(this HtmlHelper<TModel> helper, object model,
             string propertyPrefix = null)
         {

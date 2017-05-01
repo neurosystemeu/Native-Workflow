@@ -91,6 +91,7 @@
     <Compile Include="UI\Html\Mvc\Extensions\ComboBoxExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\DataSourceExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\DatePickerExtension.cs" />
+    <Compile Include="UI\Html\Mvc\Extensions\GridExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\LabelExtension.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\LinkExtensions.cs" />
     <Compile Include="UI\Html\Mvc\Extensions\PanelExtension.cs" />
